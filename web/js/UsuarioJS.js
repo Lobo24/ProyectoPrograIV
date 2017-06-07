@@ -125,7 +125,7 @@ function dibujarFila(rowData) {
     
     var row = $('<tr />');
     $("#tablaPersonas").append(row);
-    row.append($("<td>" + rowData.pkIdUsuario + "</td>"));
+    row.append($("<td>" + rowData.idUsuario + "</td>"));
     row.append($("<td>" + rowData.nombreUsuario + "</td>"));
     row.append($("<td>" + rowData.nombre + "</td>"));
     row.append($("<td>" + rowData.apellido1 + "</td>"));
@@ -263,7 +263,7 @@ function paginador(pagAct){
 //******************************************************************************
 
 function cargaUsuario(usuario){
-           $("#idUsuario").val(usuario.pkIdUsuario);
+           $("#idUsuario").val(usuario.idUsuario);
            $("#nombreUsuario").val(usuario.nombreUsuario);
            $("#contrasena").val(usuario.contrasena);
            $("#email").val(usuario.email);
