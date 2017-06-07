@@ -5,7 +5,6 @@
  */
 package cr.ac.una.prograiv.project.controller;
 
-import com.google.gson.Gson;
 import cr.ac.una.prograiv.project.bl.UsuarioBL;
 import cr.ac.una.prograiv.project.domain.Usuario;
 import java.io.IOException;
@@ -19,10 +18,10 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
-
+import com.google.gson.Gson;
 /**
  *
- * @author lobo
+ * @author admin
  */
 public class UsuariosServlet extends HttpServlet {
 
@@ -45,45 +44,45 @@ public class UsuariosServlet extends HttpServlet {
             UsuarioBL uBL = new UsuarioBL();
             HttpSession session = request.getSession();
             Thread.sleep(1000);
-            
             String accion = request.getParameter("accion");
             switch(accion){
                 case "consultarUsuarios":
                     json = new Gson().toJson(uBL.findAll(Usuario.class.getName()));
                     out.print(json);
                     break;
-                case "eliminarUsuario":
-                    
-                        usuario.setIdUsuario(Integer.parseInt(request.getParameter("idUsuario")));
-                    
-                        //Se elimina el objeto
-                        uBL.delete(usuario);
-
-                        //Se imprime la respuesta con el response
-                        out.print("El usuario fue eliminado correctamente");
-                 
+                case "buscarUsuario":
+                    json = new Gson().toJson(uBL.findById(Integer.parseInt(request.getParameter("idUsuario"))));
+                    out.print(json);
                     break;
-                case "registroAdmin":
-                    usuario.setIdUsuario(Integer.valueOf(request.getParameter("idUsuario")));
-                    usuario.setContrasena(request.getParameter("contrasena"));
+                case "eliminarUsuario":
+                        usuario.setIdUsuario(Integer.parseInt(request.getParameter("idUsuario")));
+                        uBL.delete(usuario);
+                        out.print("El usuario fue eliminado correctamente");
+                    break;
+                case "registroAdmin": case "modificarUsuario" :
+                    usuario.setIdUsuario(Integer.parseInt(request.getParameter("idUsuario")));
                     usuario.setNombreUsuario(request.getParameter("nombreUsuario"));
-                    usuario.setDireccion(request.getParameter("direccion"));
-                    usuario.setNombre(request.getParameter("nombre"));
+                    usuario.setContrasena(request.getParameter("contrasena"));
+                    usuario.setEmail(request.getParameter("correo"));           
                     usuario.setApellido1(request.getParameter("apellido1"));
                     usuario.setApellido2(request.getParameter("apellido2"));
-                    
+                    usuario.setNombre(request.getParameter("nombre"));     
                     String fechatxt = request.getParameter("fechaNacimiento");
                     DateFormat format = new SimpleDateFormat("dd/MM/yyyy", Locale.ENGLISH);
-                    Date date = format.parse(fechatxt);
-                    
-                    usuario.setFechaNacimiento(date);
-                    usuario.setEmail(request.getParameter("correo"));
+                    Date date = format.parse(fechatxt);         
+                    usuario.setFechaNacimiento(date);    
                     usuario.setNacionalidad(request.getParameter("nacionalidad"));
                     usuario.setAdmin(true);
-                    usuario.setNumTel("0000000");
+                    usuario.setNumTel("001000");
                     usuario.setUltimaFecha(new Date());
                     usuario.setUltimoUsuario("admin");
-                    uBL.save(usuario);
+                    if(accion.equals("registroAdmin")){
+                        uBL.save(usuario);
+                        out.print("El Administrador fue agregado correctamente");
+                    }else{
+                        uBL.merge(usuario);
+                        out.print("El usuario fue modificado correctamente");
+                    }
                     break;
                 default:
                     out.print("E~No se indico la acción que se desea realizare");
@@ -94,8 +93,6 @@ public class UsuariosServlet extends HttpServlet {
         } catch (Exception e) {
             out.print("E~" + e.getMessage());
         }
-        
-        
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">

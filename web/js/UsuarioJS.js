@@ -7,6 +7,18 @@
 
 $(document).ready(function () {
     consultarUsuarios(1);
+    paginador(1);
+    $(function () {
+    $('#dpFechaNacimiento').datetimepicker({
+        weekStart: 1,
+        todayBtn: 1,
+        autoclose: 1,
+        todayHighlight: 1,
+        startView: 2,
+        minView: 2,
+        forceParse: 0
+    });
+});
 });
 
 function consultarUsuarios(numpag) {
@@ -23,7 +35,7 @@ function consultarUsuarios(numpag) {
         },
         success: function (data) { //si todo esta correcto en la respuesta del ajax, la respuesta queda en el data
             ocultarModal("myModal");
-            dibujarTabla(1,data);
+            dibujarTabla(numpag,data);
             // se oculta el modal esta funcion se encuentra en el utils.js
         },
         type: 'POST',
@@ -36,6 +48,44 @@ function consultarUsuarios(numpag) {
 //METODOS DE ADMINISTRADOR, PARA MANTENIMIENTO DE USUARIOS
 //******************************************************************************
 //******************************************************************************
+
+
+function registroAdmin(){
+    $.ajax({
+       url: '../../UsuariosServlet',
+       data: {
+           accion: $("#personasAction").val(),
+           idUsuario: $("#idUsuario").val(),
+           nombreUsuario: $("#nombreUsuario").val(),
+           contrasena: $("#contrasena").val(),
+           correo: $("#email").val(),
+           apellido1: $("#apell1").val(),
+           apellido2: $("#apellido2").val(),
+           nombre: $("#nombre").val(),
+           fechaNacimiento: $("#dpFechaNacimiento").data('date'),
+           nacionalidad: $("#nacionalidad").val()
+       },
+       error: function () { //si existe un error en la respuesta del ajax   
+          mostrarModal("myModal", "Se genero un error", "Contacte al administrador");
+       },
+       success: function (data) { //si todo esta correcto en la respuesta del ajax, la respuesta queda en el data
+            // se cambia el mensaje del modal por la respuesta del ajax
+            $("#myModalFormulario").modal('hide');
+            var respuestaTxt = data.substring(2);
+            var tipoRespuesta = data.substring(0, 2);
+            if (tipoRespuesta === "E~") {
+                mostrarModal("myModal", "Se genero un error", respuestaTxt);
+            }else{
+                consultarUsuarios(1);
+                mostrarModal("myModal","Registro Admin",$("#nombre").val() +" agregado con exito");
+                //limpiarForm();
+           }
+        },
+        type: 'POST',
+        dataType: "text"
+    });
+    $("#personasAction").val("registroAdmin");
+}
 
 
 
@@ -66,6 +116,7 @@ function dibujarTabla(numpag,dataJson) {
     for (; i < dataJson.length && (cont<10); i++, cont++) {
         dibujarFila(dataJson[i]);
     }
+    
 }
 
 function dibujarFila(rowData) {
@@ -74,7 +125,7 @@ function dibujarFila(rowData) {
     
     var row = $('<tr />');
     $("#tablaPersonas").append(row);
-    row.append($("<td>" + rowData.idUsuario + "</td>"));
+    row.append($("<td>" + rowData.pkIdUsuario + "</td>"));
     row.append($("<td>" + rowData.nombreUsuario + "</td>"));
     row.append($("<td>" + rowData.nombre + "</td>"));
     row.append($("<td>" + rowData.apellido1 + "</td>"));
@@ -88,7 +139,7 @@ function dibujarFila(rowData) {
     }else{
         row.append($("<td>Admin</td>"));
     }
-    row.append($('<td><button type="button" class="btn btn-default btn-xs" aria-label="Left Align" onclick="modificarUsuario(' +rowData.pkIdUsuario + ')">'+
+    row.append($('<td><button type="button" class="btn btn-default btn-xs" aria-label="Left Align" onclick="modificarUsuario(' +rowData.idUsuario + ')">'+
                         '<span class="glyphicon glyphicon-pencil" aria-hidden="true"></span>'+
                     '</button>'+
                     '<button type="button" class="btn btn-default btn-xs" aria-label="Left Align" onclick="validaEliminacion('+ "'"+ rowData.nombre + "'" +','+rowData.idUsuario+')" data-target="#confirm-delete" data-toggle="modal">'+
@@ -160,27 +211,29 @@ function eliminarUsuario(idUsuario) {
 //******************************************************************************
 
 function modificarUsuario(idUsuario) {
+    $("#personasAction").val("modificarUsuario");
     mostrarModal("myModal", "Espere por favor..", "Buscando nombre en la base de datos");
     //Se envia la información por ajax
     $.ajax({
-        url: '../../UsuarioServlet',
+        url: '../../UsuariosServlet',
         data: {
             accion: "buscarUsuario",
-            nombre: idUsuario
+            idUsuario: idUsuario
         },
         error: function () { //si existe un error en la respuesta del ajax
             alert("Se presento un error a la hora de buscar las personas en la base de datos");
         },
         success: function (data) { //si todo esta correcto en la respuesta del ajax, la respuesta queda en el data
-            cargarUsuario(data);
+            cargaUsuario(data);
             // se oculta el modal esta funcion se encuentra en el utils.js
             ocultarModal("myModal");
 
         },
-        type: 'POST',
+        type: 'GET',
         dataType: "json"
     });
 }
+
 
 //******************************************************************************
 
@@ -189,8 +242,35 @@ function limpiarForm() {
     $('#formaddRutas').trigger("reset");
 }
 
+function paginador(pagAct){
+    var ini = 1;
+     $("#paginacionOpc").html("");
+    if(pagAct>5){
+        ini = pagAct - 5;
+        $("#paginacionOpc").append('<li onclick="paginador('+(ini-1)+')"><a>&laquo;</a></li>');
+    }else{
+        $("#paginacionOpc").append('<li onclick="paginador('+ini+')" ><a>&laquo;</a></li>');
+    }
+    for(var i=0;i<=10;i++,ini++){
+        if(ini===pagAct){
+            $("#paginacionOpc").append('<li class="active" onclick="consultarUsuarios('+ini+'),paginador('+ini+')"><a>'+ini+'</a></li> ');
+        }else{
+        $("#paginacionOpc").append('<li onclick="consultarUsuarios('+ini+'),paginador('+ini+')"><a>'+ini+'</a></li>');
+        }
+    }
+    $("#paginacionOpc").append('<li onclick="paginador('+(ini + 1)+')"><a>&raquo;</a></li>');
+}
 //******************************************************************************
 
-
-function cargarUsuario(info){
+function cargaUsuario(usuario){
+           $("#idUsuario").val(usuario.pkIdUsuario);
+           $("#nombreUsuario").val(usuario.nombreUsuario);
+           $("#contrasena").val(usuario.contrasena);
+           $("#email").val(usuario.email);
+           $("#apell1").val(usuario.apellido1);
+           $("#apellido2").val(usuario.apellido2);
+           $("#nombre").val(usuario.nombre);
+           //$("#dpFechaNacimiento").data('date');
+           $("#nacionalidad").val(usuario.nacionalidad);
+           $("#myModalFormulario").modal();
 }

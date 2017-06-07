@@ -1,39 +1,39 @@
-///*
-// * To change this license header, choose License Headers in Project Properties.
-// * To change this template file, choose Tools | Templates
-// * and open the template in the editor.
-// */
-//package cr.ac.una.prograiv.project.test;
-//
-//import cr.ac.una.prograiv.project.bl.UsuarioBL;
-//import cr.ac.una.prograiv.project.dao.UsuarioDAO;
-//import cr.ac.una.prograiv.project.domain.Usuario;
-//import java.util.Date;
-//import java.util.List;
-//
-///**
-// *
-// * @author admin
-// */
-//public class PruebaUsuarios {
-//        public static void main(String []args){
-////            testFindByWord("cristian031");
-//          testSave();
-////        testMerge();
-////        testDelete();
-////        testFindbyID(2);
-////        testFindAll();
-//    }
-//    
-//    public static void testSave(){
-////        Usuario u2 = new Usuario(12151541,"0000","bperez2210","Bryan","Perez","sdfdsfs","Lobo",new Date(),true);
+/*
+ * To change this license header, choose License Headers in Project Properties.
+ * To change this template file, choose Tools | Templates
+ * and open the template in the editor.
+ */
+package cr.ac.una.prograiv.project.test;
+
+import cr.ac.una.prograiv.project.bl.UsuarioBL;
+import cr.ac.una.prograiv.project.dao.UsuarioDAO;
+import cr.ac.una.prograiv.project.domain.Usuario;
+import java.util.Date;
+import java.util.List;
+
+/**
+ *
+ * @author admin
+ */
+public class PruebaUsuarios {
+        public static void main(String []args){
+//            testFindByWord("cristian031");
+          testSave();
+//        testMerge();
+//        testDelete();
+//        testFindbyID(2);
+//        testFindAll();
+    }
+    
+    public static void testSave(){
+       Usuario u2 = new Usuario(12151541,"0000","bperez2210","Bryan","Perez","sdfdsfs","Lobo",new Date(),"dscdfsd","admin",true,"sdfsdfs");
 //        Usuario u2 = new Usuario(115860285,"admin","admin","bryan","perez", "perez", 156454546, "Admin", true , "Costa Rica");
-////        UsuarioDAO pDao = new UsuarioDAO();
-//        UsuarioBL pDao = new UsuarioBL();
-////        uBL.save(u2);
-//        pDao.save(u2);
-//    }
-//    
+//        UsuarioDAO pDao = new UsuarioDAO();
+        UsuarioBL pDao = new UsuarioBL();
+//        uBL.save(u2);
+        pDao.save(u2);
+    }
+    
 //    public static void testMerge(){
 //         Usuario u1 = new Usuario(000000,"1234","cristian031","Cristian","Garita", "Nose", "admin",false, "Costa Rica");
 //        UsuarioDAO pDao = new UsuarioDAO();
@@ -46,29 +46,29 @@
 //        UsuarioDAO pDao = new UsuarioDAO();
 //        pDao.save(u1);
 //    }
-//    
-//    public static void testFindbyID(int id){
+    
+    public static void testFindbyID(int id){
+        UsuarioDAO pDao = new UsuarioDAO();
+        Usuario d1 = pDao.findById(id);
+        System.out.println(d1.getNombreUsuario());
+    }
+    
+    public static void testFindByWord(String word){
+        UsuarioDAO pDao = new UsuarioDAO();
+        Usuario d1 = pDao.findByWord(word);
+        System.out.println(d1.getIdUsuario());
+    }
+    
+    public static void testFindAll(){
+        UsuarioBL ubl=new UsuarioBL();
+        List<Usuario> listaUsuario;
+        listaUsuario = ubl.findAll(Usuario.class.getName());
+        System.out.println(listaUsuario.size());
+        
+
 //        UsuarioDAO pDao = new UsuarioDAO();
-//        Usuario d1 = pDao.findById(id);
-//        System.out.println(d1.getNombreUsuario());
-//    }
-//    
-//    public static void testFindByWord(String word){
-//        UsuarioDAO pDao = new UsuarioDAO();
-//        Usuario d1 = pDao.findByWord(word);
-//        System.out.println(d1.getIdUsuario());
-//    }
-//    
-//    public static void testFindAll(){
-//        UsuarioBL ubl=new UsuarioBL();
-//        List<Usuario> listaUsuario;
-//        listaUsuario = ubl.findAll(Usuario.class.getName());
-//        System.out.println(listaUsuario.size());
-//        
-//
-////        UsuarioDAO pDao = new UsuarioDAO();
-////        listaUsuario = pDao.findAll();
-//
-//    }
-//    
-//}
+//        listaUsuario = pDao.findAll();
+
+    }
+    
+}

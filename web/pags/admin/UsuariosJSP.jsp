@@ -18,6 +18,7 @@
         <script src="../../js/UsuarioJS.js" type="text/javascript"></script>
         <script src="../../js/utils.js" type="text/javascript"></script>
         <script src="../../js/datetimepicker.js" type="text/javascript"></script>
+        <link href="../../css/datetimepicker.min.css" rel="stylesheet" type="text/css"/>
     </head>
     <body>
         <!-- ********************************************************** -->
@@ -74,7 +75,6 @@
                                 <li><a href="AerolineasJSP.jsp">Aerolineas</a></li>
                                 <li><a href="BoletosJSP.jsp">Boletos</a></li>
                                 <li><a href="RutasJSP.jsp">Rutas</a></li>
-                                <li><a href="TipoAvionJSP.jsp">Tipos de avión</a></li>
                             </ul>
                         </li>
                     </ul>             
@@ -106,7 +106,7 @@
                                     <button type="button" onclick="busquedaPersonas()" class="btn btn-info centered"  id="btMostarForm">
                                         Buscar <span class="glyphicon glyphicon-search"></span>
                                     </button>
-                                    <button type="button" class="btn btn-info centered" data-toggle="modal" data-target="#myModalFormulario">
+                                    <button type="button" class="btn btn-info centered" data-toggle="modal" data-target="#myModalFormulario" >
                                         Agregar Admi <span class="glyphicon glyphicon-plus"  ></span>
                                     </button>
                                 </div>
@@ -148,6 +148,10 @@
                                 <label for="usuario">Nombre_Usuario:</label>
                                 <input type="text" class="form-control" id="nombreUsuario" autofocus="true" placeholder="Nombre_Usuario">
                             </div>
+                            <div class="form-group" id="groupContrasena">
+                                <label for="usuario">Contraseña:</label>
+                                <input type="text" class="form-control" id="contrasena" autofocus="true" placeholder="contrasena">
+                            </div>
 
                             <div class="form-group" id="groupNombre">
                                 <label for="usuario">Nombre:</label>
@@ -156,7 +160,7 @@
 
                             <div class="form-group" id="groupapellido1">
                                 <label for="usuario">Apellido1:</label>
-                                <input type="text" class="form-control" id="apellido1" placeholder="Apellido1">
+                                <input type="text" class="form-control" id="apell1" placeholder="Apellido1">
                             </div>
 
                             <div class="form-group" id="groupapellido2">
@@ -170,10 +174,10 @@
                                 <input type="text" class="form-control" id="nacionalidad" placeholder="Nacionalidad">
                             </div>
 
-                            <div class="form-group" id="groupFechaNacimiento">
-                                <label for="dpFechaNacimiento">Fecha Nacimiento:</label>
+                            <div class="form-group" id="groupfechaNacimiento">
+                                <label for="usuario">Fecha Nac:</label>
                                 <div id="dpFechaNacimiento" class="input-group date form_date" data-date="" data-date-format="dd/mm/yyyy" data-link-field="dtp_input2" data-link-format="dd/mm/yyyy">
-                                    <input class="form-control" type="text" value="" readonly placeholder="dd/mm/aaaa" id="dpFechaNacimientoText">
+                                    <input class="form-control" type="text" value="" readonly placeholder="dd/mm/aaaa" id="fechaNac">
                                     <span class="input-group-addon">
                                         <span class="glyphicon glyphicon-calendar"></span>
                                     </span>
@@ -186,9 +190,9 @@
                             </div>
 
                             <div class="form-group">
-                                <input type="hidden" value="agregarPersona" id="personasAction"/>                       
-                                <button type="submit" class="btn btn-primary" id="enviar">Guardar</button>
-                                <button type="reset" class="btn btn-danger" id="cancelar">Cancelar</button>
+                                <input type="hidden" value="registroAdmin" id="personasAction"/>                       
+                                <button type="submit" class="btn btn-primary" id="enviar" onclick="registroAdmin()">Guardar</button>
+                                <button type="reset" class="btn btn-danger" id="cancelar" data-dismiss="modal">Cancelar</button>
                             </div>
 
                             <div class="form-group height25" >
@@ -212,6 +216,7 @@
             <div class="modal-dialog">
                 <div class="modal-content">
                     <div class="modal-header">
+                        
                         <h4><b>Confirmación de borrado</b><h4>
                     </div>
                     <div class="modal-body">
@@ -234,19 +239,5 @@
                     </div>
                 </div>
             </div>
-        
-        <!-- ********************************************************** -->
-        <!-- FOOTER - PIE DE PAGINA -->
-        <!-- ********************************************************** -->
-        <div class="prepiedepagina"></div>
-        <footer>
-            <div>
-                <div class="bg-warning col-xs-12 col-sm-12 col-md-12 col-lg-12 responsive">
-                    <h5>Copyright ©. Todos los derechos reservados. Centro de comercio internacional y transporte de Costa Rica.</h5>
-                    <h5>Autores: Oscar Carmona, Bryan Pérez y David Lobo </h5>
-                    <h5>Año: 2017</h5>
-                </div>
-            </div>
-        </footer> 
-    </body>
+        </body>
 </html>
