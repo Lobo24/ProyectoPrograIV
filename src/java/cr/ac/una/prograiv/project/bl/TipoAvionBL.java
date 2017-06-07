@@ -5,6 +5,7 @@
  */
 package cr.ac.una.prograiv.project.bl;
 import cr.ac.una.prograiv.project.domain.TipoAvion;
+import java.util.LinkedHashMap;
 import java.util.List;
 
 /**
@@ -57,6 +58,11 @@ public class TipoAvionBL extends BaseBL implements IBaseBL<TipoAvion, Integer>{
                 return aux;
         }
         return null;
+    }
+
+    @Override
+    public List createQueryHQL(String className, LinkedHashMap<String, Object> parametros) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
     
 }

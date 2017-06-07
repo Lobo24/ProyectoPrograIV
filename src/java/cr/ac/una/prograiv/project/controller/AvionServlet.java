@@ -44,9 +44,7 @@ public class AvionServlet extends HttpServlet {
             Avion avion = new Avion();
             AvionBL uBL = new AvionBL();
             HttpSession session = request.getSession();
-
             Thread.sleep(1000);
-
             String accion = request.getParameter("accion");
             switch (accion) {
                 case "consultarAviones":

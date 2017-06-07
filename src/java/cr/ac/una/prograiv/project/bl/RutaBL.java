@@ -8,6 +8,7 @@ package cr.ac.una.prograiv.project.bl;
 import cr.ac.una.prograiv.project.domain.Aerolinea;
 import cr.ac.una.prograiv.project.domain.Pais;
 import cr.ac.una.prograiv.project.domain.Ruta;
+import java.util.LinkedHashMap;
 import java.util.List;
 
 /**
@@ -71,5 +72,10 @@ public class RutaBL extends BaseBL implements IBaseBL<Ruta, Integer> {
             }
         }
         return null;
+    }
+
+    @Override
+    public List createQueryHQL(String className, LinkedHashMap<String, Object> parametros) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 }

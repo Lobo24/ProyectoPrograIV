@@ -6,6 +6,7 @@
 package cr.ac.una.prograiv.project.bl;
 
 import cr.ac.una.prograiv.project.domain.Pais;
+import java.util.LinkedHashMap;
 import java.util.List;
 
 /**
@@ -49,6 +50,11 @@ public class PaisBL extends BaseBL implements IBaseBL<Pais, Integer> {
 
     @Override
     public Pais findByWord(String o) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    @Override
+    public List createQueryHQL(String className, LinkedHashMap<String, Object> parametros) {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 

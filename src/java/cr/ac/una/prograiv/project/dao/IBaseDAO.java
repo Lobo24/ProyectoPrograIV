@@ -5,6 +5,7 @@
  */
 package cr.ac.una.prograiv.project.dao;
 
+import java.util.LinkedHashMap;
 import java.util.List;
 
 /**
@@ -20,4 +21,5 @@ public interface IBaseDAO <T,K>{ // K = key ,  T = objeto T generico
     public abstract T findById(K key);
     public abstract T findByWord(String key);
     public abstract List<T> findAll();
+    public abstract List createQueryHQL(LinkedHashMap<String, Object> parametros);
 }

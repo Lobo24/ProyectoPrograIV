@@ -7,6 +7,7 @@ package cr.ac.una.prograiv.project.dao;
 
 import cr.ac.una.prograiv.project.domain.Usuario;
 import cr.ac.una.prograiv.project.utils.HibernateUtil;
+import java.util.LinkedHashMap;
 import java.util.List;
 import org.hibernate.HibernateException;
 
@@ -97,5 +98,10 @@ public class UsuarioDAO extends HibernateUtil implements IBaseDAO<Usuario,Intege
             getSesion().close();
         }
         return usuarios;    
+    }
+
+    @Override
+    public List createQueryHQL(LinkedHashMap<String, Object> parametros) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 }

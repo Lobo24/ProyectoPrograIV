@@ -16,13 +16,10 @@
         <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
         <link href="../../css/estilos.css" rel="stylesheet" type="text/css"/>
         <link href="https://fonts.googleapis.com/css?family=Satisfy" rel="stylesheet">
-        <script src="../../js/AvionJS.js" type="text/javascript"></script>
+        <script src="../../js/datetimepicker.js" type="text/javascript"></script>
         <script src="../../js/utils.js" type="text/javascript"></script>
         <link href="../../css/datetimepicker.min.css" rel="stylesheet" type="text/css"/>
-        <script src="../../js/bootstrap-datetimepicker.es.js" type="text/javascript"></script>
-        <script src="../../js/moment.min.js"></script>
-        <script src="../../js/bootstrap-datetimepicker.min.js"></script>
-        <script src="../../js/bootstrap-datetimepicker.es.js"></script>
+        <script src="../../js/AvionJS.js" type="text/javascript"></script>
 
     </head>
     <body class="bg-success">
@@ -96,8 +93,8 @@
         <!-- ********************************************************** -->
 
         <div align="center" id="panelAviones">
-            <div class="panel panel-success">
-                <div class="panel-heading">
+            <div class="panel">
+                <div class="panel-heading panel-id">
                     <div class="col-sm-12">
                         <form role="form" onsubmit="return false;" id="formAviones" class="form-horizontal centered">
                             <div class="form-group" id="groupNombreAvi">

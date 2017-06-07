@@ -41,7 +41,7 @@ and open the template in the editor.
 }
 
 #navBar{
-    position: relative;
+    position: relative; top: -2px;
     width: 100%
 }
 

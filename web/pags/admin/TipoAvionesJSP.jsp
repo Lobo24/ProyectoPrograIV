@@ -83,8 +83,8 @@
         <!-- TABLA -->
         <!-- ********************************************************** -->
         <div align="center" id="panelTipoAviones">
-            <div class="panel panel-success">
-                <div class="panel-heading">
+            <div class="panel">
+                <div class="panel-heading panel-id">
                 <div class="col-sm-12">
                         <form role="form" onsubmit="return false;" id="formTipoAviones" class="form-horizontal centered">
                             <div class="form-group" id="groupNombreAero">
@@ -197,6 +197,5 @@
                     </div>
                 </div>
             </div>
-        
     </body>
 </html>

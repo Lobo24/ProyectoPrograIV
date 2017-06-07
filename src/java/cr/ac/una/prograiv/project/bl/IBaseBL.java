@@ -9,6 +9,7 @@ package cr.ac.una.prograiv.project.bl;
  *
  * @author admin
  */
+import java.util.LinkedHashMap;
 import java.util.List;
 
 public interface IBaseBL <T,K> {
@@ -18,4 +19,5 @@ public interface IBaseBL <T,K> {
     public abstract T findById (K o);
     public abstract T findByWord(String o); 
     public abstract  List<T> findAll(String o);
+    public abstract List createQueryHQL(String className, LinkedHashMap<String, Object> parametros);
 }

@@ -6,6 +6,7 @@
 package cr.ac.una.prograiv.project.bl;
 import cr.ac.una.prograiv.project.domain.Aerolinea;
 import cr.ac.una.prograiv.project.domain.Pais;
+import java.util.LinkedHashMap;
 import java.util.List;
 
 /**
@@ -59,6 +60,11 @@ public class AerolineaBL extends BaseBL implements IBaseBL<Aerolinea, Integer>{
             }
         }
         return null;
+    }
+
+    @Override
+    public List createQueryHQL(String className, LinkedHashMap<String, Object> parametros) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
     
 }

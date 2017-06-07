@@ -7,6 +7,7 @@ package cr.ac.una.prograiv.project.dao;
 
 import cr.ac.una.prograiv.project.domain.Boleto;
 import cr.ac.una.prograiv.project.utils.HibernateUtil;
+import java.util.LinkedHashMap;
 import java.util.List;
 import org.hibernate.HibernateException;
 
@@ -85,6 +86,11 @@ public class BoletoDAO extends HibernateUtil implements IBaseDAO< Boleto,Integer
 
     @Override
     public Boleto findByWord(String key) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    @Override
+    public List createQueryHQL(LinkedHashMap<String, Object> parametros) {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
     

@@ -6,6 +6,7 @@
 package cr.ac.una.prograiv.project.bl;
 import cr.ac.una.prograiv.project.domain.Usuario;
 import java.util.ArrayList;
+import java.util.LinkedHashMap;
 import java.util.List;
 
 /**
@@ -62,6 +63,11 @@ public class UsuarioBL extends BaseBL implements IBaseBL<Usuario, Integer>{
     
     @Override
     public Usuario findByWord(String o) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    @Override
+    public List createQueryHQL(String className, LinkedHashMap<String, Object> parametros) {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
     

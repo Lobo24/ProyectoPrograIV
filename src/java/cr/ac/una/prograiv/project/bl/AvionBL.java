@@ -9,6 +9,7 @@ import cr.ac.una.prograiv.project.domain.Pais;
 import cr.ac.una.prograiv.project.domain.Ruta;
 import cr.ac.una.prograiv.project.domain.TipoAvion;
 import java.util.Date;
+import java.util.LinkedHashMap;
 import java.util.List;
 
 /**
@@ -60,5 +61,10 @@ public class AvionBL extends BaseBL implements IBaseBL<Avion, Integer>{
     public boolean existe(Avion av){
         List<Avion> aviones = findAll(Avion.class.getName());
         return aviones.stream().anyMatch((aux) -> (aux.getRuta()==av.getRuta() && aux.getHorario().equals(av.getHorario())));
+    }
+
+    @Override
+    public List createQueryHQL(String className, LinkedHashMap<String, Object> parametros) {
+        return this.getDao(className).createQueryHQL(parametros);
     }
 }

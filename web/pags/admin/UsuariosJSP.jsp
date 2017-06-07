@@ -81,7 +81,6 @@
                     <div class="nav navbar-nav navbar-right" id="menuLogSign">
                         <button type="button" class="btn btn-danger glyphicon glyphicon-log-in cerrar"><a href="../../InicioJSP.jsp"> Cerrar sesión</a></button>
                     </div>
-
                 </div>
             </nav> <!--Navbar-->
         </div>

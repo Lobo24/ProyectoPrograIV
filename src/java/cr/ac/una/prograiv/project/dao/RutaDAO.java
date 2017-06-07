@@ -8,6 +8,7 @@ package cr.ac.una.prograiv.project.dao;
 import cr.ac.una.prograiv.project.domain.Pais;
 import cr.ac.una.prograiv.project.domain.Ruta;
 import cr.ac.una.prograiv.project.utils.HibernateUtil;
+import java.util.LinkedHashMap;
 import java.util.List;
 import org.hibernate.HibernateException;
 
@@ -86,6 +87,11 @@ public class RutaDAO extends HibernateUtil implements IBaseDAO<Ruta,Integer>{ //
 
     @Override
     public Ruta findByWord(String key) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    @Override
+    public List createQueryHQL(LinkedHashMap<String, Object> parametros) {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 }
