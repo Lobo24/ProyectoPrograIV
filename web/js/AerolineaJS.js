@@ -18,9 +18,10 @@ $("#mostrarForm").click(function () {
 
 $(document).ready(function () {
     recargarTodoAerolinea();
+    paginador(1);
 });
 
-function consultarAerolineas() {
+function consultarAerolineas(numpag) {
     mostrarModal("myModal", "Espere por favor..", "Consultando la información de aerolineas en la base de datos");
     //Se envia la información por ajax
     $.ajax({
@@ -32,7 +33,7 @@ function consultarAerolineas() {
             alert("Se presento un error a la hora de cargar la información de las aerolineas en la base de datos");
         },
         success: function (data) { //si todo esta correcto en la respuesta del ajax, la respuesta queda en el data
-            dibujarTabla(data);
+            dibujarTabla(numpag,data);
             // se oculta el modal esta funcion se encuentra en el utils.js
             ocultarModal("myModal");
 
@@ -42,7 +43,7 @@ function consultarAerolineas() {
     });
 }
 
-function dibujarTabla(dataJson) {
+function dibujarTabla(numpag,dataJson) {
     //limpia la información que tiene la tabla
     $("#tablaAerolinea").html("");
 
@@ -61,7 +62,9 @@ function dibujarTabla(dataJson) {
     row.append($("<th>Acción</td>"));
 
     //carga la tabla con el json devuelto
-    for (var i = 0; i < dataJson.length; i++) {
+     var cont = 0;
+    var i = 10 * (numpag-1);
+    for (; i < dataJson.length && (cont<10); i++, cont++) {
         dibujarFila(dataJson[i]);
     }
 }
@@ -78,12 +81,12 @@ function dibujarFila(rowData) {
     row.append($("<td>" + rowData.telefono + "</td>"));
     row.append($("<td>" + rowData.ultimoUsuario + "</td>"));
     row.append($("<td>" + rowData.ultmaFecha + "</td>"));    
-    row.append($('<td><button type="button" class="btn btn-default btn-xs" aria-label="Left Align" onclick="consultarAerolineaByID(' + rowData.pkCedula + ');">' +
-            '<span class="glyphicon glyphicon-pencil" aria-hidden="true"></span>' +
-            '</button>' +
-            '<button type="button" class="btn btn-default btn-xs" aria-label="Left Align" onclick="eliminarAerolinea(' + rowData.pkCedula + ');">' +
-            '<span class="glyphicon glyphicon-remove" aria-hidden="true"></span>' +
-            '</button></td>'));
+    row.append($('<td><button type="button" class="btn btn-default btn-xs" aria-label="Left Align" onclick="modificarAerolinea(' +rowData.pkIdAerolinea + ')">'+
+                        '<span class="glyphicon glyphicon-pencil" aria-hidden="true"></span>'+
+                    '</button>'+
+                    '<button type="button" class="btn btn-default btn-xs" aria-label="Left Align" onclick="validaEliminacion('+ "'"+ rowData.nombre + "'" +','+rowData.pkIdAerolinea+')" data-target="#confirm-delete" data-toggle="modal">'+
+                        '<span class="glyphicon glyphicon-remove" aria-hidden="true"></span>'+
+                    '</button></td>'));
 }
 
 function recargarTodoAerolinea() {
@@ -100,7 +103,7 @@ function recargarTodoAerolinea() {
             aPaises = data;
             dibujarOpciones();
             if(aPaises.length>0){
-                consultarAerolineas();
+                consultarAerolineas(1);
             }
         },
         type: 'POST',
@@ -116,10 +119,13 @@ function dibujarOpciones() {
 function enviar() {
     if (validar()) {
         //Se envia la información por ajax
-        $.ajax({
+        var aux = $("#aerolineasAction").val();
+        var aux2 = $("#aerolineaAux").val();
+            $.ajax({
             url: '../../AerolineaServlet',
             data: {
-                accion: "registroAerolinea",
+                accion: $("#aerolineasAction").val(),
+                idAerolinea: $("#aerolineaAux").val(),
                 nombre: $("#nombre").val(),
                 pais: $("#pais").val(),
                 email: $("#email").val(),
@@ -134,7 +140,7 @@ function enviar() {
                 if (tipoRespuesta === "C~") {
                     mostrarMensaje("alert alert-success", respuestaTxt, "Correcto!");
                     $("#myModalFormulario").modal("hide");
-                    consultarAerolineas();
+                    consultarAerolineas(1);
                 } else {
                     if (tipoRespuesta === "E~") {
                         mostrarMensaje("alert alert-danger", respuestaTxt, "Error!");
@@ -149,6 +155,7 @@ function enviar() {
     } else {
         mostrarMensaje("alert alert-danger", "Debe digitar los campos del formulario", "Error!");
     }
+    $("#aerolineasAction").val("registroAerolinea");
 }
 function validar() {
     var validacion = true;
@@ -175,12 +182,17 @@ function validar() {
     }
     return validacion;
 }
-
+function validaEliminacion(nom,id){
+    $('#nombreEliminar').text(nom);
+    $('#eliminar').click(function () {
+        eliminarAerolinea(id);
+    });
+}
 function eliminarAerolinea(idAerolinea) {
-    mostrarModal("myModal", "Espere por favor..", "Se esta eliminando a la persona seleccionada");
+    mostrarModal("myModal", "Espere por favor..", "Se esta eliminando la aerolínea seleccionada");
     //Se envia la información por ajax
     $.ajax({
-        url: 'AerolineaServlet',
+        url: '../../AerolineaServlet',
         data: {
             accion: "eliminarAerolinea",
             idAerolinea: idAerolinea
@@ -189,18 +201,42 @@ function eliminarAerolinea(idAerolinea) {
             cambiarMensajeModal("myModal", "Resultado acción", "Se presento un error, contactar al administador");
         },
         success: function (data) { //si todo esta correcto en la respuesta del ajax, la respuesta queda en el data
-            // se cambia el mensaje del modal por la respuesta del ajax
+                                   //se cambia el mensaje del modal por la respuesta del ajax
             var respuestaTxt = data.substring(2);
             var tipoRespuesta = data.substring(0, 2);
             if (tipoRespuesta === "E~") {
                 cambiarMensajeModal("myModal", "Resultado acción", respuestaTxt);
             } else {
-                setTimeout(consultarAerolinea, 3000);// hace una pausa y consulta la información de la base de datos
+                setTimeout(consultarAerolineas(1), 3000);// hace una pausa y consulta la información de la base de datos
             }
         },
         type: 'POST',
         dataType: "text"
     });
+}
+function modificarAerolinea(idAerolinea) {
+    $("#aerolineasAction").val("modificarAerolinea");
+    mostrarModal("myModal", "Espere por favor..", "Buscando nombre en la base de datos");
+    //Se envia la información por ajax
+    $.ajax({
+        url: '../../AerolineaServlet',
+        data: {
+            accion: "buscarAerolinea",
+            idAerolinea: idAerolinea
+        },
+        error: function () { //si existe un error en la respuesta del ajax
+            alert("Se presento un error a la hora de buscar las personas en la base de datos");
+        },
+        success: function (data) { //si todo esta correcto en la respuesta del ajax, la respuesta queda en el data
+            cargaAerolineas(data);
+            // se oculta el modal esta funcion se encuentra en el utils.js
+            ocultarModal("myModal");
+
+        },
+        type: 'GET',
+        dataType: "json"
+    });
+    
 }
 
 function consultarAerolineaByID(idAerolinea) {
@@ -278,8 +314,7 @@ function limpiarForm() {
     $("#cedula").removeAttr("readonly"); //elimina el atributo de solo lectura
 
     //se cambia la accion por agregarAerolinea
-    $("#aerolineasAction").val("agregarAerolinea");
-
+    
     //esconde el div del mensaje
     mostrarMensaje("hiddenDiv", "", "");
 
@@ -287,4 +322,30 @@ function limpiarForm() {
     $('#formAerolinea').trigger("reset");
 }
 
+function paginador(pagAct){
+    var ini = 1;
+     $("#paginacionOpc").html("");
+    if(pagAct>5){
+        ini = pagAct - 5;
+        $("#paginacionOpc").append('<li onclick="paginador('+(ini-1)+')"><a>&laquo;</a></li>');
+    }else{
+        $("#paginacionOpc").append('<li onclick="paginador('+ini+')" ><a>&laquo;</a></li>');
+    }
+    for(var i=0;i<=10;i++,ini++){
+        if(ini===pagAct){
+            $("#paginacionOpc").append('<li class="active" onclick="consultarAerolineas('+ini+'),paginador('+ini+')"><a>'+ini+'</a></li> ');
+        }else{
+        $("#paginacionOpc").append('<li onclick="consultarAerolineas('+ini+'),paginador('+ini+')"><a>'+ini+'</a></li>');
+        }
+    }
+    $("#paginacionOpc").append('<li onclick="paginador('+(ini + 1)+')"><a>&raquo;</a></li>');
+}
 
+function cargaAerolineas(aerolinea){
+           $("#nombre").val(aerolinea.nombre);
+           $("#pais").val(aerolinea.idPais);
+           $("#email").val(aerolinea.email);
+           $("#telefono").val(aerolinea.telefono);
+           $("#aerolineaAux").val(aerolinea.pkIdAerolinea);
+           $("#myModalFormulario").modal();
+}

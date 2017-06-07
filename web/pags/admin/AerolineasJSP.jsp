@@ -113,7 +113,7 @@
                     </table>
                 </div>
                 <div class="panel-footer">
-                    <ul class="pagination justify-content-center" id="paginacionOpcAero"></ul>
+                    <ul class="pagination justify-content-center" id="paginacionOpc"></ul>
                     <br>
                     Nota: Acciones validas dependeran del rol del usuario
                 </div>
@@ -151,6 +151,8 @@
                                 <input type="text" class="form-control" id="telefono" placeholder="Telefono">
                             </div>
                             <div class="modal-footer buttonOpt" >
+                                <input type="hidden" value="registroAerolinea" id="aerolineasAction"/> 
+                                <input type="hidden"  id="aerolineaAux"/> 
                                 <button type="submit" id="enviar" class="btn btn-primary">Enviar</button>
                                 <button type="button" id="cancelar" class="btn btn-danger" data-dismiss="modal">Cerrar</button>
                             </div>
@@ -165,6 +167,32 @@
                 </div>
             </div>
         </div>
-        
+        <div class="modal fade" id="confirm-delete" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        
+                        <h4><b>Confirmación de borrado</b><h4>
+                    </div>
+                    <div class="modal-body">
+                        <p>
+                            Desea eliminar a la persona de la base de datos, si confirma la acción la información no
+                            <br>
+                            podrá ser recuperada de esta.
+                            <br><br>
+                            Desea confirmar la eliminación de 
+                            <span id="nombreEliminar">
+
+                            </span>
+                            ?
+                        </p>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-default" data-dismiss="modal">Cancelar</button>
+                        <button class="btn btn-danger btn-ok" id="eliminar" value="" data-dismiss="modal">Eliminar</button>
+                    </div>
+                    </div>
+                </div>
+            </div>
     </body>
 </html>

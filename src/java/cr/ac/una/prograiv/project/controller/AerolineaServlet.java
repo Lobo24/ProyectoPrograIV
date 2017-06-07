@@ -49,14 +49,30 @@ public class AerolineaServlet extends HttpServlet {
                     json = new Gson().toJson(uBL.findAll(Aerolinea.class.getName()));
                     out.print(json);
                     break;
-                case "registroAerolinea":
+                case "buscarAerolinea":
+                    json = new Gson().toJson(uBL.findById(Integer.parseInt(request.getParameter("idAerolinea"))));
+                    out.print(json);
+                    break;
+                case "eliminarAerolinea":
+                        aerolinea.setPkIdAerolinea(Integer.parseInt(request.getParameter("idAerolinea")));
+                        uBL.delete(aerolinea);
+                        out.print("La aerolinea fue eliminada correctamente");
+                    break;
+                case "registroAerolinea": case "modificarAerolinea":
                     aerolinea.setNombre(request.getParameter("nombre"));
                     aerolinea.setIdPais(Integer.parseInt(request.getParameter("pais")));
                     aerolinea.setEmail(request.getParameter("email"));
                     aerolinea.setTelefono(request.getParameter("telefono"));
+                    if(accion.equals("registroAerolinea")){
                     uBL.save(aerolinea);
-                    out.print("C~La aerolnea se guardo correctamente");
+                    out.print("C~La aerolinea se guardo correctamente");
+                    }else{
+                        aerolinea.setPkIdAerolinea(Integer.parseInt(request.getParameter("idAerolinea")));
+                        uBL.merge(aerolinea);
+                        out.print("C~La aerolinea se modificó correctamente");
+                    }
                     break;
+                    
                 default:
                     out.print("E~No se indico la acción que se desea realizare");
                     break;                 
