@@ -1,21 +1,21 @@
 <%-- 
-    Document   : indexAdmin
-    Created on : 06/05/2017, 08:06:52 PM
-    Author     : lobo
+    Document   : BoletosJSP
+    Created on : 14/05/2017, 12:59:35 PM
+    Author     : admin
 --%>
 
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
     <head>
-        <title>ReservacionesCR</title>
-        <meta charset="UTF-8">
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+        <title>JSP Page</title>
         <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.0/jquery.min.js"></script>
         <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
         <link href="../../css/estilos.css" rel="stylesheet" type="text/css"/>
         <link href="https://fonts.googleapis.com/css?family=Satisfy" rel="stylesheet">
-        <script src="../../js/AerolineaJS.js" type="text/javascript"></script>
+        <script src="../../js/BoletosJS.js" type="text/javascript"></script>
         <script src="../../js/utils.js" type="text/javascript"></script>
     </head>
     <body>
@@ -66,13 +66,13 @@
                     <ul class="nav navbar-nav">
                         <li class="dropdown">
                             <a href="#" class="dropdown-toggle" data-toggle="dropdown" >
-                                Aerolineas <b class="caret"></b>
+                                Rutas <b class="caret"></b>
                             </a>
                             <ul class="navbar-nav navbar-inverse dropdown-menu">
                                 <li><a href="UsuariosJSP.jsp">Usuarios</a></li>
                                 <li><a href="AvionesJSP.jsp">Aviones</a></li>
                                 <li><a href="BoletosJSP.jsp">Boletos</a></li>
-                                <li><a href="RutasJSP.jsp">Rutas</a></li>
+                                <li><a href="AerolineasJSP.jsp">Aerolineas</a></li>
                             </ul>
                         </li>
                     </ul>             
@@ -86,25 +86,22 @@
         <!-- ********************************************************** -->
         <!-- Tablas -->
         <!-- ********************************************************** -->
-
-        <div align="center" id="panelAerolineas">
+        
+        <div align="center" id="panelBoletos">
             <div class="panel">
                 <div class="panel-heading panel-id">
-                    <div class="col-sm-12">
-                        <form role="form" onsubmit="return false;" id="formAerolineas" class="form-horizontal centered">
-                            <div class="form-group" id="groupNombreAero">
+                <div class="col-sm-12">
+                        <form role="form" onsubmit="return false;" id="formBoletos" class="form-horizontal centered">
+                            <div class="form-group" id="groupNombreBoleto">
                                 <div class="col-sm-4" style="text-align: right; vertical-align: middle;">
-                                    <p><b>Buscar por nombre de la Aerolinea:</b></p>
+                                    <p><b>Buscar ruta por id:</b></p>
                                 </div>
                                 <div class="col-sm-4">
-                                    <input type="text" class="form-control" id="buscarAero" placeholder="Digite el nombre de la aerolinea">
+                                    <input type="text" class="form-control" id="buscarBoleto" placeholder="Digite el id de la ruta">
                                 </div>
                                 <div class="col-sm-4">
                                     <button type="button" onclick="busquedaPersonas()" class="btn btn-info centered">
                                         Buscar <span class="glyphicon glyphicon-search"></span>
-                                    </button>
-                                    <button type="button" class="btn btn-info centered" data-toggle="modal" data-target="#myModalFormulario">
-                                        Agregar <span class="glyphicon glyphicon-plus"  ></span>
                                     </button>
                                 </div>
                             </div>
@@ -112,61 +109,19 @@
                     </div>
                 </div>
                 <div class="panel-body">
-                    <table class="table table-hover table-condensed" id="tablaAerolineas">
+                    <table class="table table-hover table-condensed" id="tablaBoletos">
 
                     </table>
                 </div>
                 <div class="panel-footer">
-                    <ul class="pagination justify-content-center" id="paginacionOpcAero"></ul>
+                    <ul class="pagination justify-content-center" id="paginacionOpcBoletos"></ul>
                     <br>
                     Nota: Acciones validas dependeran del rol del usuario
                 </div>
             </div>
-        </div>
+        </div> 
+        
 
-        <!-- ********************************************************** -->
-        <!-- formulario -->
-        <!-- ********************************************************** -->
-
-        <div class="modal fade" id="myModalFormulario" role="dialog">
-            <div class="modal-dialog modal-lg">
-                <div class="modal-content">
-                    <div class="modal-header">
-                        <button type="button" class="close" data-dismiss="modal" onclick="limpiarForm()">&times;</button>
-                        <h4 class="modal-title" id="myModalTitle">Insertar Rutas
-                    </div>
-                    <div class="modal-body" id="myModalMessage">
-                        <form role="form" onsubmit="return false;" id="formEmail">
-                            <div class="form-group" id="groupNombre">
-                                <label for="nombre">Nombre:</label>
-                                <input type="text" class="form-control" id="nombre" placeholder="Nombre" >
-                            </div>
-                            <div class="form-group" id="groupTelefono">
-                                <label for="telefono">Telefono:</label>
-                                <input type="text" class="form-control" id="telefono" placeholder="Telefono">
-                            </div>
-                            <div class="form-group" id="groupEmail">
-                                <label for="email">Email:</label>
-                                <input type="text" class="form-control" id="email" autofocus="true" placeholder="Email">
-                            </div>
-                            <div class="form-group">
-                                <input type="hidden" value="agregarAerolinea" id="aerolineasAction"/>                       
-                                <button type="button" class="btn btn-primary" id="enviar" onclick="registro()">Guardar</button>
-                                <button type="reset" class="btn btn-danger" id="cancelar" data-dismiss="modal">Cancelar</button>
-                            </div>
-
-                            <div class="form-group height25" >
-                                <div class="alert alert-success hiddenDiv" id="mesajeResult">
-                                    <strong id="mesajeResultNeg">Info!</strong> 
-                                    <span id="mesajeResultText">This alert box could indicate a neutral informative change or action.</span>
-                                </div>
-                            </div>
-
-                        </form>
-                    </div>
-                </div>
-            </div>
-        </div>
 
     </body>
 </html>
