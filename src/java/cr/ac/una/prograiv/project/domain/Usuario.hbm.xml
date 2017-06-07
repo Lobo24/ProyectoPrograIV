@@ -1,0 +1,54 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated 31/05/2017 07:47:08 PM by Hibernate Tools 4.3.1 -->
+<hibernate-mapping>
+    <class name="cr.ac.una.prograiv.project.domain.Usuario" table="usuario" catalog="proyectoaerolinea" optimistic-lock="version">
+        <id name="idUsuario" type="int">
+            <column name="id_usuario" />
+            <generator class="assigned" />
+        </id>
+        <property name="contrasena" type="string">
+            <column name="contrasena" length="15" not-null="true" />
+        </property>
+        <property name="nombreUsuario" type="string">
+            <column name="nombreUsuario" length="45" not-null="true" unique="true" />
+        </property>
+        <property name="direccion" type="string">
+            <column name="direccion" length="65535" not-null="true" />
+        </property>
+        <property name="nombre" type="string">
+            <column name="nombre" length="15" not-null="true" />
+        </property>
+        <property name="apellido1" type="string">
+            <column name="apellido1" length="15" not-null="true" />
+        </property>
+        <property name="apellido2" type="string">
+            <column name="apellido2" length="15" not-null="true" />
+        </property>
+        <property name="fechaNacimiento" type="date">
+            <column name="fechaNacimiento" length="10" not-null="true" />
+        </property>
+        <property name="email" type="string">
+            <column name="email" length="50" not-null="true" />
+        </property>
+        <property name="numTel" type="string">
+            <column name="numTel" length="15" not-null="true" />
+        </property>
+        <property name="numCel" type="string">
+            <column name="numCel" length="15" />
+        </property>
+        <property name="admin" type="boolean">
+            <column name="admin" not-null="true" />
+        </property>
+        <property name="nacionalidad" type="string">
+            <column name="nacionalidad" length="45" not-null="true" />
+        </property>
+        <property name="ultimoUsuario" type="string">
+            <column name="ultimo_usuario" length="45" />
+        </property>
+        <property name="ultimaFecha" type="timestamp">
+            <column name="ultima_fecha" length="19" />
+        </property>
+    </class>
+</hibernate-mapping>

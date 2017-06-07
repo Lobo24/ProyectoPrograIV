@@ -1,0 +1,29 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated 31/05/2017 07:47:08 PM by Hibernate Tools 4.3.1 -->
+<hibernate-mapping>
+    <class name="cr.ac.una.prograiv.project.domain.Avion" table="avion" catalog="proyectoaerolinea" optimistic-lock="version">
+        <id name="idAvion" type="int">
+            <column name="id_avion" />
+            <generator class="assigned" />
+        </id>
+        <property name="aerolinea" type="int">
+            <column name="id_aerolinea" not-null="true" />
+        </property>
+        <property name="ruta" type="int">
+            <column name="id_ruta" not-null="true" />
+        </property>
+        <property name="tipoAvion" type="int">
+            <column name="id_tipo" not-null="true" />
+        </property>
+        <property name="horario" type="timestamp">
+            <column name="horario" length="19" not-null="true" />
+        </property>
+        <property name="ultimoUsuario" type="string">
+            <column name="ultimo_usuario" length="45" />
+        </property>
+        <property name="ultimaFecha" type="timestamp">
+            <column name="ultima_fecha" length="19" />
+        </property>    </class>
+</hibernate-mapping>

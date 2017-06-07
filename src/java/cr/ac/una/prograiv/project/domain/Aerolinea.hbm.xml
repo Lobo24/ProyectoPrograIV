@@ -1,0 +1,30 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated 31/05/2017 07:47:08 PM by Hibernate Tools 4.3.1 -->
+<hibernate-mapping>
+    <class name="cr.ac.una.prograiv.project.domain.Aerolinea" table="aerolinea" catalog="proyectoaerolinea" optimistic-lock="version">
+        <id name="pkIdAerolinea" type="java.lang.Integer">
+            <column name="pkIdAerolinea" />
+            <generator class="identity" />
+        </id>
+        <property name="nombre" type="string">
+            <column name="nombre" length="45" not-null="true" />
+        </property>
+        <property name="idPais" type="int">
+            <column name="pais" not-null="true" />
+        </property>
+        <property name="email" type="string">
+            <column name="email" length="45" not-null="true" />
+        </property>
+        <property name="telefono" type="string">
+            <column name="telefono" length="45" not-null="true" />
+        </property>
+        <property name="ultimoUsuario" type="string">
+            <column name="ultimoUsuario" length="45" />
+        </property>
+        <property name="ultimaFecha" type="timestamp">
+            <column name="ultima_fecha" length="19" />
+        </property>
+    </class>
+</hibernate-mapping>

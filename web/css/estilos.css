@@ -1,0 +1,252 @@
+/*
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+*/
+/* 
+    Created on : 14/04/2017, 06:18:01 PM
+    Author     : admin
+*/
+
+*{
+    margin: 0;
+    padding: 0;
+}
+
+#encabezado{
+    position: relative;
+    background-color: #00394d;
+    padding-left: 0;
+    padding-right: 0;
+    height: 100px;
+}
+
+#contenedor{
+    margin-left: 5%;
+    margin-right: 5%;
+    margin-bottom: 10%;
+    width: 90%;
+}
+
+#encabezado h3{
+    position:absolute; right: 5%; top: 20%;
+    color: yellow;
+    font-size: 50px;
+    font-family: 'Satisfy', cursive;
+}
+
+#encabezado img{
+    position: absolute;
+    height: 100%;
+}
+
+#navBar{
+    position: relative;
+    width: 100%
+}
+
+#menuLogSign button{
+    margin-top: 3%;
+    left: -10%;
+}
+
+#tabla{
+     width: 100%;
+}
+/**************************************************/
+
+.row{
+    margin-left: 10%;
+    margin-right: 10%;
+}
+
+#modalForm{
+    position: relative; left: 3%;
+}
+
+#modalForm input{
+    position: relative;
+    margin-right: 2%;
+    width: 300%;
+}
+
+.glyphiconIngreso{
+    left: 305%;
+    top: -20px;
+}
+
+.userIngreso{
+    position: relative; left: 30%;
+    width: 35%;
+    height: 35%;
+    padding-bottom: 10%;
+}
+
+#inputAux label{
+    margin-right: 5%;
+}
+
+#inputAux input{
+    width: 120%;
+}
+
+.buttonOpt{
+    width: 598px;
+    margin-left: -5.8%;
+}
+
+.sizeLabel{
+    width: 20%
+}
+
+.buttonDate{
+    position: relative;
+    left: 135%;
+    top: -0.3px;
+}
+
+#mesajeLogin, #mesageRegistro{
+    margin-left: -18px;
+    width: 100%;
+}
+
+/**************************************************/
+
+
+.banner{
+    position: relative; top: -20px;
+    left: 0;
+    height: 300px;
+    width: 100%;
+}
+  .carousel-inner > .item > img{
+      width: 100%;
+      height: 300px;
+  }
+  
+  
+  /**************************************************/
+  
+  .mapa{
+    margin-left: 5%;
+}
+
+.contacto{
+    width:400px;
+    height:0;
+    position: relative; top:-350px; left: 50%;
+    
+}
+.oficinas{
+    position: relative; top:0; left:20%; 
+    color: blue;
+    width: 100px;
+}
+.piedepagina{
+    position: relative; top:0px; left: 0%;
+}
+
+.enviar{
+    position: relative; top:0; left: 45%;
+}
+
+/**************************************************/
+
+.texto{
+    width: 100%;
+    text-align: justify;
+    font-family: 'Tangerine', serif;
+    font-size: 20px;
+}
+
+.texto1{
+    width: 100%;
+    text-align: center;
+    font-family: 'Tangerine', serif;
+    font-size: 20px;
+}
+.titulos1{
+    width: 100%;
+    text-align: center;
+    background: #00394d;
+    font-family: 'Satisfy', cursive;
+    font-size: 40px;
+    color: yellow;
+}
+.titulos2{
+    text-align: center;
+    background: #00394d;
+    font-family: 'Satisfy', cursive;
+    font-size: 40px;
+    color: yellow;
+}
+.espacio1{
+    height:160px;
+}
+.espacio2{
+    height:360px;
+}
+.espacio3{
+    height:445px;
+}
+.espacio4{
+    height:415px;
+}
+/**************************************************/
+#contenedorLugares{
+    font-family: 'Lobster', cursive;
+    margin-left: 5%;
+    color:seagreen;
+}
+
+#contenedorLugares li{
+    float: left;
+    margin-left: 10px;
+    position: relative;
+    width: 18%;
+    color:#00394d;
+}
+
+#contenedorLugares a{
+    color:#00394d;
+    text-decoration:none;
+}
+
+#contenedorLugares img{
+    width: 200px;
+    height: 150px;
+}
+
+@media screen and (min-width: 1000px) {
+.custom-collapse .collapse{
+            display:block;
+      }
+}
+
+/**************************************************/
+.panel-id{
+    background: #08c;
+    height: 55px;
+}
+
+.panel{
+    position: relative;
+    width: 90%;
+    text-align: left;
+    border: 2px solid black;
+}
+.panel td{
+    border: 2px solid whitesmoke;
+}
+
+.cerrar a{
+    text-decoration:none;
+    color: white;
+}
+
+
+/* Footer 
+-------------------------------------------------- */
+
+
+

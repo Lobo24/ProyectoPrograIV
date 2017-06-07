@@ -1,0 +1,36 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated 31/05/2017 07:47:08 PM by Hibernate Tools 4.3.1 -->
+<hibernate-mapping>
+    <class name="cr.ac.una.prograiv.project.domain.TipoAvion" table="tipo_avion" catalog="proyectoaerolinea" optimistic-lock="version">
+        <id name="idTipo" type="java.lang.Integer">
+            <column name="id_tipo" />
+            <generator class="identity" />
+        </id>
+        <property name="modelo" type="string">
+            <column name="modelo" length="30" not-null="true" />
+        </property>
+        <property name="marca" type="string">
+            <column name="marca" length="50" not-null="true" />
+        </property>
+        <property name="año" type="int">
+            <column name="año" not-null="true" />
+        </property>
+        <property name="cantPasajeros" type="int">
+            <column name="cant_pasajeros" not-null="true" />
+        </property>
+        <property name="cantFila" type="int">
+            <column name="cant_fila" not-null="true" />
+        </property>
+        <property name="cantAsientosPorFila" type="int">
+            <column name="cant_asientos_por_fila" not-null="true" />
+        </property>
+        <property name="ultimoUsuario" type="string">
+            <column name="ultimo_usuario" length="45" />
+        </property>
+        <property name="ultimaFecha" type="timestamp">
+            <column name="ultima_fecha" length="19" />
+        </property>
+    </class>
+</hibernate-mapping>
