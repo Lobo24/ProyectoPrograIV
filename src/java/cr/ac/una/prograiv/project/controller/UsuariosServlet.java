@@ -76,13 +76,11 @@ public class UsuariosServlet extends HttpServlet {
                     usuario.setNumTel("001000");
                     usuario.setUltimaFecha(new Date());
                     usuario.setUltimoUsuario("admin");
-                    
+                    usuario.setDireccion("Costa Rica");
                     if(accion.equals("registroAdmin")){
-                        usuario.setDireccion("Costa Rica");
                         uBL.save(usuario);
                         out.print("El Administrador fue agregado correctamente");
                     }else{
-                        usuario.setDireccion(request.getParameter("direccion"));
                         uBL.merge(usuario);
                         out.print("El usuario fue modificado correctamente");
                     }
