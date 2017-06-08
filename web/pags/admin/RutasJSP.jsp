@@ -165,7 +165,8 @@
                                 </div>
                             </div>
                             <div class="form-group">
-                                <input type="hidden" value="agregarRuta" id="rutasAction"/>                       
+                                <input type="hidden" id="rutasAux"/> 
+                                <input type="hidden" value="registroRutas" id="rutasAction"/>                       
                                 <button type="submit" class="btn btn-primary" id="enviar" data-dismiss="modal">Guardar</button>
                                 <button type="reset" class="btn btn-danger" id="cancelar" data-dismiss="modal">Cancelar</button>
                             </div>

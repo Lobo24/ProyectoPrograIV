@@ -78,7 +78,7 @@ function dibujarFila(rowData) {
     row.append($("<td>" + rowData.descuento + "</td>"));
     row.append($("<td>" + rowData.ultimoUsuario + "</td>"));
     row.append($("<td>" + rowData.ultmaFecha + "</td>"));
-    row.append($('<td><button type="button" class="btn btn-default btn-xs" aria-label="Left Align" onclick="consultarRutaByID(' + rowData.idRuta + ');">' +
+    row.append($('<td><button type="button" class="btn btn-default btn-xs" aria-label="Left Align" onclick="modificarRuta(' + rowData.idRuta + ');">' +
             '<span class="glyphicon glyphicon-pencil" aria-hidden="true"></span>' +
             '</button>' +
             '<button type="button" class="btn btn-default btn-xs" aria-label="Left Align" onclick="validaEliminacion('+ "'"+ rowData.paisOrigen.nombre + "-"+ rowData.paisDestino.nombre + "'" +','+rowData.idRuta+')" data-target="#confirm-delete" data-toggle="modal" >' +
@@ -137,7 +137,8 @@ function enviar() {
         $.ajax({
             url: '../../RutaServlet',
             data: {
-                accion: "registroRutas",
+                accion: $("#rutasAction").val(),
+                idRuta: $("#rutasAux").val(),
                 origen: $("#origen").val(),
                 destino: $("#destino").val(),
                 minutos: $("#minutos").val(),
@@ -151,7 +152,7 @@ function enviar() {
                 var tipoRespuesta = data.substring(0, 2);
                 if (tipoRespuesta === "C~") {
                     ocultarModal("myModalFormulario");
-                    consultarRutas();
+                    consultarRutas(1);
                 } else {
                     if (tipoRespuesta === "E~") {
                         mostrarMensaje("alert alert-danger", respuestaTxt, "Error!");
@@ -166,6 +167,7 @@ function enviar() {
     } else {
         mostrarMensaje("alert alert-danger", "Debe digitar los campos del formulario", "Error!");
     }
+    $("#rutasAction").val("registroRutas");
 }
 
 function validar() {
@@ -347,4 +349,38 @@ function eliminarRuta(idRuta) {
         type: 'POST',
         dataType: "text"
     });
+}
+
+
+function modificarRuta(idRuta) {
+    $("#rutasAction").val("modificarRuta");
+    mostrarModal("myModal", "Espere por favor..", "Buscando nombre en la base de datos");
+    //Se envia la información por ajax
+    $.ajax({
+        url: '../../RutaServlet',
+        data: {
+            accion: "buscarRuta",
+            idRuta: idRuta
+        },
+        error: function () { //si existe un error en la respuesta del ajax
+            alert("Se presento un error a la hora de buscar las personas en la base de datos");
+        },
+        success: function (data) { //si todo esta correcto en la respuesta del ajax, la respuesta queda en el data
+            cargaRuta(data);
+            // se oculta el modal esta funcion se encuentra en el utils.js
+            ocultarModal("myModal");
+
+        },
+        type: 'GET',
+        dataType: "json"
+    });
+}
+
+function cargaRuta(ruta){
+           $("#rutasAux").val(ruta.idRuta);
+           $("#origen").val(ruta.origen);
+           $("#destino").val(ruta.destino);
+           $("#minutos").val(ruta.minutos);
+           $("#descuento").val(ruta.descuento);
+           $("#myModalFormulario").modal();
 }
