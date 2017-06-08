@@ -35,7 +35,7 @@ function consultarRutas() {
             alert("Se presento un error a la hora de cargar la información de las rutas en la base de datos");
         },
         success: function (data) { //si todo esta correcto en la respuesta del ajax, la respuesta queda en el data
-            dibujarTabla(data);        
+            dibujarTabla(data);
             ocultarModal("myModal");
         },
         type: 'POST',
@@ -102,7 +102,7 @@ function consultarPaises() {
 }
 
 function recargarTodoRutas() {
-     mostrarModal("myModal", "Espere por favor..", "Consultando la información de las rutas en la base de datos");
+    mostrarModal("myModal", "Espere por favor..", "Consultando la información de las rutas en la base de datos");
     $.ajax({
         url: '../../RutaServlet',
         data: {

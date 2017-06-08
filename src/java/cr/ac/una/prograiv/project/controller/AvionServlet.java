@@ -55,10 +55,14 @@ public class AvionServlet extends HttpServlet {
                     avion.setAerolinea(Integer.parseInt(request.getParameter("aerolinea")));
                     avion.setRuta(Integer.parseInt(request.getParameter("ruta")));
                     avion.setTipoAvion(Integer.parseInt(request.getParameter("tipoAvion")));
-                    String fechatxt = request.getParameter("horario");
+                    String fechatxt = request.getParameter("salida");
                     DateFormat format = new SimpleDateFormat("dd-MM-yyyy hh:mm", Locale.ENGLISH);
                     Date date = format.parse(fechatxt);
-                    avion.setHorario(date);
+                    avion.setHorarioSalida(date);
+                    fechatxt = request.getParameter("llegada");
+                    format = new SimpleDateFormat("dd-MM-yyyy hh:mm", Locale.ENGLISH);
+                    date = format.parse(fechatxt);
+                    avion.setHorarioLlegada(date);
                     uBL.save(avion);
                     out.print("C~Se registro correctamente");
 

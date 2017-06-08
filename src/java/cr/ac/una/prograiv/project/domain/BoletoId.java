@@ -1,5 +1,7 @@
 package cr.ac.una.prograiv.project.domain;
-// Generated 31/05/2017 07:47:08 PM by Hibernate Tools 4.3.1
+// Generated 07/06/2017 09:12:23 PM by Hibernate Tools 4.3.1
+
+// Generated 07/06/2017 09:12:23 PM by Hibernate Tools 4.3.1
 
 
 
@@ -9,23 +11,23 @@ package cr.ac.una.prograiv.project.domain;
 public class BoletoId  implements java.io.Serializable {
 
 
-     private int idHorario;
+     private int idVuelo;
      private int idUsuario;
 
     public BoletoId() {
     }
 
-    public BoletoId(int idHorario, int idUsuario) {
-       this.idHorario = idHorario;
+    public BoletoId(int idVuelo, int idUsuario) {
+       this.idVuelo = idVuelo;
        this.idUsuario = idUsuario;
     }
    
-    public int getIdHorario() {
-        return this.idHorario;
+    public int getIdVuelo() {
+        return this.idVuelo;
     }
     
-    public void setIdHorario(int idHorario) {
-        this.idHorario = idHorario;
+    public void setIdVuelo(int idVuelo) {
+        this.idVuelo = idVuelo;
     }
     public int getIdUsuario() {
         return this.idUsuario;
@@ -42,14 +44,14 @@ public class BoletoId  implements java.io.Serializable {
 		 if ( !(other instanceof BoletoId) ) return false;
 		 BoletoId castOther = ( BoletoId ) other; 
          
-		 return (this.getIdHorario()==castOther.getIdHorario())
+		 return (this.getIdVuelo()==castOther.getIdVuelo())
  && (this.getIdUsuario()==castOther.getIdUsuario());
    }
    
    public int hashCode() {
          int result = 17;
          
-         result = 37 * result + this.getIdHorario();
+         result = 37 * result + this.getIdVuelo();
          result = 37 * result + this.getIdUsuario();
          return result;
    }   

@@ -41,9 +41,6 @@
         <property name="admin" type="boolean">
             <column name="admin" not-null="true" />
         </property>
-        <property name="nacionalidad" type="string">
-            <column name="nacionalidad" length="45" not-null="true" />
-        </property>
         <property name="ultimoUsuario" type="string">
             <column name="ultimo_usuario" length="45" />
         </property>

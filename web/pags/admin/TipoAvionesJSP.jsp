@@ -149,7 +149,12 @@
                             </div>
                             <div class="form-group" id="groupCantAsientosPorFila">
                                 <label for="asientosFila">Asientos por fila</label>
-                                <input type="number" class="form-control" id="asientosFila" placeholder="AsientosFila">
+                                <select class="form-control" id="asientosFila">
+                                            <option value="4">4</option>
+                                            <option value="6">6</option>
+                                            <option value="7">7</option>
+                                            <option value="8">8</option>
+                                </select>
                             </div>
                             <div class="form-group" id="groupCantPasajeros">
                                 <label for="cantPasajeros">Cantidad de pasajeros</label>

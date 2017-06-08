@@ -17,6 +17,7 @@ public class AerolineaBL extends BaseBL implements IBaseBL<Aerolinea, Integer>{
     public AerolineaBL() {
         super();
     }
+    
     @Override
     public void save(Aerolinea o) {
         if(this.findByWord(o.getNombre())==null){

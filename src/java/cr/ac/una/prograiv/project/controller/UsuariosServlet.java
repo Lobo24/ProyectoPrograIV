@@ -71,9 +71,8 @@ public class UsuariosServlet extends HttpServlet {
                     DateFormat format = new SimpleDateFormat("dd/MM/yyyy", Locale.ENGLISH);
                     Date date = format.parse(fechatxt);         
                     usuario.setFechaNacimiento(date);    
-                    usuario.setNacionalidad(request.getParameter("nacionalidad"));
                     usuario.setAdmin(true);
-                    usuario.setNumTel("001000");
+                    usuario.setNumTel(request.getParameter("telefono"));
                     usuario.setUltimaFecha(new Date());
                     usuario.setUltimoUsuario("admin");
                     usuario.setDireccion("Costa Rica");

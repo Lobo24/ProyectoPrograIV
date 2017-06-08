@@ -17,13 +17,17 @@
         <property name="tipoAvion" type="int">
             <column name="id_tipo" not-null="true" />
         </property>
-        <property name="horario" type="timestamp">
-            <column name="horario" length="19" not-null="true" />
+        <property name="horarioSalida" type="timestamp">
+            <column name="horario_salida" length="19" not-null="true" />
         </property>
         <property name="ultimoUsuario" type="string">
             <column name="ultimo_usuario" length="45" />
         </property>
         <property name="ultimaFecha" type="timestamp">
             <column name="ultima_fecha" length="19" />
-        </property>    </class>
+        </property> 
+        <property name="horarioLlegada" type="timestamp">
+            <column name="horario_llegada" length="19" not-null="true" />
+        </property>
+    </class>
 </hibernate-mapping>

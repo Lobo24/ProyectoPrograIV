@@ -168,9 +168,8 @@
                             </div>
 
 
-                            <div class="form-group" id="groupnacionalidad">
-                                <label for="usuario">Nacionalidad:</label>
-                                <input type="text" class="form-control" id="nacionalidad" placeholder="Nacionalidad">
+                            <div class="form-group" id="groupTelefono">
+                                <input type="text" class="form-control" id="telefono" placeholder="Telefono">
                             </div>
 
                             <div class="form-group" id="groupfechaNacimiento">

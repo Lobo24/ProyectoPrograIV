@@ -22,7 +22,6 @@ public class Usuario  implements java.io.Serializable {
      private String numTel;
      private String numCel;
      private boolean admin;
-     private String nacionalidad;
      private String ultimoUsuario;
      private Date ultimaFecha;
 
@@ -30,7 +29,7 @@ public class Usuario  implements java.io.Serializable {
     }
 
 	
-    public Usuario(int idUsuario, String contrasena, String nombreUsuario, String direccion, String nombre, String apellido1, String apellido2, Date fechaNacimiento, String email, String numTel, boolean admin, String nacionalidad) {
+    public Usuario(int idUsuario, String contrasena, String nombreUsuario, String direccion, String nombre, String apellido1, String apellido2, Date fechaNacimiento, String email, String numTel, boolean admin) {
         this.idUsuario = idUsuario;
         this.contrasena = contrasena;
         this.nombreUsuario = nombreUsuario;
@@ -42,9 +41,8 @@ public class Usuario  implements java.io.Serializable {
         this.email = email;
         this.numTel = numTel;
         this.admin = admin;
-        this.nacionalidad = nacionalidad;
     }
-    public Usuario(int idUsuario, String contrasena, String nombreUsuario, String direccion, String nombre, String apellido1, String apellido2, Date fechaNacimiento, String email, String numTel, String numCel, boolean admin, String nacionalidad, String ultimoUsuario, Date ultimaFecha) {
+    public Usuario(int idUsuario, String contrasena, String nombreUsuario, String direccion, String nombre, String apellido1, String apellido2, Date fechaNacimiento, String email, String numTel, String numCel, boolean admin, String ultimoUsuario, Date ultimaFecha) {
        this.idUsuario = idUsuario;
        this.contrasena = contrasena;
        this.nombreUsuario = nombreUsuario;
@@ -57,7 +55,6 @@ public class Usuario  implements java.io.Serializable {
        this.numTel = numTel;
        this.numCel = numCel;
        this.admin = admin;
-       this.nacionalidad = nacionalidad;
        this.ultimoUsuario = ultimoUsuario;
        this.ultimaFecha = ultimaFecha;
     }
@@ -145,13 +142,6 @@ public class Usuario  implements java.io.Serializable {
     
     public void setAdmin(boolean admin) {
         this.admin = admin;
-    }
-    public String getNacionalidad() {
-        return this.nacionalidad;
-    }
-    
-    public void setNacionalidad(String nacionalidad) {
-        this.nacionalidad = nacionalidad;
     }
     public String getUltimoUsuario() {
         return this.ultimoUsuario;

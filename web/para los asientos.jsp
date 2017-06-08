@@ -13,6 +13,8 @@
         <script src='http://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js'></script>
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.0/jquery.min.js"></script>
+        <script src="js/jquery.seat-charts.min.js" type="text/javascript"></script>
+        <script src="js/jquery.seat-charts.js" type="text/javascript"></script>
         <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
         <link href="css/estilos.css" rel="stylesheet" type="text/css"/>
         <title>JSP Page</title>
@@ -364,6 +366,24 @@
                     </div>
                 </div>
             </form>
-        </div>                   
+        </div>     
+           <div class="demo">
+		<div class="container">
+				<div id="seat-map">
+					<div class="front">Carriage 1</div>
+					<div id="seat-info"></div>
+				</div>
+				<div class="booking-details">
+					<h3> Seat selection information:</h3>
+					<ul id="selected-seats"></ul>
+					<p>Tickets Num: <span id="counter"></span></p>
+					<p>Total: $<span id="total">0</span></p>
+					
+					<button class="checkout-button">BUY</button>
+					
+					<div id="legend"></div>
+				</div>
+		</div>
+   </div>
     </body>
 </html>

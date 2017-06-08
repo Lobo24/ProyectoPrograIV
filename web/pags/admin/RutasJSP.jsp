@@ -17,7 +17,8 @@
         <link href="https://fonts.googleapis.com/css?family=Satisfy" rel="stylesheet">
         <script src="../../js/RutasJS.js" type="text/javascript"></script>
         <script src="../../js/utils.js" type="text/javascript"></script>
-
+        <script src="../../js/jquery-ui-1.9.2.custom.min.js" type="text/javascript"></script>
+        <script src="../../js/jquery-ui-timepicker-addon.js" type="text/javascript"></script>
     </head>
     <body>
         <!-- ********************************************************** -->

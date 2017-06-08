@@ -13,35 +13,58 @@ public class Avion  implements java.io.Serializable {
      private int aerolinea;
      private int ruta;
      private int tipoAvion;
-     private Date horario;
+     private Date horarioSalida;
      private String ultimoUsuario;
      private Date ultimaFecha;
      private Ruta rutao;
      private TipoAvion tipoAviono;
-   
+     private Aerolinea aerolineao;
+     private Date horarioLlegada;
+     
      public Avion() {
     }
 
 	
-    public Avion(int idAvion, int aerolinea, int ruta, int tipoAvion, Date horario) {
+    public Avion(int idAvion, int aerolinea, int ruta, int tipoAvion, Date horarioSalida, Date horarioLlegada) {
         this.idAvion = idAvion;
         this.aerolinea = aerolinea;
         this.ruta = ruta;
         this.tipoAvion = tipoAvion;
-        this.horario = horario;
+        this.horarioSalida = horarioSalida;
+        this.horarioLlegada=horarioLlegada;
         this.rutao=null;
         this.tipoAviono=null;
+        this.aerolineao=null;
     }
-    public Avion(int idAvion, int aerolinea, int ruta, int tipoAvion, Date horario, String ultimoUsuario, Date ultimaFecha) {
+    public Avion(int idAvion, int aerolinea, int ruta, int tipoAvion, Date horarioSalida, Date horarioLlegada, String ultimoUsuario, Date ultimaFecha) {
        this.idAvion = idAvion;
        this.aerolinea = aerolinea;
        this.ruta = ruta;
        this.tipoAvion = tipoAvion;
-       this.horario = horario;
+       this.horarioSalida = horarioSalida;
        this.ultimoUsuario = ultimoUsuario;
        this.ultimaFecha = ultimaFecha;
+       this.horarioLlegada=horarioLlegada;
        this.rutao=null;
        this.tipoAviono=null;
+       this.aerolineao=null;
+    }
+
+    public Aerolinea getAerolineao() {
+        return aerolineao;
+    }
+
+    public void setAerolineao(Aerolinea aerolineao) {
+        this.aerolineao = aerolineao;
+    }
+
+    
+    public Date getHorarioLlegada() {
+        return horarioLlegada;
+    }
+
+    public void setHorarioLlegada(Date horarioLlegada) {
+        this.horarioLlegada = horarioLlegada;
     }
 
     public Ruta getRutao() {
@@ -89,12 +112,12 @@ public class Avion  implements java.io.Serializable {
     public void setTipoAvion(int tipoAvion) {
         this.tipoAvion = tipoAvion;
     }
-    public Date getHorario() {
-        return this.horario;
+    public Date getHorarioSalida() {
+        return this.horarioSalida;
     }
     
-    public void setHorario(Date horario) {
-        this.horario = horario;
+    public void setHorarioSalida(Date horarioSalida) {
+        this.horarioSalida = horarioSalida;
     }
     public String getUltimoUsuario() {
         return this.ultimoUsuario;

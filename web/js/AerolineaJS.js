@@ -25,7 +25,7 @@ function consultarAerolineas(numpag) {
     mostrarModal("myModal", "Espere por favor..", "Consultando la información de aerolineas en la base de datos");
     //Se envia la información por ajax
     $.ajax({
-        url: '../../AerolineaServlet',
+        url: "../../AerolineaServlet",
         data: {
             accion: "consultarAerolineas"
         },

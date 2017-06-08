@@ -46,13 +46,13 @@ Contributor(s):
     <property name="hibernate.connection.url">jdbc:mysql://localhost:3306/proyectoaerolinea?zeroDateTimeBehavior=convertToNull</property>
     <property name="hibernate.connection.username">root</property>
     <property name="hibernate.connection.isolation">2</property>
-    <mapping resource="cr/ac/una/prograiv/project/domain/Ruta.hbm.xml"/>
-    <mapping resource="cr/ac/una/prograiv/project/domain/Boleto.hbm.xml"/>
     <mapping resource="cr/ac/una/prograiv/project/domain/Usuario.hbm.xml"/>
-    <mapping resource="cr/ac/una/prograiv/project/domain/Pais.hbm.xml"/>
     <mapping resource="cr/ac/una/prograiv/project/domain/Aerolinea.hbm.xml"/>
-    <mapping resource="cr/ac/una/prograiv/project/domain/Horario.hbm.xml"/>
     <mapping resource="cr/ac/una/prograiv/project/domain/TipoAvion.hbm.xml"/>
+    <mapping resource="cr/ac/una/prograiv/project/domain/Pais.hbm.xml"/>
+    <mapping resource="cr/ac/una/prograiv/project/domain/Boleto.hbm.xml"/>
+    <mapping resource="cr/ac/una/prograiv/project/domain/Ruta.hbm.xml"/>
+    <mapping resource="cr/ac/una/prograiv/project/domain/Asiento.hbm.xml"/>
     <mapping resource="cr/ac/una/prograiv/project/domain/Avion.hbm.xml"/>
   </session-factory>
 </hibernate-configuration>

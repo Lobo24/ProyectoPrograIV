@@ -6,10 +6,8 @@
 package cr.ac.una.prograiv.project.test;
 
 import cr.ac.una.prograiv.project.bl.UsuarioBL;
-import cr.ac.una.prograiv.project.dao.UsuarioDAO;
 import cr.ac.una.prograiv.project.domain.Usuario;
 import java.util.Date;
-import java.util.List;
 
 /**
  *
@@ -26,8 +24,8 @@ public class PruebaUsuarios {
     }
     
     public static void testSave(){
-       Usuario u2 = new Usuario(116810872,"0000","OscarCM","Heredia","Oscar","Carmona","Mora",new Date(),"10-07-1997","84835609",true,"Costarricense");
-//        Usuario u2 = new Usuario(115860285,"admin","admin","bryan","perez", "perez", 156454546, "Admin", true , "Costa Rica");
+  //     Usuario u2 = new Usuario(116810872,"0000","OscarCM","Heredia","Oscar","Carmona","Mora",new Date(),"10-07-1997","84835609",true);
+      Usuario u2 = new Usuario(115860285,"admin","admin","Heredia","Oscar","Carmona","Mora",new Date(),"10-07-1997","84835609",true);
 //        UsuarioDAO pDao = new UsuarioDAO();
         UsuarioBL pDao = new UsuarioBL();
 //        uBL.save(u2);

@@ -20,7 +20,6 @@
         <script src="../../js/utils.js" type="text/javascript"></script>
         <link href="../../css/datetimepicker.min.css" rel="stylesheet" type="text/css"/>
         <script src="../../js/AvionJS.js" type="text/javascript"></script>
-
     </head>
     <body class="bg-success">
         <!-- ********************************************************** -->
@@ -144,31 +143,35 @@
                                         <option val="0">Seleccione una aerolinea</option>
                                     </select>
                                 </div>
-                                <div class="form-group col-sm-6" id="groupRuta">
-                                    <label for="ruta">Ruta</label>
-                                    <select class="form-control" id="ruta">
-                                        <option val="0">Seleccione una ruta</option>
+                                <div class="form-group col-sm-6" id="groupTipo">
+                                    <label for="tipo" align="center">Tipo de acvión</label>
+                                    <select class="form-control" id="tipoAvion">
+                                        <option val="0">Seleccione un tipo de avión</option>
                                     </select>
                                 </div>
                             </div>
                             <div class="row">
-                                <div class="form-group col-sm-6" id="groupTipo">
-                                    <label for="tipo" align="center">Tipo de acvión</label>
-                                    <select class="form-control" id="tipoAvion">
-                                        <option val="0">Seleccione una tipo de avión</option>
-                                    </select>
-                                </div>
                                 <div class="form-group col-sm-6">
-                                    <label for="horario" align="center">Horario</label>
-                                    <div class="input-group date" id="groupHorario">
-                                        <input type="text" id="horario" class="form-control"  readonly/>
+                                    <label for="salida" align="center">Salida</label>
+                                    <div class="input-group date" id="groupSalida">
+                                        <input type="text" id="salida" class="form-control"  readonly/>
                                         <span class="input-group-addon">
                                             <i class="glyphicon glyphicon-calendar"></i>
                                         </span>
                                     </div>
                                 </div>
+                                <div class="form-group col-sm-6" id="groupLlegada">
+                                    <label for="llegada">Llegada</label>
+                                    <input type="text" class="form-control" readonly id="llegada" placeholder="llegada" >
+                                </div>
                             </div>
-                            <div class="modal-footer buttonOpt" >
+                            <div class="form-group" id="groupRuta">
+                                <label for="ruta">Ruta</label>
+                                <select class="form-control" id="ruta">
+                                    <option val="0">Seleccione una ruta</option>
+                                </select>
+                            </div>
+                            <div class="buttonOpt" >
                                 <button type="submit" id="enviar" class="btn btn-primary">Enviar</button>
                                 <button type="button" id="cancelar" class="btn btn-danger" data-dismiss="modal">Cerrar</button>
                             </div>

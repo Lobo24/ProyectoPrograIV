@@ -4,6 +4,7 @@
  * and open the template in the editor.
  */
 package cr.ac.una.prograiv.project.bl;
+import cr.ac.una.prograiv.project.domain.Aerolinea;
 import cr.ac.una.prograiv.project.domain.Avion;
 import cr.ac.una.prograiv.project.domain.Pais;
 import cr.ac.una.prograiv.project.domain.Ruta;
@@ -47,8 +48,12 @@ public class AvionBL extends BaseBL implements IBaseBL<Avion, Integer>{
     public List<Avion> findAll(String className) {
         List<Avion> aviones = this.getDao(className).findAll();
         aviones.forEach((aux) -> {
-            aux.setRutao((Ruta)this.getDao(Ruta.class.getName()).findById(aux.getRuta()));
+            Ruta r= (Ruta)this.getDao(Ruta.class.getName()).findById(aux.getRuta());
+            r.setPaisOrigen((Pais)getDao(Pais.class.getName()).findById(r.getOrigen()));
+            r.setPaisDestino((Pais)getDao(Pais.class.getName()).findById(r.getDestino()));
+            aux.setRutao(r);
             aux.setTipoAviono((TipoAvion)this.getDao(TipoAvion.class.getName()).findById(aux.getTipoAvion()));
+            aux.setAerolineao((Aerolinea)this.getDao(Aerolinea.class.getName()).findById(aux.getAerolinea()));
         });
         return aviones;
     }
@@ -60,7 +65,7 @@ public class AvionBL extends BaseBL implements IBaseBL<Avion, Integer>{
     
     public boolean existe(Avion av){
         List<Avion> aviones = findAll(Avion.class.getName());
-        return aviones.stream().anyMatch((aux) -> (aux.getRuta()==av.getRuta() && aux.getHorario().equals(av.getHorario())));
+        return aviones.stream().anyMatch((aux) -> (aux.getRuta()==av.getRuta() && aux.getHorarioSalida().equals(av.getHorarioSalida())));
     }
 
     @Override

@@ -1,5 +1,6 @@
 package cr.ac.una.prograiv.project.domain;
-// Generated 31/05/2017 07:47:08 PM by Hibernate Tools 4.3.1
+// Generated 07/06/2017 09:12:23 PM by Hibernate Tools 4.3.1
+
 
 
 import java.util.Date;
@@ -11,7 +12,7 @@ public class Boleto  implements java.io.Serializable {
 
 
      private BoletoId id;
-     private Horario horario;
+     private Avion avion;
      private Usuario usuario;
      private Integer consecutivo;
      private int numAsiento;
@@ -22,16 +23,16 @@ public class Boleto  implements java.io.Serializable {
     }
 
 	
-    public Boleto(BoletoId id, Horario horario, Usuario usuario, int numAsiento, int numFila) {
+    public Boleto(BoletoId id, Avion avion, Usuario usuario, int numAsiento, int numFila) {
         this.id = id;
-        this.horario = horario;
+        this.avion = avion;
         this.usuario = usuario;
         this.numAsiento = numAsiento;
         this.numFila = numFila;
     }
-    public Boleto(BoletoId id, Horario horario, Usuario usuario, Integer consecutivo, int numAsiento, int numFila, Date fechaCompra) {
+    public Boleto(BoletoId id, Avion avion, Usuario usuario, Integer consecutivo, int numAsiento, int numFila, Date fechaCompra) {
        this.id = id;
-       this.horario = horario;
+       this.avion = avion;
        this.usuario = usuario;
        this.consecutivo = consecutivo;
        this.numAsiento = numAsiento;
@@ -46,12 +47,12 @@ public class Boleto  implements java.io.Serializable {
     public void setId(BoletoId id) {
         this.id = id;
     }
-    public Horario getHorario() {
-        return this.horario;
+    public Avion getAvion() {
+        return this.avion;
     }
     
-    public void setHorario(Horario horario) {
-        this.horario = horario;
+    public void setAvion(Avion avion) {
+        this.avion = avion;
     }
     public Usuario getUsuario() {
         return this.usuario;

@@ -77,9 +77,8 @@ public class PublicoServlet extends HttpServlet {
                     
                     usuario.setFechaNacimiento(date);
                     usuario.setEmail(request.getParameter("correo"));
-                    usuario.setNacionalidad(request.getParameter("nacionalidad"));
                     usuario.setAdmin(false);
-                    usuario.setNumTel("0000000");
+                    usuario.setNumTel(request.getParameter("telefono"));
                     usuario.setUltimaFecha(new Date());
                     usuario.setUltimoUsuario("admin");
                     uBL.save(usuario);

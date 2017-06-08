@@ -44,9 +44,9 @@ Contributor(s):
   <table-filter match-name="aerolinea"/>
   <table-filter match-name="avion"/>
   <table-filter match-name="boleto"/>
-  <table-filter match-name="horario"/>
   <table-filter match-name="pais"/>
   <table-filter match-name="ruta"/>
   <table-filter match-name="tipo_avion"/>
   <table-filter match-name="usuario"/>
+  <table-filter match-name="asiento"/>
 </hibernate-reverse-engineering>

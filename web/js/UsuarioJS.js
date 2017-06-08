@@ -59,11 +59,12 @@ function registroAdmin(){
            nombreUsuario: $("#nombreUsuario").val(),
            contrasena: $("#contrasena").val(),
            correo: $("#email").val(),
+           telefono:$("#telefono").val(),
            apellido1: $("#apell1").val(),
            apellido2: $("#apellido2").val(),
            nombre: $("#nombre").val(),
            fechaNacimiento: $("#dpFechaNacimiento").data('date'),
-           nacionalidad: $("#nacionalidad").val()
+           telefono: $("#telefono").val()
        },
        error: function () { //si existe un error en la respuesta del ajax   
           mostrarModal("myModal", "Se genero un error", "Contacte al administrador");
@@ -98,17 +99,17 @@ function dibujarTabla(numpag,dataJson) {
     var row = $("<tr />");
     head.append(row);
     $("#tablaPersonas").append(head); 
-    row.append($("<th><b>CEDULA</b></th>"));
-    row.append($("<th><b>NOMBRE_USUARIO</b></th>"));
-    row.append($("<th><b>NOMBRE</b></th>"));
-    row.append($("<th><b>PRIMER APELLIDO</b></th>"));
-    row.append($("<th><b>SEGUNDO APELLIDO</b></th>"));
-    row.append($("<th><b>NACIONALIDAD</b></th>"));
-    row.append($("<th><b>FEC. NAC.</b></th>"));
-    row.append($("<th><b>EMAIL</b></th>"));
-    row.append($("<th><b>ULTIMO ACCESO</b></th>"));
-    row.append($("<th><b>TIPO</th>"));
-    row.append($("<th><b>ACCIÓN</th>"));
+    row.append($("<th><b>Cédula</b></th>"));
+    row.append($("<th><b>Usuario</b></th>"));
+    row.append($("<th><b>Nombre</b></th>"));
+    row.append($("<th><b>1er Apellido</b></th>"));
+    row.append($("<th><b>2do Apellido</b></th>"));
+    row.append($("<th><b>Telefono</b></th>"));
+    row.append($("<th><b>Fec. Nac.</b></th>"));
+    row.append($("<th><b>Email</b></th>"));
+    row.append($("<th><b>Ultimo acceso</b></th>"));
+    row.append($("<th><b>Tipo</th>"));
+    row.append($("<th><b>Acción</th>"));
     
     //carga la tabla con el json devuelto
     var cont = 0;
@@ -130,7 +131,7 @@ function dibujarFila(rowData) {
     row.append($("<td>" + rowData.nombre + "</td>"));
     row.append($("<td>" + rowData.apellido1 + "</td>"));
     row.append($("<td>" + rowData.apellido2 + "</td>"));
-    row.append($("<td>" + rowData.nacionalidad + "</td>"));
+    row.append($("<td>" + rowData.numTel + "</td>"));
     row.append($("<td>" + rowData.fechaNacimiento + "</td>"));
     row.append($("<td>" + rowData.email + "</td>"));
     row.append($("<td>" + rowData.ultimaFecha + "</td>"));
@@ -271,6 +272,6 @@ function cargaUsuario(usuario){
            $("#apellido2").val(usuario.apellido2);
            $("#nombre").val(usuario.nombre);
            //$("#dpFechaNacimiento").data('date');
-           $("#nacionalidad").val(usuario.nacionalidad);
+           $("#telefono").val(usuario.numTel);
            $("#myModalFormulario").modal();
 }
