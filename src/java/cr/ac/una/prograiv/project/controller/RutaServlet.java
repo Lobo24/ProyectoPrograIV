@@ -62,6 +62,12 @@ public class RutaServlet extends HttpServlet {
                     out.print("C~La ruta se ingreso correctamente ");
                     break;
                 case "consultarPais": 
+                    break;
+                case "eliminarRuta":
+                        ruta.setIdRuta(Integer.parseInt(request.getParameter("idRuta")));
+                        rBL.delete(ruta);
+                        out.print("La ruta fue eliminada correctamente");
+                    break;
                 default:
                     out.print("E~No se indico la acción que se desea realizare");
                     break;                 

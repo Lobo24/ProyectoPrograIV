@@ -118,7 +118,7 @@
                     </table>
                 </div>
                 <div class="panel-footer">
-                    <ul class="pagination justify-content-center" id="paginacionOpcRutas"></ul>
+                    <ul class="pagination justify-content-center" id="paginacionOpc"></ul>
                     <br>
                     Nota: Acciones validas dependeran del rol del usuario
                 </div>
@@ -166,7 +166,7 @@
                             </div>
                             <div class="form-group">
                                 <input type="hidden" value="agregarRuta" id="rutasAction"/>                       
-                                <button type="submit" class="btn btn-primary" id="enviar">Guardar</button>
+                                <button type="submit" class="btn btn-primary" id="enviar" data-dismiss="modal">Guardar</button>
                                 <button type="reset" class="btn btn-danger" id="cancelar" data-dismiss="modal">Cancelar</button>
                             </div>
                             <div class="form-group height25" >
@@ -192,6 +192,38 @@
                     <h5>Año: 2017</h5>
                 </div>
             </div>
-        </footer> 
+        </footer>
+        
+        <!-- ********************************************************** -->
+        <!-- MODAL PARA CONFIRMAR ELIMINAR -->
+        <!-- ********************************************************** -->
+        
+        <div class="modal fade" id="confirm-delete" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        
+                        <h4><b>Confirmación de borrado</b><h4>
+                    </div>
+                    <div class="modal-body">
+                        <p>
+                            Desea eliminar a la persona de la base de datos, si confirma la acción la información no
+                            <br>
+                            podrá ser recuperada de esta.
+                            <br><br>
+                            Desea confirmar la eliminación de 
+                            <span id="nombreEliminar">
+
+                            </span>
+                            ?
+                        </p>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-default" data-dismiss="modal">Cancelar</button>
+                        <button class="btn btn-danger btn-ok" id="eliminar" value="" data-dismiss="modal">Eliminar</button>
+                    </div>
+                    </div>
+                </div>
+            </div>
     </body>
 </html>
