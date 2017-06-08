@@ -5,7 +5,7 @@ $(function () {
     $("#enviar").click(function () {
         enviar();
         limpiarForm();
-        consultarRutas();
+        //consultarRutas(1);
     });
 
 //agrega los eventos las capas necesarias
@@ -20,11 +20,12 @@ $(function () {
 
 $(document).ready(function () {
     recargarTodoRutas();
-//    consultarRutas();
+    paginador(1);
+    //consultarRutas(1);
     //consultarPaises();
 });
 
-function consultarRutas() {
+function consultarRutas(numpag) {
     mostrarModal("myModal", "Espere por favor..", "Consultando la información de las rutas en la base de datos");
     $.ajax({
         url: '../../RutaServlet',
@@ -35,7 +36,7 @@ function consultarRutas() {
             alert("Se presento un error a la hora de cargar la información de las rutas en la base de datos");
         },
         success: function (data) { //si todo esta correcto en la respuesta del ajax, la respuesta queda en el data
-            dibujarTabla(data);
+            dibujarTabla(numpag,data);    
             ocultarModal("myModal");
         },
         type: 'POST',
@@ -43,7 +44,7 @@ function consultarRutas() {
     });
 }
 
-function dibujarTabla(dataJson) {
+function dibujarTabla(numpag,dataJson) {
     //limpia la información que tiene la tabla
     $("#tablaRuta").html("");
     //muestra el enzabezado de la tabla
@@ -61,7 +62,9 @@ function dibujarTabla(dataJson) {
     row.append($("<th>Accion</td>"));
 
     //carga la tabla con el json devuelto
-    for (var i = 0; i < dataJson.length; i++) {
+    var cont = 0;
+    var i = 10 * (numpag-1);
+    for (; i < dataJson.length && (cont<10); i++, cont++) {
         dibujarFila(dataJson[i]);
     }
 }
@@ -75,10 +78,10 @@ function dibujarFila(rowData) {
     row.append($("<td>" + rowData.descuento + "</td>"));
     row.append($("<td>" + rowData.ultimoUsuario + "</td>"));
     row.append($("<td>" + rowData.ultmaFecha + "</td>"));
-    row.append($('<td><button type="button" class="btn btn-default btn-xs" aria-label="Left Align" onclick="consultarRutaByID(' + rowData.pkCedula + ');">' +
+    row.append($('<td><button type="button" class="btn btn-default btn-xs" aria-label="Left Align" onclick="modificarRuta(' + rowData.idRuta + ');">' +
             '<span class="glyphicon glyphicon-pencil" aria-hidden="true"></span>' +
             '</button>' +
-            '<button type="button" class="btn btn-default btn-xs" aria-label="Left Align" onclick="eliminarRuta(' + rowData.pkCedula + ');">' +
+            '<button type="button" class="btn btn-default btn-xs" aria-label="Left Align" onclick="validaEliminacion('+ "'"+ rowData.paisOrigen.nombre + "-"+ rowData.paisDestino.nombre + "'" +','+rowData.idRuta+')" data-target="#confirm-delete" data-toggle="modal" >' +
             '<span class="glyphicon glyphicon-remove" aria-hidden="true"></span>' +
             '</button></td>'));
 }
@@ -112,7 +115,7 @@ function recargarTodoRutas() {
             alert("Se presento un error a la hora de cargar la información de las rutas en la base de datos");
         },
         success: function (data) { //si todo esta correcto en la respuesta del ajax, la respuesta queda en el data
-            dibujarTabla(data);
+            dibujarTabla(1,data);
             consultarPaises();
             ocultarModal("myModal");
         },
@@ -134,7 +137,8 @@ function enviar() {
         $.ajax({
             url: '../../RutaServlet',
             data: {
-                accion: "registroRutas",
+                accion: $("#rutasAction").val(),
+                idRuta: $("#rutasAux").val(),
                 origen: $("#origen").val(),
                 destino: $("#destino").val(),
                 minutos: $("#minutos").val(),
@@ -148,7 +152,7 @@ function enviar() {
                 var tipoRespuesta = data.substring(0, 2);
                 if (tipoRespuesta === "C~") {
                     ocultarModal("myModalFormulario");
-                    consultarRutas();
+                    consultarRutas(1);
                 } else {
                     if (tipoRespuesta === "E~") {
                         mostrarMensaje("alert alert-danger", respuestaTxt, "Error!");
@@ -163,6 +167,7 @@ function enviar() {
     } else {
         mostrarMensaje("alert alert-danger", "Debe digitar los campos del formulario", "Error!");
     }
+    $("#rutasAction").val("registroRutas");
 }
 
 function validar() {
@@ -195,39 +200,6 @@ function validar() {
     return validacion;
 }
 
-
-//******************************************************************************
-//******************************************************************************
-//metodos para eliminar los tipos de aviones
-//******************************************************************************
-//******************************************************************************
-
-function eliminarRuta(idRuta) {
-    mostrarModal("myModal", "Espere por favor..", "Se esta eliminando a la persona seleccionada");
-    //Se envia la información por ajax
-    $.ajax({
-        url: 'RutaServlet',
-        data: {
-            accion: "eliminarRuta",
-            idRuta: idRuta
-        },
-        error: function () { //si existe un error en la respuesta del ajax
-            cambiarMensajeModal("myModal", "Resultado acción", "Se presento un error, contactar al administador");
-        },
-        success: function (data) { //si todo esta correcto en la respuesta del ajax, la respuesta queda en el data
-            // se cambia el mensaje del modal por la respuesta del ajax
-            var respuestaTxt = data.substring(2);
-            var tipoRespuesta = data.substring(0, 2);
-            if (tipoRespuesta === "E~") {
-                cambiarMensajeModal("myModal", "Resultado acción", respuestaTxt);
-            } else {
-                setTimeout(consultarRuta, 3000);// hace una pausa y consulta la información de la base de datos
-            }
-        },
-        type: 'POST',
-        dataType: "text"
-    });
-}
 
 //******************************************************************************
 //******************************************************************************
@@ -322,6 +294,93 @@ function limpiarForm() {
     //Resetear el formulario
     $('#formRuta').trigger("reset");
 }
+//******************************************************************************
+//******************************************************************************
 
 
+function paginador(pagAct){
+    var ini = 1;
+     $("#paginacionOpc").html("");
+    if(pagAct>5){
+        ini = pagAct - 5;
+        $("#paginacionOpc").append('<li onclick="paginador('+(ini-1)+')"><a>&laquo;</a></li>');
+    }else{
+        $("#paginacionOpc").append('<li onclick="paginador('+ini+')" ><a>&laquo;</a></li>');
+    }
+    for(var i=0;i<=10;i++,ini++){
+        if(ini===pagAct){
+            $("#paginacionOpc").append('<li class="active" onclick="consultarRutas('+ini+'),paginador('+ini+')"><a>'+ini+'</a></li> ');
+        }else{
+        $("#paginacionOpc").append('<li onclick="consultarRutas('+ini+'),paginador('+ini+')"><a>'+ini+'</a></li>');
+        }
+    }
+    $("#paginacionOpc").append('<li onclick="paginador('+(ini + 1)+')"><a>&raquo;</a></li>');
+}
 
+function validaEliminacion(nom,id){
+    $('#nombreEliminar').text(nom);
+    $('#eliminar').click(function () {
+        eliminarRuta(id);
+    });
+}
+
+function eliminarRuta(idRuta) {
+    mostrarModal("myModal", "Espere por favor..", "Se esta eliminando a la persona seleccionada");
+    //Se envia la información por ajax
+    $.ajax({
+        url: '../../RutaServlet',
+        data: {
+            accion: "eliminarRuta",
+            idRuta: idRuta
+        },
+        error: function () { //si existe un error en la respuesta del ajax
+            cambiarMensajeModal("myModal","Resultado acción","Se presento un error, contactar al administador");
+        },
+        success: function (data) { //si todo esta correcto en la respuesta del ajax, la respuesta queda en el data
+            // se cambia el mensaje del modal por la respuesta del ajax
+            var respuestaTxt = data.substring(2);
+            var tipoRespuesta = data.substring(0, 2);
+            if (tipoRespuesta === "E~") {
+                cambiarMensajeModal("myModal","Resultado acción",respuestaTxt);
+            }else{
+                setTimeout(consultarRutas(1), 3000);// hace una pausa y consulta la información de la base de datos
+            }
+        },
+        type: 'POST',
+        dataType: "text"
+    });
+}
+
+
+function modificarRuta(idRuta) {
+    $("#rutasAction").val("modificarRuta");
+    mostrarModal("myModal", "Espere por favor..", "Buscando nombre en la base de datos");
+    //Se envia la información por ajax
+    $.ajax({
+        url: '../../RutaServlet',
+        data: {
+            accion: "buscarRuta",
+            idRuta: idRuta
+        },
+        error: function () { //si existe un error en la respuesta del ajax
+            alert("Se presento un error a la hora de buscar las personas en la base de datos");
+        },
+        success: function (data) { //si todo esta correcto en la respuesta del ajax, la respuesta queda en el data
+            cargaRuta(data);
+            // se oculta el modal esta funcion se encuentra en el utils.js
+            ocultarModal("myModal");
+
+        },
+        type: 'GET',
+        dataType: "json"
+    });
+}
+
+function cargaRuta(ruta){
+           $("#rutasAux").val(ruta.idRuta);
+           $("#origen").val(ruta.origen);
+           $("#destino").val(ruta.destino);
+           $("#minutos").val(ruta.minutos);
+           $("#descuento").val(ruta.descuento);
+           $("#myModalFormulario").modal();
+}

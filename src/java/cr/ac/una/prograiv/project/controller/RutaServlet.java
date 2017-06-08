@@ -53,15 +53,32 @@ public class RutaServlet extends HttpServlet {
                     json = new Gson().toJson(rBL.findAll(Ruta.class.getName()));
                     out.print(json);
                     break;
-                case "registroRutas":
+                case "buscarRuta":
+                    json = new Gson().toJson(rBL.findById(Integer.parseInt(request.getParameter("idRuta"))));
+                    out.print(json);
+                    break;
+                case "registroRutas": case "modificarRuta":
                     ruta.setOrigen(Integer.parseInt(request.getParameter("origen")));
                     ruta.setDestino(Integer.parseInt(request.getParameter("destino")));
                     ruta.setMinutos(Integer.valueOf(request.getParameter("minutos")));
                     ruta.setDescuento(Float.valueOf(request.getParameter("descuento")));
-                    rBL.save(ruta);
-                    out.print("C~La ruta se ingreso correctamente ");
+                    if(accion.equals("registroRutas")){
+                        rBL.save(ruta);
+                        out.print("C~La ruta se ingreso correctamente ");
+                    }else{
+                        ruta.setIdRuta(Integer.parseInt(request.getParameter("idRuta")));
+                        rBL.merge(ruta);
+                        out.print("C~La ruta se modifico correctamente ");
+                    }
+                    
                     break;
                 case "consultarPais": 
+                    break;
+                case "eliminarRuta":
+                        ruta.setIdRuta(Integer.parseInt(request.getParameter("idRuta")));
+                        rBL.delete(ruta);
+                        out.print("La ruta fue eliminada correctamente");
+                    break;
                 default:
                     out.print("E~No se indico la acción que se desea realizare");
                     break;                 

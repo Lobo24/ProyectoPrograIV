@@ -46,7 +46,10 @@ public class RutaBL extends BaseBL implements IBaseBL<Ruta, Integer> {
 
     @Override
     public Ruta findById(Integer o) {
-        return (Ruta) this.getDao(Ruta.class.getName()).findById(o);
+        Ruta aux = (Ruta) this.getDao(Ruta.class.getName()).findById(o);
+        aux.setPaisOrigen((Pais)this.getDao(Pais.class.getName()).findById(aux.getOrigen()));
+        aux.setPaisDestino((Pais)this.getDao(Pais.class.getName()).findById(aux.getDestino()));
+        return aux;
     }
 
     @Override

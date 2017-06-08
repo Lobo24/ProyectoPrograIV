@@ -20,10 +20,19 @@ $(function () {
     $("#mostrarForm").click(function () {
         limpiarForm();
     });
+    $('#myModalRegistroAvion').click(function(){
+       fechaLlegada();
+    });
+    $('#ruta').click(function(){
+      fechaLlegada();
+    });
+    $('#ruta').blur(function(){
+      fechaLlegada();
+    });
 });
 
 $(document).ready(function () {
-     $('#groupHorario').datetimepicker({
+     $("#groupSalida").datetimepicker({
           format: 'dd-mm-yyyy hh:ii'       
       });
     recargarTodoAviones();
@@ -136,7 +145,8 @@ function enviar() {
                 aerolinea: $("#aerolinea").val(),
                 ruta: $("#ruta").val(),
                 tipoAvion: $("#tipoAvion").val(),
-                horario: $("#horario").val()
+                salida: $("#salida").val(),
+                llegada: $("#llegada").val()
             },
             error: function () { //si existe un error en la respuesta del ajax   
                 mostrarMensaje("alert alert-danger", "Se genero un error, contacte al administrador (Error del ajax)", "Error!");
@@ -213,7 +223,8 @@ function dibujarTablaAvi(dataJson) {
     row.append($("<th><b>Aerolínea</b></th>"));
     row.append($("<th><b>Tipo de Avion</b></th>"));
     row.append($("<th><b>Ruta</b></th>"));
-    row.append($("<th><b>Horario</b></th>"));
+    row.append($("<th><b>Salida</b></th>"));
+    row.append($("<th><b>Llegada</b></th>"));
     row.append($("<th><b>FECHA_INGRESO</b></th>"));
     row.append($("<th><b>ACCIÓN</th>"));
 
@@ -227,11 +238,12 @@ function dibujarFilaAvi(rowData) {
     var row = $('<tr />');
     $("#tablaAviones").append(row);
     row.append($("<td>" + rowData.idAvion + "</td>"));
-    row.append($("<td>" + avAerolineas[parseInt(rowData.aerolinea - 1)].nombre + "</td>"));
-    row.append($("<td>" + avTipos[parseInt(rowData.tipoAvion - 1)].marca + "-" +
-            avTipos[parseInt(rowData.tipoAvion - 1)].modelo + "</td>"));
-    row.append($("<td>" + extraePaisesRuta(avRutas[parseInt(rowData.ruta - 1)]) + "</td>"));
-    row.append($("<td>" + rowData.horario + "</td>"));
+    row.append($("<td>" + rowData.aerolineao.nombre + "</td>"));
+    row.append($("<td>" + rowData.tipoAviono.marca + "-" +
+            rowData.tipoAviono.modelo + "</td>"));
+    row.append($("<td>" + rowData.rutao.paisOrigen.nombre +"-"+ rowData.rutao.paisDestino.nombre + "</td>"));
+    row.append($("<td>" + rowData.horarioSalida + "</td>"));
+    row.append($("<td>" + rowData.horarioLlegada + "</td>"));
     row.append($("<td>" + rowData.ultimaFecha + "</td>"));
     row.append($("<td>" + rowData.ultimoUsuario + "</td>"));
 
@@ -272,4 +284,26 @@ function limpiarForm() {
     //Resetear el formulario
     $('#formRegistro').trigger("reset");
     $('#formLogin').trigger("reset");
+}
+
+function fechaLlegada(){
+     var date=$("#salida").val();
+        var dia=date.substring(0,2);
+        var mes=date.substring(3,5);
+        var año=date.substring(6,10);
+        var hora=date.substring(11,13);
+        var minutos=date.substring(14,date.length);
+        date=año+"-"+mes+"-"+dia+"T"+hora+":"+minutos+":00";
+        date = new Date(date);
+        minutos=avRutas[parseInt($("#ruta").val()-1)].minutos;
+        date.setMinutes(date.getMinutes()+minutos);
+        var newDate=zero(date.getDate())+"-"+zero(parseInt(date.getMonth()+1))+"-"+zero(date.getFullYear())
+                +" "+zero(parseInt(date.getHours()))+":"+zero(date.getMinutes());
+        $("#llegada").val(newDate);
+}
+
+function zero(data){
+    if(parseInt(data)<10)
+        return "0"+data;
+    return data;
 }

@@ -22,6 +22,7 @@ $(document).ready(function () {
     $("#mesajeLogin").hide();
     $("#mesageRegistro").removeClass();
     $("#mesageRegistro").hide();
+      $('#example').DataTable();
 });
 
 function logueo(){
@@ -175,3 +176,4 @@ function limpiarForm() {
     $('#formRegistro').trigger("reset");
     $('#formLogin').trigger("reset");
 }
+

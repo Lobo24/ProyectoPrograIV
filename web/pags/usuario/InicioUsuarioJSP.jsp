@@ -15,7 +15,9 @@
         <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
         <link href="../../css/estilos.css" rel="stylesheet" type="text/css"/>
         <link href="https://fonts.googleapis.com/css?family=Satisfy" rel="stylesheet">
+        <script src="../../js/PublicoJS.js" type="text/javascript"></script>
     </head>
+    <body>
     <!-- ********************************************************** -->
         <!-- ENCABEZADO -->
         <!-- ********************************************************** -->
@@ -54,4 +56,24 @@
                 </div>
             </nav> <!--Navbar-->
         </div>
+        <!-- ********************************************************** -->
+        <img src="../../imagenes/Banner/Banner1.png" alt="" id="banner1"/>
+        
+        <!-- ********************************************************** -->
+        <!-- ver comprar anteriores -->
+        <!-- ********************************************************** -->
+        
+        <div id="tablaHistorial">
+        <table class="table table-striped">
+            <thead>
+                <th>Origen</th>
+                <th>Destino</th>
+                <th>Fecha</th>
+                <th>Avion</th>
+                <th>Origen</th>
+            </thead>
+        </table>
+        </div>
+        <img src="../../imagenes/Banner/banner2.png" alt="" id="banner2"/>
+    </body>
 </html>

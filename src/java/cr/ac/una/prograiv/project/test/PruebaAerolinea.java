@@ -22,7 +22,7 @@ public class PruebaAerolinea implements TestBD{
     
     @Override
     public void testSave() {
-        Aerolinea ae1=new Aerolinea("American Airlines",1, "aa@gmail.com", "88987878");
+        Aerolinea ae1=new Aerolinea("Mexicana",146, "mx@gmail.com", "88987878");
         AerolineaBL bl= new AerolineaBL();
         bl.save(ae1);
     }
