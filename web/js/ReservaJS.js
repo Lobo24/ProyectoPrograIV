@@ -23,7 +23,6 @@ function creaCkecking(){
                     <label for='"+f+""+column+"'>"+f+""+column+"</label>\n\
                     </li>");
             column = String.fromCharCode(column.charCodeAt(0) + 1);
-            //fila.append(columnas);
         }
         fila.append(fila2);
         avion.append(fila);
