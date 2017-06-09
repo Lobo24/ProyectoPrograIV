@@ -42,7 +42,7 @@ function encuentraCampos(fila,column){
             if($('#'+f+""+c).val()==="checked"){
                 registroAsiento(f+""+c,avionId);
             }
-            col = String.fromCharCode(col.charCodeAt(0) + 1);
+            col = String.fromCharCode(col.charCodeAt(0) + 1); 
         }
     }
     column = 'A';
