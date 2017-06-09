@@ -97,18 +97,6 @@
         </table>
         </div>
         <img src="../../imagenes/Banner/banner2.png" alt="" id="banner2"/>
-        <!-- ********************************************************** -->
-        <!-- Checking -->
-        <!-- ********************************************************** -->
-        
-        <div class="plane">
-            <div class="cockpit">
-                <h1>Seleccione los asientos</h1>
-            </div>
-            <div class="exit exit--front fuselage">
-                <div id="crearAsientos"></div>
-                <div class="exit exit--back fuselage"></div>
-            </div>
-        </div>
+      
     </body>
 </html>

@@ -96,6 +96,9 @@ ol {
 .seat:nth-child(3) {
   margin-right: 14.28571428571429%;
 }
+.seat:nth-child(7) {
+  margin-right: 14.28571428571429%;
+}
 .seat input[type=checkbox] {
   position: absolute;
   opacity: 0;

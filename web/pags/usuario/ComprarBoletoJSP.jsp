@@ -10,13 +10,13 @@
     HttpSession sesion = request.getSession(true);
     String tipoUsuario = "";
     Usuario usuario = null;
-    if(sesion!=null){
-        if (sesion.getAttribute("usuario")  == null) {
-        }else{
-            tipoUsuario = (String)sesion.getAttribute("tipoUsuario");
-            usuario = (Usuario)sesion.getAttribute("usuario");
+    if (sesion != null) {
+        if (sesion.getAttribute("usuario") == null) {
+        } else {
+            tipoUsuario = (String) sesion.getAttribute("tipoUsuario");
+            usuario = (Usuario) sesion.getAttribute("usuario");
         }
-    }else{
+    } else {
         response.sendRedirect("InicioJSP.jsp");
     }
 %>
@@ -121,7 +121,7 @@
                 </div>
             </form>
         </div>
-        
+
         <!-- Datos usuario -->
         <!-- ********************************************************** -->
         <div id="userInfo">
@@ -130,15 +130,35 @@
             <p><b>Nombre :</b> <% out.print(usuario.getNombre() + " " + usuario.getApellido1() + " " + usuario.getApellido2()); %></p>
             <p><b>Teléfono :</b> <% out.print(usuario.getNumTel()); %></p>
             <p><b>Email :</b> <% out.print(usuario.getEmail()); %></p>
-            <p><b>Fecha Nacimiento :</b> <% out.print(usuario.getFechaNacimiento()); %></p>
+            <p><b>Fecha Nacimiento :</b> <% out.print(usuario.getFechaNacimiento());%></p>
         </div>
-        
+
         <!-- Datos usuario -->
         <!-- ********************************************************** -->
         <div id="divde"></div>
-        <div class="buttonOpt" >
-                                    <button type="button" class="btn btn-default" data-dismiss="modal" onclick="limpiarForm()">Cerrar</button>
-                                    <button type="button" class="btn btn-primary"  onclick="registro()">Registrarse</button>
+        <div class="buttonOpt" id="buttonComprar">
+            <button type="button" class="btn btn-primary"  data-toggle="modal" data-target="#mifor">Seleccionar asientos</button>
         </div>
-    </body>
+
+         <!-- ********************************************************** -->
+        <!-- Checking -->
+        <!-- ********************************************************** -->
+
+        <div class="modal fade" id="mifor" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h4><b>Seleccion de asientos</b><h4>
+                                </div>
+                                <div style="width: 300px;">
+                                    <div id="crearAsientos"></div>
+                                </div>
+                                <div class="modal-footer">
+                                    <button type="button" class="btn btn-default" data-dismiss="modal">Cancelar</button>
+                                    <button class="btn btn-danger btn-ok" id="eliminar" value="" data-dismiss="modal">Eliminar</button>
+                                </div>
+                    </div>
+                </div>
+            </div>
+   </body>
 </html>
