@@ -22,7 +22,6 @@ $(document).ready(function () {
     $("#mesajeLogin").hide();
     $("#mesageRegistro").removeClass();
     $("#mesageRegistro").hide();
-      $('#example').DataTable();
 });
 
 function logueo(){
@@ -62,6 +61,7 @@ function registro(){
            accion: "registroUsuario",
            idUsuario: $("#usuarioid_sign").val(),
            nombreUsuario: $("#usuario_sign").val(),
+           telefono: $("#telefono_confirm_sign").val(),
            correo: $("#correo_sign").val(),
            contrasena: $("#password_sign").val(),
            apellido1: $("#primer_ap_sign").val(),

@@ -195,9 +195,12 @@
                                         <input type="text" id="nombre_sign" class="form-control" placeholder="Nombre">
                                     </div>
                                 </div>
-                                <div class="form-group" id="groupTelefono">
-                                     <input type="text"  
-                                               id="telefono" class="form-control" placeholder="Teléfono">
+                                <div class="form-group" id="grouptelefono">
+                                    <label for="telefono_confirm" class="col-lg-2 control-label">Telefono</label>
+                                    <div class="col-lg-2">
+                                        <input type="telefono" id="telefono_confirm_sign" 
+                                               class="form-control" placeholder="Telefono">
+                                    </div>
                                 </div>
                                 <div class="form-group " id="groupfechaNacimiento">
                                     <label for="dpFechaNacimiento" class="col-xs-4">Fecha Nacimiento:</label>

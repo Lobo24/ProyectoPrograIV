@@ -14,8 +14,11 @@
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.0/jquery.min.js"></script>
         <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
         <link href="../../css/estilos.css" rel="stylesheet" type="text/css"/>
+        <link href="../../css/checkin.css" rel="stylesheet" type="text/css"/>
         <link href="https://fonts.googleapis.com/css?family=Satisfy" rel="stylesheet">
         <script src="../../js/PublicoJS.js" type="text/javascript"></script>
+        <script src="../../js/ReservaJS.js" type="text/javascript"></script>
+        
     </head>
     <body>
     <!-- ********************************************************** -->
@@ -75,5 +78,18 @@
         </table>
         </div>
         <img src="../../imagenes/Banner/banner2.png" alt="" id="banner2"/>
+        <!-- ********************************************************** -->
+        <!-- Checking -->
+        <!-- ********************************************************** -->
+        
+        <div class="plane">
+            <div class="cockpit">
+                <h1>Seleccione los asientos</h1>
+            </div>
+            <div class="exit exit--front fuselage">
+                <div id="crearAsientos"></div>
+                <div class="exit exit--back fuselage"></div>
+            </div>
+        </div>
     </body>
 </html>

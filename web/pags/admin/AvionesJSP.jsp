@@ -132,7 +132,7 @@
                 <div class="modal-content">      
                     <div class="modal-header">
                         <button type="button" class="close" data-dismiss="modal" onclick="limpiarForm()">&times;</button>
-                        <h4 class="modal-title" id="myModalTitle">Insertar Aerolineas
+                        <h4 class="modal-title" id="myModalTitle">Insertar Aviones
                     </div>
                     <form role="form" onsubmit="return false;" id="formAviones">
                         <div id="formCamposAviones">
@@ -144,7 +144,7 @@
                                     </select>
                                 </div>
                                 <div class="form-group col-sm-6" id="groupTipo">
-                                    <label for="tipo" align="center">Tipo de acvión</label>
+                                    <label for="tipo" align="center">Tipo de avión</label>
                                     <select class="form-control" id="tipoAvion">
                                         <option val="0">Seleccione un tipo de avión</option>
                                     </select>
@@ -165,17 +165,17 @@
                                     <input type="text" class="form-control" readonly id="llegada" placeholder="llegada" >
                                 </div>
                             </div>
-                            <div class="form-group" id="groupRuta">
+                            <div class="form-group  col-sm-6" id="groupRuta" style="margin-left: 200px;">
                                 <label for="ruta">Ruta</label>
                                 <select class="form-control" id="ruta">
                                     <option val="0">Seleccione una ruta</option>
                                 </select>
                             </div>
-                            <div class="buttonOpt" >
+                            <div class="buttonOpt" style="margin-left: 10px;">
                                 <button type="submit" id="enviar" class="btn btn-primary">Enviar</button>
                                 <button type="button" id="cancelar" class="btn btn-danger" data-dismiss="modal">Cerrar</button>
                             </div>
-                            <div class="form-group height25" >
+                            <div class="form-group height25 hiddenDiv" >
                                 <div class="alert alert-success hiddenDiv" id="mesajeResult">
                                     <strong id="mesajeResultNeg">Info!</strong> 
                                     <span id="mesajeResultText">This alert box could indicate a neutral informative change or action.</span>

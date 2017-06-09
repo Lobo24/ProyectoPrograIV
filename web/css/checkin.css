@@ -26,7 +26,7 @@ html {
   position: relative;
   overflow: hidden;
   text-align: center;
-  border-bottom: 5px solid #d8d8d8;
+  border-bottom: 5px solid black;
 }
 .cockpit:before {
   content: "";
@@ -37,8 +37,8 @@ html {
   height: 500px;
   width: 100%;
   border-radius: 50%;
-  border-right: 5px solid #d8d8d8;
-  border-left: 5px solid #d8d8d8;
+  border-right: 5px solid black;
+  border-left: 5px solid black;
 }
 .cockpit h1 {
   width: 60%;
@@ -70,8 +70,8 @@ html {
 }
 
 .fuselage {
-  border-right: 5px solid #d8d8d8;
-  border-left: 5px solid #d8d8d8;
+  border-right: 5px solid black;
+  border-left: 5px solid black;
 }
 
 ol {
