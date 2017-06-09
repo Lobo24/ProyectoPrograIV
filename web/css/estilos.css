@@ -295,3 +295,12 @@ and open the template in the editor.
 #buttonComprar{
     margin-left: 45%;
 }
+.fondoForm{
+    background: black;
+}
+.colorVerde{
+    color: #04B431;
+}
+.colorAzul{
+    color: blue;
+}
