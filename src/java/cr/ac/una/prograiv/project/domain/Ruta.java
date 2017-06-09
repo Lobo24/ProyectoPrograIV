@@ -19,20 +19,22 @@ public class Ruta  implements java.io.Serializable {
      private Date ultimaFecha;
      private Pais paisOrigen;
      private Pais paisDestino;
+     private float tarifa;
 
     public Ruta() {
     }
 
 	
-    public Ruta(int origen, int destino, int minutos) {
+    public Ruta(int origen, int destino, int minutos, float tarifa) {
         this.origen = origen;
         this.destino = destino;
         this.minutos = minutos;
         this.descuento = 0;
         this.paisOrigen=null;
         this.paisDestino=null;
+        this.tarifa=tarifa;
     }
-    public Ruta(int origen, int destino, int minutos, float descuento, String ultimoUsuario, Date ultimaFecha) {
+    public Ruta(int origen, int destino, int minutos, float descuento, String ultimoUsuario, Date ultimaFecha,float tarifa) {
        this.origen = origen;
        this.destino = destino;
        this.minutos = minutos;
@@ -41,8 +43,18 @@ public class Ruta  implements java.io.Serializable {
        this.ultimaFecha = ultimaFecha;
        this.paisOrigen=null;
        this.paisDestino=null;
+       this.tarifa=tarifa;
     }
 
+    public float getTarifa() {
+        return tarifa;
+    }
+
+    public void setTarifa(float tarifa) {
+        this.tarifa = tarifa;
+    }
+
+    
     public Pais getPaisOrigen() {
         return paisOrigen;
     }

@@ -56,6 +56,7 @@ function dibujarTabla(numpag,dataJson) {
     row.append($("<th>Origen</td>"));
     row.append($("<th>Destino</td>"));
     row.append($("<th>Minutos</td>"));
+    row.append($("<th>Tarifa</td>"));
     row.append($("<th>Descuento</td>"));
     row.append($("<th>Último usuario</td>"));
     row.append($("<th>Fecha de modificación</td>"));
@@ -75,6 +76,7 @@ function dibujarFila(rowData) {
     row.append($("<td>" + rowData.paisOrigen.nombre + "</td>"));
     row.append($("<td>" + rowData.paisDestino.nombre + "</td>"));
     row.append($("<td>" + rowData.minutos + "</td>"));
+    row.append($("<td>" + rowData.tarifa + "</td>"));
     row.append($("<td>" + rowData.descuento + "</td>"));
     row.append($("<td>" + rowData.ultimoUsuario + "</td>"));
     row.append($("<td>" + rowData.ultmaFecha + "</td>"));
@@ -142,6 +144,7 @@ function enviar() {
                 origen: $("#origen").val(),
                 destino: $("#destino").val(),
                 minutos: $("#minutos").val(),
+                tarifa: $("#tarifa").val(),
                 descuento: $("#descuento").val()
             },
             error: function () { //si existe un error en la respuesta del ajax
@@ -179,6 +182,7 @@ function validar() {
     $("#groupDestino").removeClass("has-error");
     $("#groupMinutos").removeClass("has-error");
     $("#groupDescuento").removeClass("has-error");
+    $("#groupTarifa").removeClass("has-error");
     //valida cada uno de los campos del formulario
     //Nota: Solo si fueron digitadoslse;
     if ($("#origen").val() === "") {
@@ -195,6 +199,10 @@ function validar() {
     }
     if ($("#descuento").val() === "") {
         $("#groupDescuento").addClass("has-error");
+        validacion = false;
+    }
+    if ($("#tarifa").val() === "") {
+        $("#groupTarifa").addClass("has-error");
         validacion = false;
     }
     return validacion;

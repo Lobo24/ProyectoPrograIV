@@ -155,11 +155,15 @@
                                     </div>
                                 </div>
                                 <div class="row">
-                                    <div class="form-group col-sm-6" id="groupMinutos">
+                                    <div class="form-group col-sm-4" id="groupMinutos">
                                         <label for="minutos" align="center">Minutos</label>
                                         <input type="text" class="form-control" id="minutos" placeholder="Minutos">
                                     </div>
-                                    <div class="form-group col-sm-6" id="groupDescuento">
+                                    <div class="form-group col-sm-4" id="groupTarifa">
+                                        <label for="tarifa" align="center">Tarifa</label>
+                                        <input type="text" class="form-control" id="tarifa" placeholder="Tarifa">
+                                    </div>
+                                    <div class="form-group col-sm-4" id="groupDescuento">
                                         <label for="descuento">Descuento</label>
                                         <input type="text" class="form-control" id="descuento" placeholder="Descuento">
                                     </div>

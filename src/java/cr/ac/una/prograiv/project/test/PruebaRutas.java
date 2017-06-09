@@ -29,7 +29,7 @@ public class PruebaRutas {
 //        Ruta u2 = new Ruta("0000","bperez2210","Bryan","Perez","sdfdsfs","Lobo",new Date(),true);
 //        RutaDAO pDao = new RutaDAO();
         RutaBL pDao = new RutaBL();
-        Ruta u2=new Ruta(1,100, 200);
+        Ruta u2=new Ruta(1,100, 200,0);
 //        uBL.save(u2);
         pDao.save(u2);
     }
