@@ -13,7 +13,7 @@ function creaCkecking(){
     $("#crearAsientos").html();
     var avion = $("#crearAsientos").append($("<ol class='cabin fuselage' id='fus'>"));
     var column = 'A';
-    for(var f=1;f<7;f++){
+    for(var f=1;f<8;f++){
         var fila = $("#fus").append("<li class='row--"+f+"' id='fil"+f+"'>");
         var fila2 = $("#fil"+f).append("<ol class='row seats' type='A' id='colum"+f+"'>");
         for(var c=1;c<7;c++){

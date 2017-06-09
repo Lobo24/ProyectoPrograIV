@@ -263,3 +263,31 @@ and open the template in the editor.
     float:right;
     margin-top: -68px;
 }
+#formComprar{
+    margin-left: 10%;
+}
+#formEligeAviones{
+    margin-top: 5%;
+    width: 50%;
+}
+#userInfo{
+    position: relative; left: 150px; top: -150px;
+    float: left;
+    border: 5px solid #00394d;
+    width: 40%;
+}
+
+#userInfo h3{
+    text-align: center;
+}
+#userInfo p{
+    font-family: 'Raleway', sans-serif;
+    margin-left: 20px;
+}
+
+#divde{
+    position: relative; top: 120px;
+    width: 100%;
+    height: 5px;
+    background: gray;
+}

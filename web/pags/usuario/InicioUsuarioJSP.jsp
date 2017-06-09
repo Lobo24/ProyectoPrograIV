@@ -4,7 +4,25 @@
     Author     : admin
 --%>
 
+<%@page import="cr.ac.una.prograiv.project.domain.Usuario"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
+<%@page import="java.util.*" session="true" %>
+
+<%
+    HttpSession sesion = request.getSession(true);
+    String tipoUsuario = "";
+    Usuario usuario = null;
+    if(sesion!=null){
+        if (sesion.getAttribute("usuario")  == null) {
+        }else{
+            tipoUsuario = (String)sesion.getAttribute("tipoUsuario");
+            usuario = (Usuario)sesion.getAttribute("usuario");
+        }
+    }else{
+        response.sendRedirect("InicioJSP.jsp");
+    }
+%>
+
 <!DOCTYPE html>
 <html>
     <head>
@@ -50,7 +68,7 @@
                     <ul class="nav navbar-nav">
                         <li class="active"><a href="#">Inicio</a></li>
                         <li><a href="#">Vuelos Disponibles</a></li>
-                        <li><a href="#">Comprar boletos</a></li>
+                        <li><a href="ComprarBoletoJSP.jsp">Comprar boletos</a></li>
                         <li><a href="#">Descuentos disponibles</a></li>
                     </ul>             
                     <div class="nav navbar-nav navbar-right" id="menuLogSign">
@@ -59,6 +77,7 @@
                 </div>
             </nav> <!--Navbar-->
         </div>
+        <!-- ********************************************************** -->
         <!-- ********************************************************** -->
         <img src="../../imagenes/Banner/Banner1.png" alt="" id="banner1"/>
         

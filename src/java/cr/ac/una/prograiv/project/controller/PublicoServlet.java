@@ -42,21 +42,26 @@ public class PublicoServlet extends HttpServlet {
         try {
             Usuario usuario = new Usuario();
             UsuarioBL uBL = new UsuarioBL();
-            HttpSession session = request.getSession();
             String accion = request.getParameter("accion");
             Thread.sleep(1000);
             
             switch(accion){
                 case "loginUsuario":
+                     
                     usuario = uBL.findByNombreUsuario(request.getParameter("nombreUsuario"));
                     if(usuario==null){ out.print("E~Usuario no registrado en el sistema");}
                     if(usuario != null){
                         if(!usuario.getContrasena().equals(request.getParameter("contrasena"))){
                              out.print("E~Usuario o contraseña incorrectos");
                         }else{
+                            HttpSession session = request.getSession(true); 
+                            session.setAttribute("usuario", usuario); 
+                            session.setAttribute("loginStatus", "login");
                             if(usuario.isAdmin()){
+                                session.setAttribute("tipoUsuario", "admin");
                                 out.print("A~ProyectoPrograIV/pags/admin/UsuariosJSP.jsp");
                             }else{
+                                session.setAttribute("tipoUsuario", "usuario");
                                 out.print("U~ProyectoPrograIV/pags/usuario/InicioUsuarioJSP.jsp");
                             }
                         }
