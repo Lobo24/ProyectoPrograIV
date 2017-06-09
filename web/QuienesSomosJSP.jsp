@@ -95,12 +95,12 @@
             <div class="modal fade" id="myModalRegistro" role="dialog">
                 <div class="modal-dialog">
                     <!-- Modal content-->
-                    <div class="modal-content">
+                    <div class="modal-content fondoForm">
                         <div class="modal-header">
-                            <button type="button" class="close" data-dismiss="modal" onclick="limpiarForm()">&times;</button>
-                            <h4 class="modal-title">Inscripción Usuario</h4>
+                            <button type="button" class="close btn-danger" data-dismiss="modal" onclick="limpiarForm()">&times;</button>
+                            <h2 class="text-center colorVerde modal-title">Registro de Usuario</h2>
                         </div>
-                        <div class="modal-body" id="modalForm">
+                        <div class=" colorAzul modal-body" id="modalForm">
                             <form class="form-horizontal" role="form" id="formRegistro">
                                 <div class="form-group" id="groupidUsuario">
                                     <label for="usuario" class="col-lg-2 control-label">Identificación</label>
@@ -171,8 +171,8 @@
                                         <input type="text" id="direccion_sign" class="form-control" placeholder="Ciudad">
                                     </div>
                                 </div>
-                                <div class="modal-footer buttonOpt" >
-                                    <button type="button" class="btn btn-default" data-dismiss="modal" onclick="limpiarForm()">Cerrar</button>
+                                <div class="modal-footer container buttonOpt" >
+                                    <button type="button" class=" text-center col-lg-2 btn btn-danger" data-dismiss="modal" onclick="limpiarForm()">Cancelar</button>
                                     <button type="button" class="btn btn-primary"  onclick="registro()">Registrarse</button>
                                 </div>
                                 <div class="form-group" >
@@ -187,23 +187,22 @@
                 </div>
             </div>
         </div>  <!--Registro-->
-
         <!-- ********************************************************** -->
         <!-- MODAL INGRESO LOGIN -->
         <!-- ********************************************************** -->
 
 
-        <div class="container">
+         <div class="container">
             <!-- Modal -->
             <div class="modal fade" id="myModalIngreso" role="dialog">
                 <div class="modal-dialog">
                     <!-- Modal content-->
-                    <div class="modal-content">
+                    <div class="modal-content fondoForm">
                         <div class="modal-header">
-                            <button type="button" class="close" data-dismiss="modal" onclick="limpiarForm()">&times;</button>
-                            <h4 class="modal-title">Ingreso Usuario</h4>
+                            <button type="button" class="btn-danger close" data-dismiss="modal" onclick="limpiarForm()">&times;</button>
+                            <h2 class="text-center colorVerde modal-title">Ingreso Usuario</h2>
                         </div>
-                        <div class="modal-body" id="modalForm">
+                        <div class=" colorAzul modal-body" id="modalForm">
                             <form class="form-horizontal" role="form" id="formLogin">
                                 <div class="form-group">
                                     <div>
@@ -222,7 +221,7 @@
                                         <div class="glyphicon glyphicon-lock glyphiconIngreso" ></div>
                                     </div>
                                 </div><div class="modal-footer buttonOpt" >
-                                    <button type="button" class="btn btn-default" data-dismiss="modal" onclick="limpiarForm()">Cerrar</button>
+                                    <button type="button" class="text-center col-lg-2 btn btn-danger" data-dismiss="modal" onclick="limpiarForm()">Cancelar</button>
                                     <button type="button" class="btn btn-primary" onclick="logueo()" data-dismiss="modal">Ingresar</button>
                                 </div>
                                 <div class="form-group" >
@@ -236,13 +235,13 @@
                     </div>
                 </div>
             </div>
-        </div>     
-        
+        </div>
+
         <!-- ********************************************************** -->
         <!-- INFO  -->
         <!-- ********************************************************** -->
-        
-        
+
+
         <div class="col-sm-6 col-md-6 col-lg-6 espacio1 bg-success">
             <p class="titulos1">Visión</p>
             <p class="texto">
@@ -322,7 +321,7 @@
                 del momento seleccionadas por nuestro Dpto. de producto, de manera gratuita.</p>
         </div>
         <div class="col-sm-3 col-md-3 col-lg-3 espacio4 bg-success" ></div>
-       <div class="col-sm-12 col-md-12 col-lg-12 espacio1 bg-success">
+        <div class="col-sm-12 col-md-12 col-lg-12 espacio1 bg-success">
             <p class="titulos1">Dónde estámos</p>
             <p class="texto1">   
                 Nuestra oficina se encuentra en un lugar privilegiado y tranquilo, muy cerca del 

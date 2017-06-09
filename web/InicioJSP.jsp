@@ -141,12 +141,12 @@
             <div class="modal fade" id="myModalRegistro" role="dialog">
                 <div class="modal-dialog">
                     <!-- Modal content-->
-                    <div class="modal-content">
+                    <div class="modal-content fondoForm">
                         <div class="modal-header">
-                            <button type="button" class="close" data-dismiss="modal" onclick="limpiarForm()">&times;</button>
-                            <h4 class="modal-title">Inscripción Usuario</h4>
+                            <button type="button" class="close btn-danger" data-dismiss="modal" onclick="limpiarForm()">&times;</button>
+                            <h2 class="text-center colorVerde modal-title">Registro de Usuario</h2>
                         </div>
-                        <div class="modal-body" id="modalForm">
+                        <div class=" colorAzul modal-body" id="modalForm">
                             <form class="form-horizontal" role="form" id="formRegistro">
                                 <div class="form-group" id="groupidUsuario">
                                     <label for="usuario" class="col-lg-2 control-label">Identificación</label>
@@ -217,8 +217,8 @@
                                         <input type="text" id="direccion_sign" class="form-control" placeholder="Ciudad">
                                     </div>
                                 </div>
-                                <div class="modal-footer buttonOpt" >
-                                    <button type="button" class="btn btn-default" data-dismiss="modal" onclick="limpiarForm()">Cerrar</button>
+                                <div class="modal-footer container buttonOpt" >
+                                    <button type="button" class=" text-center col-lg-2 btn btn-danger" data-dismiss="modal" onclick="limpiarForm()">Cancelar</button>
                                     <button type="button" class="btn btn-primary"  onclick="registro()">Registrarse</button>
                                 </div>
                                 <div class="form-group" >
@@ -244,12 +244,12 @@
             <div class="modal fade" id="myModalIngreso" role="dialog">
                 <div class="modal-dialog">
                     <!-- Modal content-->
-                    <div class="modal-content">
+                    <div class="modal-content fondoForm">
                         <div class="modal-header">
-                            <button type="button" class="close" data-dismiss="modal" onclick="limpiarForm()">&times;</button>
-                            <h4 class="modal-title">Ingreso Usuario</h4>
+                            <button type="button" class="btn-danger close" data-dismiss="modal" onclick="limpiarForm()">&times;</button>
+                            <h2 class="text-center colorVerde modal-title">Ingreso Usuario</h2>
                         </div>
-                        <div class="modal-body" id="modalForm">
+                        <div class=" colorAzul modal-body" id="modalForm">
                             <form class="form-horizontal" role="form" id="formLogin">
                                 <div class="form-group">
                                     <div>
@@ -268,7 +268,7 @@
                                         <div class="glyphicon glyphicon-lock glyphiconIngreso" ></div>
                                     </div>
                                 </div><div class="modal-footer buttonOpt" >
-                                    <button type="button" class="btn btn-default" data-dismiss="modal" onclick="limpiarForm()">Cerrar</button>
+                                    <button type="button" class="text-center col-lg-2 btn btn-danger" data-dismiss="modal" onclick="limpiarForm()">Cancelar</button>
                                     <button type="button" class="btn btn-primary" onclick="logueo()" data-dismiss="modal">Ingresar</button>
                                 </div>
                                 <div class="form-group" >

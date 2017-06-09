@@ -21,7 +21,7 @@
         <script src="js/PublicoJS.js" type="text/javascript"></script>
     </head>
     <body class="bg-success">
-      <!-- ********************************************************** -->
+        <!-- ********************************************************** -->
         <!-- MODAL PARA MOSTRAR MENSAJES  -->
         <!-- ********************************************************** -->
 
@@ -94,12 +94,12 @@
             <div class="modal fade" id="myModalRegistro" role="dialog">
                 <div class="modal-dialog">
                     <!-- Modal content-->
-                    <div class="modal-content">
+                    <div class="modal-content fondoForm">
                         <div class="modal-header">
-                            <button type="button" class="close" data-dismiss="modal" onclick="limpiarForm()">&times;</button>
-                            <h4 class="modal-title">Inscripción Usuario</h4>
+                            <button type="button" class="close btn-danger" data-dismiss="modal" onclick="limpiarForm()">&times;</button>
+                            <h2 class="text-center colorVerde modal-title">Registro de Usuario</h2>
                         </div>
-                        <div class="modal-body" id="modalForm">
+                        <div class=" colorAzul modal-body" id="modalForm">
                             <form class="form-horizontal" role="form" id="formRegistro">
                                 <div class="form-group" id="groupidUsuario">
                                     <label for="usuario" class="col-lg-2 control-label">Identificación</label>
@@ -170,8 +170,8 @@
                                         <input type="text" id="direccion_sign" class="form-control" placeholder="Ciudad">
                                     </div>
                                 </div>
-                                <div class="modal-footer buttonOpt" >
-                                    <button type="button" class="btn btn-default" data-dismiss="modal" onclick="limpiarForm()">Cerrar</button>
+                                <div class="modal-footer container buttonOpt" >
+                                    <button type="button" class=" text-center col-lg-2 btn btn-danger" data-dismiss="modal" onclick="limpiarForm()">Cancelar</button>
                                     <button type="button" class="btn btn-primary"  onclick="registro()">Registrarse</button>
                                 </div>
                                 <div class="form-group" >
@@ -186,7 +186,6 @@
                 </div>
             </div>
         </div>  <!--Registro-->
-
         <!-- ********************************************************** -->
         <!-- MODAL INGRESO LOGIN -->
         <!-- ********************************************************** -->
@@ -197,12 +196,12 @@
             <div class="modal fade" id="myModalIngreso" role="dialog">
                 <div class="modal-dialog">
                     <!-- Modal content-->
-                    <div class="modal-content">
+                    <div class="modal-content fondoForm">
                         <div class="modal-header">
-                            <button type="button" class="close" data-dismiss="modal" onclick="limpiarForm()">&times;</button>
-                            <h4 class="modal-title">Ingreso Usuario</h4>
+                            <button type="button" class="btn-danger close" data-dismiss="modal" onclick="limpiarForm()">&times;</button>
+                            <h2 class="text-center colorVerde modal-title">Ingreso Usuario</h2>
                         </div>
-                        <div class="modal-body" id="modalForm">
+                        <div class=" colorAzul modal-body" id="modalForm">
                             <form class="form-horizontal" role="form" id="formLogin">
                                 <div class="form-group">
                                     <div>
@@ -221,7 +220,7 @@
                                         <div class="glyphicon glyphicon-lock glyphiconIngreso" ></div>
                                     </div>
                                 </div><div class="modal-footer buttonOpt" >
-                                    <button type="button" class="btn btn-default" data-dismiss="modal" onclick="limpiarForm()">Cerrar</button>
+                                    <button type="button" class="text-center col-lg-2 btn btn-danger" data-dismiss="modal" onclick="limpiarForm()">Cancelar</button>
                                     <button type="button" class="btn btn-primary" onclick="logueo()" data-dismiss="modal">Ingresar</button>
                                 </div>
                                 <div class="form-group" >
@@ -235,41 +234,41 @@
                     </div>
                 </div>
             </div>
-        </div>     
-        
-        
+        </div>  
+
+
         <!-- ********************************************************** -->
         <!-- MAPA  -->
         <!-- ********************************************************** -->
         <!----> <h3 class="modal-title oficinas">Oficinas</h3>
         <div class="mapa">
-        <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d62867.597373497214!2d-84.23890192212515!3d9.998277992852325!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x8fa0f9a32e823a41%3A0xc545f9616eaf5b01!2sAeropuerto+Internacional+Juan+Santamar%C3%ADa!5e0!3m2!1ses!2scr!4v1492556102764" width="570" height="350" allowfullscreen></iframe>       
+            <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d62867.597373497214!2d-84.23890192212515!3d9.998277992852325!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x8fa0f9a32e823a41%3A0xc545f9616eaf5b01!2sAeropuerto+Internacional+Juan+Santamar%C3%ADa!5e0!3m2!1ses!2scr!4v1492556102764" width="570" height="350" allowfullscreen></iframe>       
         </div>
-               <div class="contacto">            
-             <form>
+        <div class="contacto">            
+            <form>
                 <div class="form-group">
                     <label for="nombre">Nombre</label>
                     <input type="text" class="form-control" id="exampleInputEmail1" placeholder="Nombre">
                 </div>
-                 <div class="form-group">
-                     <label for="correo">Correo</label>
-                     <input type="text" class="form-control" id="correo" placeholder="Correo">
-                 </div>
-                 <div class="checkbox">
-                     <label>
-                         <input type="checkbox">Recordar
-                     </label>
-                 </div>
-                 <div class="form-group">
-                     <label for="escribanos">Escribanos</label>
-                     <input type="text" id="escribanos">
-                     <p class="help-block">Solo texto.</p>
-                 </div> 
-             </form>
-             <button type="submit" class="btn btn-primary enviar">Enviar</button>
-             <br>
-             <b> Teléfonos:</b> <br>8998-9889<br>8888-8888 <br>
-             <b>Correos:</b> <br> aerotiquets12@gmail.com <br> viajetiquets23@hotmail.com <br>
+                <div class="form-group">
+                    <label for="correo">Correo</label>
+                    <input type="text" class="form-control" id="correo" placeholder="Correo">
+                </div>
+                <div class="checkbox">
+                    <label>
+                        <input type="checkbox">Recordar
+                    </label>
+                </div>
+                <div class="form-group">
+                    <label for="escribanos">Escribanos</label>
+                    <input type="text" id="escribanos">
+                    <p class="help-block">Solo texto.</p>
+                </div> 
+            </form>
+            <button type="submit" class="btn btn-primary enviar">Enviar</button>
+            <br>
+            <b> Teléfonos:</b> <br>8998-9889<br>8888-8888 <br>
+            <b>Correos:</b> <br> aerotiquets12@gmail.com <br> viajetiquets23@hotmail.com <br>
         </div>
     </body>
 </html>
