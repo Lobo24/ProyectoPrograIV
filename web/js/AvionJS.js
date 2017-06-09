@@ -104,7 +104,7 @@ function consultarTipoAvionAv() {
     $.ajax({
         url: '../../TipoAvionServlet',
         data: {
-            accion: "consultarTipoAviones"
+            accion: "consultarTipoAvion"
         },
         error: function () {
             alert("Se presento un error a la hora de cargar la información de las los tipos de aviones en la base de datos");
