@@ -240,7 +240,7 @@ function dibujarFilaAvi(rowData) {
     row.append($("<td>" + rowData.idAvion + "</td>"));
     row.append($("<td>" + rowData.aerolineao.nombre + "</td>"));
     row.append($("<td>" + rowData.tipoAviono.marca + "-" +
-            rowData.tipoAviono.modelo + "</td>"));
+    rowData.tipoAviono.modelo + "</td>"));
     row.append($("<td>" + rowData.rutao.paisOrigen.nombre +"-"+ rowData.rutao.paisDestino.nombre + "</td>"));
     row.append($("<td>" + rowData.horarioSalida + "</td>"));
     row.append($("<td>" + rowData.horarioLlegada + "</td>"));
