@@ -35,11 +35,12 @@ function creaCkecking(){
 }
 
 function encuentraCampos(fila,column){
+    var avionId = $("#avionSelect").val();
     var col = 'A';
     for(var f=0;f<fila;f++){
         for(var c=0;f<column;c++){
             if($('#'+f+""+c).val()==="checked"){
-                //guardad en servlet
+                registroAsiento(f+""+c,avionId);
             }
             col = String.fromCharCode(col.charCodeAt(0) + 1);
         }
@@ -47,16 +48,13 @@ function encuentraCampos(fila,column){
     column = 'A';
 }
 
-function registroAsiento(){
+function registroAsiento(idAsiento,idAvion){
     $.ajax({
             url: '../../AsientoServlet',
             data: {
                 accion: "registraAsiento",
-                idAerolinea: $("#aerolineaAux").val(),
-                nombre: $("#nombre").val(),
-                pais: $("#pais").val(),
-                email: $("#email").val(),
-                telefono: $("#telefono").val()
+                idAsiento: idAsiento,
+                idAvion: idAvion,
             },
             error: function () { //si existe un error en la respuesta del ajax
                 mostrarMensaje("alert alert-danger", "Se genero un error, contacte al administrador (Error del ajax)", "Error!");
@@ -65,9 +63,7 @@ function registroAsiento(){
                 var respuestaTxt = data.substring(2);
                 var tipoRespuesta = data.substring(0, 2);
                 if (tipoRespuesta === "C~") {
-                    mostrarMensaje("alert alert-success", respuestaTxt, "Correcto!");
-                    $("#myModalFormulario").modal("hide");
-                    consultarAerolineas(1);
+                    //mostrarMensaje("alert alert-success", respuestaTxt, "Correcto!");
                 } else {
                     if (tipoRespuesta === "E~") {
                         mostrarMensaje("alert alert-danger", respuestaTxt, "Error!");
