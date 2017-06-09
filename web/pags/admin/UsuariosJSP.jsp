@@ -4,7 +4,22 @@
     Author     : lobo
 --%>
 
+<%@page import="cr.ac.una.prograiv.project.domain.Usuario"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
+<%
+    HttpSession sesion = request.getSession(true);
+    String tipoUsuario = "";
+    Usuario usuario = null;
+    if(sesion!=null){
+        if (sesion.getAttribute("usuario")  == null) {
+        }else{
+            tipoUsuario = (String)sesion.getAttribute("tipoUsuario");
+            usuario = (Usuario)sesion.getAttribute("usuario");
+        }
+    }else{
+        response.sendRedirect("InicioJSP.jsp");
+    }
+%>
 <!DOCTYPE html>
 <html>
     <head>
