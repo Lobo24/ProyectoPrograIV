@@ -45,25 +45,36 @@ public class TipoAvionServlet extends HttpServlet {
             
             String accion = request.getParameter("accion");
             switch(accion){
-                case "consultarTipoAviones":
+                case "consultarTipoAvion":
                     json = new Gson().toJson(uBL.findAll(TipoAvion.class.getName()));
                     out.print(json);
                     break;
-                case "registroTipoAvion":
+                case "buscarTipoAvion":
+                    json = new Gson().toJson(uBL.findById(Integer.parseInt(request.getParameter("idTipoAvion"))));
+                    out.print(json);
+                    break;
+                case "eliminarTipoAvion":
+                        tipo.setIdTipo(Integer.parseInt(request.getParameter("idTipoAvion")));
+                        uBL.delete(tipo);
+                        out.print("El tipo de avion fue eliminado correctamente");
+                    break;
+                case "registroTipoAvion": case "modificarTipoAvion":
                     tipo.setMarca(request.getParameter("marca"));
                     tipo.setModelo(request.getParameter("modelo"));
                     tipo.setAño(Integer.valueOf(request.getParameter("año")));
                     tipo.setCantAsientosPorFila(Integer.valueOf(request.getParameter("asientosPorFila")));
                     tipo.setCantPasajeros(Integer.valueOf(request.getParameter("pasajeros")));
                     tipo.setCantFila(Integer.valueOf(request.getParameter("filas")));
+                    if(accion.equals("registroTipoAvion")){
                     uBL.save(tipo);
-                    out.print("C~El tipo de avion se ingreso correctamente ");
+                    out.print("C~El tipo de avión se guardó correctamente");
+                    }else{
+                        tipo.setIdTipo(Integer.parseInt(request.getParameter("idTipo")));
+                        uBL.merge(tipo);
+                        out.print("C~El tipo de vión se modificó correctamente");
+                    }
                     break;
-                case "borrarAerolinea":
-                    out.print("C~La Aeroline se borró con éxito");
-                    tipo=uBL.findById(Integer.valueOf(request.getParameter("idTipoAvion")));
-                    uBL.delete(tipo);
-                    break;
+               
                 default:
                     out.print("E~No se indico la acción que se desea realizare");
                     break;                 

@@ -216,7 +216,7 @@ function eliminarAerolinea(idAerolinea) {
 }
 function modificarAerolinea(idAerolinea) {
     $("#aerolineasAction").val("modificarAerolinea");
-    mostrarModal("myModal", "Espere por favor..", "Buscando nombre en la base de datos");
+    mostrarModal("myModal", "Espere por favor..", "Buscando aerolinea en la base de datos");
     //Se envia la información por ajax
     $.ajax({
         url: '../../AerolineaServlet',
@@ -225,7 +225,7 @@ function modificarAerolinea(idAerolinea) {
             idAerolinea: idAerolinea
         },
         error: function () { //si existe un error en la respuesta del ajax
-            alert("Se presento un error a la hora de buscar las personas en la base de datos");
+            alert("Se presento un error a la hora de buscar la aerolinea en la base de datos");
         },
         success: function (data) { //si todo esta correcto en la respuesta del ajax, la respuesta queda en el data
             cargaAerolineas(data);
@@ -239,58 +239,6 @@ function modificarAerolinea(idAerolinea) {
     
 }
 
-function consultarAerolineaByID(idAerolinea) {
-    mostrarModal("myModal", "Espere por favor..", "Consultando la persona seleccionada");
-    //Se envia la información por ajax
-    $.ajax({
-        url: 'AerolineaServlet',
-        data: {
-            accion: "consultarAerolineaByID",
-            idAerolinea: idAerolinea
-        },
-        error: function () { //si existe un error en la respuesta del ajax
-            cambiarMensajeModal("myModal", "Resultado acción", "Se presento un error, contactar al administador");
-        },
-        success: function (data) { //si todo esta correcto en la respuesta del ajax, la respuesta queda en el data
-            // se oculta el mensaje de espera
-            ocultarModal("myModal");
-            limpiarForm();
-            //se muestra el formulario
-            $("#myModalFormulario").modal();
-
-            //************************************************************************
-            //carga información de la persona en el formulario
-            //************************************************************************
-            //se indicar que la cédula es solo readOnly
-            $("#cedula").attr('readonly', 'readonly');
-
-            //se modificar el hidden que indicar el tipo de accion que se esta realizando
-            $("#aerolineasAction").val("modificarAerolinea");
-
-            //se carga la información en el formulario
-            $("#cedula").val(data.pkCedula);
-            $("#nombre").val(data.nombre);
-            $("#apellido1").val(data.apellido1);
-            $("#apellido2").val(data.apellido2);
-
-            //carga de fecha
-            var fecha = new Date(data.fecNacimiento);
-
-
-            var fechatxt = fecha.getDate() + "/" + fecha.getMonth() + 1 + "/" + fecha.getFullYear();
-            $("#dpFechaNacimiento").data({date: fechatxt});
-            $("#dpFechaNacimientoText").val(fechatxt);
-
-            //$("#dpFechaNacimiento")$('.datepicker').datepicker('update', new Date(2011, 2, 5));
-            $("#sexo").val(data.sexo);
-            $("#observaciones").val(data.observaciones);
-        },
-        type: 'POST',
-        dataType: "json"
-    });
-}
-
-//Por hacer
 function mostrarMensaje(classCss, msg, neg) {
     //se le eliminan los estilos al mensaje
     $("#mesajeResult").removeClass();
