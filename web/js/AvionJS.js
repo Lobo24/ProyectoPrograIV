@@ -7,7 +7,6 @@ var avTipos = [];
 var avRutas = [];
 var avPaises = [];
 var avAerolineas = [];
-
 $(function () {
     $("#enviar").click(function () {
         enviar();

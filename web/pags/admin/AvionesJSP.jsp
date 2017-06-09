@@ -17,7 +17,7 @@
             usuario = (Usuario)sesion.getAttribute("usuario");
         }
     }else{
-        response.sendRedirect("InicioJSP.jsp");
+        response.sendRedirect("../InicioJSP.jsp");
     }
 %>
 <!DOCTYPE html>

@@ -271,15 +271,18 @@ and open the template in the editor.
     width: 50%;
 }
 #userInfo{
-    position: relative; left: 150px; top: -150px;
-    float: left;
+    float: right;
+    position: relative; left: -150px; top: -250px;
+    
     border: 5px solid #00394d;
     width: 40%;
 }
 
 #userInfo h3{
     text-align: center;
-    background:window;
+    background: #ccc;
+    margin-top: 0;
+    color: black;
 }
 #userInfo p{
     font-family: 'Raleway', sans-serif;

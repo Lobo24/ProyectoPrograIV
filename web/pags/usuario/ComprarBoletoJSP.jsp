@@ -17,7 +17,7 @@
             usuario = (Usuario) sesion.getAttribute("usuario");
         }
     } else {
-        response.sendRedirect("InicioJSP.jsp");
+        response.sendRedirect("../InicioJSP.jsp");
     }
 %>
 <!DOCTYPE html>
@@ -36,6 +36,8 @@
         <link href="../../css/datetimepicker.min.css" rel="stylesheet" type="text/css"/>
         <script src="../../js/AvionJS.js" type="text/javascript"></script>
         <link href="https://fonts.googleapis.com/css?family=Raleway" rel="stylesheet"> 
+        <link href="../../css/checkin.css" rel="stylesheet" type="text/css"/>
+        <script src="../../js/ReservaJS.js" type="text/javascript"></script>
     </head>
     <body>
         <!-- ********************************************************** -->
@@ -80,46 +82,40 @@
         <!-- ********************************************************** -->
         <!-- FORMULARIO -->
         <!-- ********************************************************** -->
-        <div id="formComprar">
-            <form role="form" onsubmit="return false;" id="formEligeAviones">
-                <div id="formCamposAviones">
-                    <div class="row">
-                        <div class="form-group col-sm-6" id="groupAerolinea">
-                            <label for="aerolinea">Aerolinea</label>
-                            <select class="form-control" id="aerolinea">
-                                <option val="0">Seleccione una aerolinea</option>
-                            </select>
-                        </div>
-                        <div class="form-group col-sm-6" id="groupTipo">
-                            <label for="tipo" align="center">Tipo de avión</label>
-                            <select class="form-control" id="tipoAvion">
-                                <option val="0">Seleccione un tipo de avión</option>
-                            </select>
-                        </div>
-                    </div>
-                    <div class="row">
-                        <div class="form-group col-sm-6">
-                            <label for="salida" align="center">Salida</label>
-                            <div class="input-group date" id="groupSalida">
-                                <input type="text" id="salida" class="form-control"  readonly/>
-                                <span class="input-group-addon">
-                                    <i class="glyphicon glyphicon-calendar"></i>
-                                </span>
+        <div style="width: 50%;">
+            <div align="center" id="formComprar">
+            <div class="panel">
+                <div class="panel-heading panel-id">
+                    <div class="col-sm-12">
+                        <form role="form" onsubmit="return false;" id="formAviones" class="form-horizontal centered">
+                            <div class="form-group" id="groupNombreAvi">
+                                <div class="col-sm-4" style="text-align: right; vertical-align: middle;">
+                                    <p><b>Buscar por ruta:</b></p>
+                                </div>
+                                <div class="col-sm-4">
+                                    <input type="text" class="form-control" id="buscarAvi" placeholder="Digite una ruta">
+                                </div>
+                                <div class="col-sm-4">
+                                    <button type="button" onclick="busquedaPersonas()" class="btn btn-info centered">
+                                        Buscar <span class="glyphicon glyphicon-search"></span>
+                                    </button>
+                                </div>
                             </div>
-                        </div>
-                        <div class="form-group col-sm-6" id="groupLlegada">
-                            <label for="llegada">Llegada</label>
-                            <input type="text" class="form-control" readonly id="llegada" placeholder="llegada" >
-                        </div>
-                    </div>
-                    <div class="form-group  col-sm-6" id="groupRuta" style="margin-left: 200px;">
-                        <label for="ruta">Ruta</label>
-                        <select class="form-control" id="ruta">
-                            <option val="0">Seleccione una ruta</option>
-                        </select>
+                        </form>
                     </div>
                 </div>
-            </form>
+                <div class="panel-body">
+                    <table class="table table-hover table-condensed" id="tablaAviones">
+
+                    </table>
+                </div>
+                <div class="panel-footer">
+                    <ul class="pagination justify-content-center" id="paginacionOpcAvi"></ul>
+                    <br>
+                    Nota: Acciones validas dependeran del rol del usuario
+                </div>
+            </div>
+            </div>
         </div>
 
         <!-- Datos usuario -->
@@ -148,14 +144,14 @@
             <div class="modal-dialog">
                 <div class="modal-content">
                     <div class="modal-header">
-                        <h4><b>Seleccion de asientos</b><h4>
+                        <h4><b>Selección de asientos</b><h4>
                                 </div>
-                                <div style="width: 300px;">
+                                <form style="width: 300px; margin-left: 10%;" id="formElige">
                                     <div id="crearAsientos"></div>
-                                </div>
+                                </form>
                                 <div class="modal-footer">
                                     <button type="button" class="btn btn-default" data-dismiss="modal">Cancelar</button>
-                                    <button class="btn btn-danger btn-ok" id="eliminar" value="" data-dismiss="modal">Eliminar</button>
+                                    <button class="btn btn-success btn-ok" id="eliminar" value="" data-dismiss="modal">Confirmar</button>
                                 </div>
                     </div>
                 </div>

@@ -28,6 +28,10 @@
         <servlet-name>PaisServlet</servlet-name>
         <servlet-class>cr.ac.una.prograiv.project.controller.PaisServlet</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>AsientoServlet</servlet-name>
+        <servlet-class>cr.ac.una.prograiv.project.controller.AsientoServlet</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>AvionServlet</servlet-name>
         <url-pattern>/AvionServlet</url-pattern>
@@ -55,6 +59,10 @@
     <servlet-mapping>
         <servlet-name>PaisServlet</servlet-name>
         <url-pattern>/PaisServlet</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>AsientoServlet</servlet-name>
+        <url-pattern>/AsientoServlet</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>
