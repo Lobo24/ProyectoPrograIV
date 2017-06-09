@@ -26,5 +26,8 @@
         <property name="ultimaFecha" type="timestamp">
             <column name="ultima_fecha" length="19" />
         </property>
+        <property name="tarifa" type="float">
+            <column name="tarifa " precision="12" scale="0" not-null="true"/>        
+        </property>
     </class>
 </hibernate-mapping>

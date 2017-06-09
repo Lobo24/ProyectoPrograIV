@@ -62,6 +62,7 @@ public class RutaServlet extends HttpServlet {
                     ruta.setDestino(Integer.parseInt(request.getParameter("destino")));
                     ruta.setMinutos(Integer.valueOf(request.getParameter("minutos")));
                     ruta.setDescuento(Float.valueOf(request.getParameter("descuento")));
+                    ruta.setTarifa(Float.valueOf(request.getParameter("tarifa")));
                     if(accion.equals("registroRutas")){
                         rBL.save(ruta);
                         out.print("C~La ruta se ingreso correctamente ");

@@ -176,11 +176,11 @@
                     </div>
                     <div class="modal-body">
                         <p>
-                            Desea eliminar a la persona de la base de datos, si confirma la acción la información no
+                            Desea eliminar la aerolínea de la base de datos?, si confirma la acción la información no
                             <br>
                             podrá ser recuperada de esta.
                             <br><br>
-                            Desea confirmar la eliminación de 
+                            Desea confirmar la eliminación de la aerolínea?
                             <span id="nombreEliminar">
 
                             </span>

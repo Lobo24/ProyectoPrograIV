@@ -25,7 +25,8 @@ $("#cantFilas").blur(function(){
 //******************************************************************************
 
 $(document).ready(function () {
-    consultarTipoAvion();
+    consultarTipoAvion(1);
+    paginador(1);
 });
 
 //******************************************************************************
@@ -34,19 +35,19 @@ $(document).ready(function () {
 //******************************************************************************
 //******************************************************************************
 
-function consultarTipoAvion() {
+function consultarTipoAvion(numpag) {
     mostrarModal("myModal", "Espere por favor..", "Consultando la información de los tipos de aviones en la base de datos");
     //Se envia la información por ajax
     $.ajax({
         url: '../../TipoAvionServlet',
         data: {
-            accion: "consultarTipoAviones"
+            accion: "consultarTipoAvion"
         },
         error: function () { //si existe un error en la respuesta del ajax
             alert("Se presento un error a la hora de cargar la información de las los tipos de aviones en la base de datos");
         },
         success: function (data) { //si todo esta correcto en la respuesta del ajax, la respuesta queda en el data
-            dibujarTabla(data);
+            dibujarTabla(numpag,data);
             // se oculta el modal esta funcion se encuentra en el utils.js
             ocultarModal("myModal");
 
@@ -56,7 +57,7 @@ function consultarTipoAvion() {
     });
 }
 
-function dibujarTabla(dataJson) {
+function dibujarTabla(numpag,dataJson) {
     //limpia la información que tiene la tabla
     $("#tablaTipoAvion").html("");
 
@@ -71,13 +72,15 @@ function dibujarTabla(dataJson) {
     row.append($("<th>Año</td>"));
     row.append($("<th>Filas</td>"));
     row.append($("<th>Asientos por fila</td>"));
-    row.append($("<th>Asientos</td>"));
+    row.append($("<th>Total de asientos</td>"));
     row.append($("<th>Último usuario</td>"));
     row.append($("<th>Fecha de modificación</td>"));
     row.append($("<th>Accion</td>"));
 
     //carga la tabla con el json devuelto
-    for (var i = 0; i < dataJson.length; i++) {
+    var cont = 0;
+    var i = 10 * (numpag-1);
+    for (; i < dataJson.length && (cont<10); i++, cont++) {
         dibujarFila(dataJson[i]);
     }
 }
@@ -89,20 +92,21 @@ function dibujarFila(rowData) {
     var row = $("<tr />");
     $("#tablaTipoAvion").append(row);
     row.append($("<td>" + rowData.idTipo + "</td>"));
-    row.append($("<td>" + rowData.marca + "</td>"));
     row.append($("<td>" + rowData.modelo + "</td>"));
+    row.append($("<td>" + rowData.marca + "</td>"));
     row.append($("<td>" + rowData.año + "</td>"));
     row.append($("<td>" + rowData.cantFila + "</td>"));
     row.append($("<td>" + rowData.cantAsientosPorFila + "</td>"));
     row.append($("<td>" + rowData.cantPasajeros + "</td>"));
     row.append($("<td>" + rowData.ultimoUsuario + "</td>"));
     row.append($("<td>" + rowData.ultmaFecha + "</td>"));    
-    row.append($('<td><button type="button" class="btn btn-default btn-xs" aria-label="Left Align" onclick="consultarTipoAvionByID(' + rowData.pkCedula + ');">' +
-            '<span class="glyphicon glyphicon-pencil" aria-hidden="true"></span>' +
-            '</button>' +
-            '<button type="button" class="btn btn-default btn-xs" aria-label="Left Align" onclick="eliminarTipoAvion(' + rowData.pkCedula + ');">' +
-            '<span class="glyphicon glyphicon-remove" aria-hidden="true"></span>' +
-            '</button></td>'));
+       
+    row.append($('<td><button type="button" class="btn btn-default btn-xs" aria-label="Left Align" onclick="modificarTipoAvion(' +rowData.idTipo + ')">'+
+                        '<span class="glyphicon glyphicon-pencil" aria-hidden="true"></span>'+
+                    '</button>'+
+                    '<button type="button" class="btn btn-default btn-xs" aria-label="Left Align" onclick="validaEliminacion('+ "'"+ rowData.modelo+ "'" +','+rowData.idTipo+')" data-target="#confirm-delete" data-toggle="modal">'+
+                        '<span class="glyphicon glyphicon-remove" aria-hidden="true"></span>'+
+                    '</button></td>'));
 }
 
 //******************************************************************************
@@ -114,10 +118,13 @@ function dibujarFila(rowData) {
 function enviar() {
     if (validar()) {
         //Se envia la información por ajax
+        var aux = $("#tipoAvionAction").val();
+        var aux2 = $("#tipoAvionAux").val();
         $.ajax({
             url: '../../TipoAvionServlet',
             data: {
-                accion: "registroTipoAvion",
+                accion: $("#tipoAvionAction").val(),
+                idTipo: $("#tipoAvionAux").val(),
                 marca: $("#marca").val(),
                 modelo: $("#modelo").val(),
                 año: $("#año").val(),
@@ -134,7 +141,7 @@ function enviar() {
                 if (tipoRespuesta === "C~") {
                     mostrarMensaje("alert alert-success", respuestaTxt, "Correcto!");
                     $("#myModalFormulario").modal("hide");
-                    consultarTipoAvion();
+                    consultarTipoAvion(1);
                 } else {
                     if (tipoRespuesta === "E~") {
                         mostrarMensaje("alert alert-danger", respuestaTxt, "Error!");
@@ -149,6 +156,7 @@ function enviar() {
     } else {
         mostrarMensaje("alert alert-danger", "Debe digitar los campos del formulario", "Error!");
     }
+    $("#tipoAvionAction").val("registroTipoAvion");
 }
 
 function validar() {
@@ -190,7 +198,12 @@ function validar() {
     }
     return validacion;
 }
-
+function validaEliminacion(modelo,id){
+    $('#modeloEliminar').text(modelo);
+    $('#eliminar').click(function () {
+        eliminarTipoAvion(id);
+    });
+}
 //******************************************************************************
 //******************************************************************************
 //metodos para eliminar los tipos de aviones
@@ -198,10 +211,10 @@ function validar() {
 //******************************************************************************
 
 function eliminarTipoAvion(idTipoAvion) {
-    mostrarModal("myModal", "Espere por favor..", "Se esta eliminando a la persona seleccionada");
+    mostrarModal("myModal", "Espere por favor..", "Se esta eliminando el tipo de avion seleccionado");
     //Se envia la información por ajax
     $.ajax({
-        url: 'TipoAvionServlet',
+        url: '../../TipoAvionServlet',
         data: {
             accion: "eliminarTipoAvion",
             idTipoAvion: idTipoAvion
@@ -216,7 +229,7 @@ function eliminarTipoAvion(idTipoAvion) {
             if (tipoRespuesta === "E~") {
                 cambiarMensajeModal("myModal", "Resultado acción", respuestaTxt);
             } else {
-                setTimeout(consultarTipoAvion, 3000);// hace una pausa y consulta la información de la base de datos
+                setTimeout(consultarTipoAvion(1), 3000);// hace una pausa y consulta la información de la base de datos
             }
         },
         type: 'POST',
@@ -224,68 +237,37 @@ function eliminarTipoAvion(idTipoAvion) {
     });
 }
 
+function modificarTipoAvion(idTipoAvion) {
+    $("#tipoAvionAction").val("modificarTipoAvion");
+    mostrarModal("myModal", "Espere por favor..", "Buscando tipo de avion en la base de datos");
+    //Se envia la información por ajax
+    $.ajax({
+        url: '../../TipoAvionServlet',
+        data: {
+            accion: "buscarTipoAvion",
+            idTipoAvion: idTipoAvion
+        },
+        error: function () { //si existe un error en la respuesta del ajax
+            alert("Se presento un error a la hora de buscar el tipo de avión en la base de datos");
+        },
+        success: function (data) { //si todo esta correcto en la respuesta del ajax, la respuesta queda en el data
+            cargaTipoAvion(data);
+            // se oculta el modal esta funcion se encuentra en el utils.js
+            ocultarModal("myModal");
+
+        },
+        type: 'GET',
+        dataType: "json"
+    });
+    
+}
 //******************************************************************************
 //******************************************************************************
 //metodos para eliminar los tipos de aviones
 //******************************************************************************
 //******************************************************************************
 
-function consultarTipoAvionByID(idTipoAvion) {
-    mostrarModal("myModal", "Espere por favor..", "Consultando la persona seleccionada");
-    //Se envia la información por ajax
-    $.ajax({
-        url: 'TipoAvionServlet',
-        data: {
-            accion: "consultarTipoAvionByID",
-            idTipoAvion: idTipoAvion
-        },
-        error: function () { //si existe un error en la respuesta del ajax
-            cambiarMensajeModal("myModal", "Resultado acción", "Se presento un error, contactar al administador");
-        },
-        success: function (data) { //si todo esta correcto en la respuesta del ajax, la respuesta queda en el data
-            // se oculta el mensaje de espera
-            ocultarModal("myModal");
-            limpiarForm();
-            //se muestra el formulario
-            $("#myModalFormulario").modal();
 
-            //************************************************************************
-            //carga información de la persona en el formulario
-            //************************************************************************
-            //se indicar que la cédula es solo readOnly
-            $("#cedula").attr('readonly', 'readonly');
-
-            //se modificar el hidden que indicar el tipo de accion que se esta realizando
-            $("#los tipos de avionesAction").val("modificarTipoAvion");
-
-            //se carga la información en el formulario
-            $("#cedula").val(data.pkCedula);
-            $("#nombre").val(data.nombre);
-            $("#apellido1").val(data.apellido1);
-            $("#apellido2").val(data.apellido2);
-
-            //carga de fecha
-            var fecha = new Date(data.fecNacimiento);
-
-
-            var fechatxt = fecha.getDate() + "/" + fecha.getMonth() + 1 + "/" + fecha.getFullYear();
-            $("#dpFechaNacimiento").data({date: fechatxt});
-            $("#dpFechaNacimientoText").val(fechatxt);
-
-            //$("#dpFechaNacimiento")$('.datepicker').datepicker('update', new Date(2011, 2, 5));
-            $("#sexo").val(data.sexo);
-            $("#observaciones").val(data.observaciones);
-        },
-        type: 'POST',
-        dataType: "json"
-    });
-}
-
-
-//******************************************************************************
-//******************************************************************************
-
-//Por hacer
 function mostrarMensaje(classCss, msg, neg) {
     //se le eliminan los estilos al mensaje
     $("#mesajeResult").removeClass();
@@ -317,3 +299,35 @@ function limpiarForm() {
     //Resetear el formulario
     $('#formTipoAvion').trigger("reset");
 }
+function paginador(pagAct){
+    var ini = 1;
+     $("#paginacionOpc").html("");
+    if(pagAct>5){
+        ini = pagAct - 5;
+        $("#paginacionOpc").append('<li onclick="paginador('+(ini-1)+')"><a>&laquo;</a></li>');
+    }else{
+        $("#paginacionOpc").append('<li onclick="paginador('+ini+')" ><a>&laquo;</a></li>');
+    }
+    for(var i=0;i<=10;i++,ini++){
+        if(ini===pagAct){
+            $("#paginacionOpc").append('<li class="active" onclick="consultarAerolineas('+ini+'),paginador('+ini+')"><a>'+ini+'</a></li> ');
+        }else{
+        $("#paginacionOpc").append('<li onclick="consultarAerolineas('+ini+'),paginador('+ini+')"><a>'+ini+'</a></li>');
+        }
+    }
+    $("#paginacionOpc").append('<li onclick="paginador('+(ini + 1)+')"><a>&raquo;</a></li>');
+}
+
+
+function cargaTipoAvion(TipoAvion){
+           $("#modelo").val(TipoAvion.modelo);
+           $("#marca").val(TipoAvion.marca);
+           $("#año").val(TipoAvion.año);
+           $("#cantPasajeros").val(TipoAvion.cantPasajeros);
+           $("#cantFila").val(TipoAvion.cantFila);
+           $("#cantAsientosPorFila").val(TipoAvion.cantAsientosPorFila);
+           $("#tipoAvionAux").val(TipoAvion.idTipo);
+           $("#myModalFormulario").modal();
+           $("#tipoAvionAction").val("modificarTipoAvion");
+}
+

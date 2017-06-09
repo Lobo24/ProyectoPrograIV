@@ -92,7 +92,7 @@
                                     <p><b>Buscar por tipo de avion</b></p>
                                 </div>
                                 <div class="col-sm-4">
-                                    <input type="text" class="form-control" id="buscarTipo" placeholder="Digite el nombre de la aerolinea">
+                                    <input type="text" class="form-control" id="buscarTipo" placeholder="Digite el modelo del tipo de avión">
                                 </div>
                                 <div class="col-sm-4">
                                     <button type="button" onclick="busquedaTipoAviones()" class="btn btn-info centered">
@@ -161,6 +161,8 @@
                                 <input type="text" class="form-control" id="cantPasajeros" placeholder="cantPasajeros" readonly="readonly" action="calcPasajeros()">
                             </div>
                             <div class="modal-footer buttonOpt" >
+                                <input type="hidden" value="registroTipoAvion" id="tipoAvionAction"/> 
+                                <input type="hidden"  id="tipoAvionAux"/>
                                 <button type="submit" id="enviar" class="btn btn-primary">Registrarse</button>
                                 <button type="reset" id="cancelar" class="btn btn-danger" data-dismiss="modal">Cerrar</button>
                             </div>
@@ -184,20 +186,20 @@
                                 </div>
                                 <div class="modal-body">
                                     <p>
-                                        Desea eliminar la aerolínea de la base de datos, si confirma la acción la información no
+                                        Desea eliminar el tipo de avion de la base de datos?, si confirma la acción la información no
                                         <br>
                                         podrá ser recuperada.
                                         <br><br>
-                                        Desea confirmar la eliminación de 
-                                        <span id="nombreEliminar">
+                                        Desea confirmar la eliminación del tipo de avión?
+                                        <span id="modeloEliminar">
 
                                         </span>
                                         ?
                                     <p>
                                 </div>
                                 <div class="modal-footer">
-                                    <button type="button" class="btn btn-default" data-dismiss="modal">Cancelar</button>
-                                    <button class="btn btn-danger btn-ok" id="eliminar" value="" data-dismiss="modal" onclick="borrar()">Eliminar</button>
+                                <button type="button" class="btn btn-default" data-dismiss="modal">Cancelar</button>
+                                <button class="btn btn-danger btn-ok" id="eliminar" value="" data-dismiss="modal">Eliminar</button>
                                 </div>
                     </div>
                 </div>
