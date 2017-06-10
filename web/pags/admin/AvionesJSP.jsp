@@ -113,7 +113,7 @@
                         <form role="form" onsubmit="return false;" id="formAviones" class="form-horizontal centered">
                             <div class="form-group" id="groupNombreAvi">
                                 <div class="col-sm-4" style="text-align: right; vertical-align: middle;">
-                                    <p><b>Buscar por nombre de la Aerolinea:</b></p>
+                                    <p><b>Buscar por fecha de salida:</b></p>
                                 </div>
                                 <div class="col-sm-4">
                                     <input type="text" class="form-control" id="buscarAvi" placeholder="Digite el nombre de la aerolinea">
@@ -144,18 +144,18 @@
         <!-- Modal -->
         <div class="modal fade" id="myModalRegistroAvion" role="dialog">
             <div class="modal-dialog modal-lg">
-                <div class="modal-content">      
+                <div class="modal-content fondoForm">      
                     <div class="modal-header">
                         <button type="button" class="close" data-dismiss="modal" onclick="limpiarForm()">&times;</button>
-                        <h4 class="modal-title" id="myModalTitle">Insertar Aviones
+                        <h2 class="modal-title text-center colorVerde" id="myModalTitle">Insertar Vuelos</h2>
                     </div>
                     <form role="form" onsubmit="return false;" id="formAviones">
-                        <div id="formCamposAviones">
+                        <div class="colorAzul" id="formCamposAviones">
                             <div class="row">
                                 <div class="form-group col-sm-6" id="groupAerolinea">
-                                    <label for="aerolinea">Aerolinea</label>
+                                    <label for="aerolinea">Avión</label>
                                     <select class="form-control" id="aerolinea">
-                                        <option val="0">Seleccione una aerolinea</option>
+                                        <option val="0">Seleccione un Avión</option>
                                     </select>
                                 </div>
                                 <div class="form-group col-sm-6" id="groupTipo">
@@ -190,12 +190,12 @@
                                 <button type="submit" id="enviar" class="btn btn-primary">Enviar</button>
                                 <button type="button" id="cancelar" class="btn btn-danger" data-dismiss="modal">Cerrar</button>
                             </div>
-                            <div class="form-group height25 hiddenDiv" >
+                            <!--<div class="form-group height25 hiddenDiv" >
                                 <div class="alert alert-success hiddenDiv" id="mesajeResult">
                                     <strong id="mesajeResultNeg">Info!</strong> 
                                     <span id="mesajeResultText">This alert box could indicate a neutral informative change or action.</span>
                                 </div>
-                            </div>
+                            </div>-->
                         </div>
                     </form>
                 </div>

@@ -139,7 +139,8 @@
          <!-- ********************************************************** -->
         <!-- Checking -->
         <!-- ********************************************************** -->
-
+        <input type="hidden"  id="filaAux" value="0"/> 
+        <input type="hidden"  id="columAux" value="0"/> 
         <div class="modal fade" id="mifor" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
             <div class="modal-dialog">
                 <div class="modal-content">
@@ -156,5 +157,15 @@
                     </div>
                 </div>
             </div>
+        
+        
+      
+        
+        <form action="https://www.paypal.com/cgi-bin/webscr" method="post" target="_top">
+            <input type="hidden" name="cmd" value="_s-xclick">
+            <input type="hidden" name="hosted_button_id" value="HCPHDM6GBJ9G6">
+            <input type="image" src="https://www.paypalobjects.com/es_XC/i/btn/btn_buynowCC_LG.gif" style="margin-left: 42%; margin-top: 20px;" name="submit" alt="PayPal - The safer, easier way to pay online!">
+            <img   alt="" border="0" src="https://www.paypalobjects.com/es_XC/i/scr/pixel.gif" width="1" height="1">
+        </form>
    </body>
 </html>

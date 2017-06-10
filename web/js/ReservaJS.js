@@ -6,21 +6,20 @@
 
 
 $(document).ready(function () {
-    creaCkecking();
 });
 
 function guardaCampo(idSilla){
     $("#" + idSilla).val("ckecked");
 }
 
-function creaCkecking(){
-    $("#crearAsientos").html();
+function creaCkecking(cantF,cantC){
+    $("#crearAsientos").html("");
     var avion = $("#crearAsientos").append($("<ol id='fus'>"));
     var column = 'A';
-    for(var f=1;f<8;f++){
+    for(var f=1;f<=cantF;f++){
         var fila = $("#fus").append("<li class='row--"+f+"' id='fil"+f+"'>");
         var fila2 = $("#fil"+f).append("<ol class='row seats' type='A' id='colum"+f+"'>");
-        for(var c=1;c<11;c++){
+        for(var c=1;c<=cantC;c++){
             $("#colum"+f).append(
                     "<li class='seat'>\n\
                     <input type='checkbox' id='"+f+""+column+"'/>\n\
@@ -54,7 +53,7 @@ function registroAsiento(idAsiento,idAvion){
             data: {
                 accion: "registraAsiento",
                 idAsiento: idAsiento,
-                idAvion: idAvion,
+                idAvion: idAvion
             },
             error: function () { //si existe un error en la respuesta del ajax
                 mostrarMensaje("alert alert-danger", "Se genero un error, contacte al administrador (Error del ajax)", "Error!");
@@ -121,6 +120,10 @@ function dibujarFilaAvi(rowData) {
     row.append($("<td>" + rowData.rutao.paisOrigen.nombre +"-"+ rowData.rutao.paisDestino.nombre + "</td>"));
     row.append($("<td>" + rowData.horarioSalida + "</td>"));
     row.append($("<td>" + rowData.horarioLlegada + "</td>"));
-    row.append($('<td><button type="button" class="btn btn-default btn-xs" aria-label="Left Align" onclick="modificarRuta(' + rowData.idRuta + ');">' +
+    row.append($('<td><button type="button" class="btn btn-default btn-xs" aria-label="Left Align" onclick="selectAvion('+rowData.tipoAviono.cantFila+',' + rowData.tipoAviono.cantAsientosPorFila+');">' +
             '<span class="glyphicon glyphicon-plus" aria-hidden="true"></span></button></td>'));
+}
+
+function selectAvion(filas,colum){
+    creaCkecking(filas,colum);
 }
