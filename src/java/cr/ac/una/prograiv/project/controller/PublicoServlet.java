@@ -68,9 +68,9 @@ public class PublicoServlet extends HttpServlet {
                     }
                     break;
                 case "registroUsuario":
-                    usuario.setIdUsuario(Integer.parseInt(request.getParameter("idUsuario")));
                     usuario.setContrasena(request.getParameter("contrasena"));
                     usuario.setNombreUsuario(request.getParameter("nombreUsuario"));
+                    usuario.setIdUsuario(Integer.parseInt(request.getParameter("idUsuario")));
                     usuario.setDireccion(request.getParameter("direccion"));
                     usuario.setNombre(request.getParameter("nombre"));
                     usuario.setApellido1(request.getParameter("apellido1"));
@@ -84,8 +84,6 @@ public class PublicoServlet extends HttpServlet {
                     usuario.setEmail(request.getParameter("correo"));
                     usuario.setAdmin(false);
                     usuario.setNumTel(request.getParameter("telefono"));
-                    usuario.setUltimaFecha(new Date());
-                    usuario.setUltimoUsuario("admin");
                     uBL.save(usuario);
                     break;
                 default:

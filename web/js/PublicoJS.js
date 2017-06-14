@@ -61,14 +61,13 @@ function registro(){
            accion: "registroUsuario",
            idUsuario: $("#usuarioid_sign").val(),
            nombreUsuario: $("#usuario_sign").val(),
-           telefono: $("#telefono_confirm_sign").val(),
+           telefono: $("#telefono").val(),
            correo: $("#correo_sign").val(),
            contrasena: $("#password_sign").val(),
            apellido1: $("#primer_ap_sign").val(),
            apellido2: $("#segundo_ap_sign").val(),
            nombre: $("#nombre_sign").val(),
            fechaNacimiento: $("#dpFechaNacimiento").data('date'),
-           nacionalidad: $("#nacionalidad_sign").val(),
            direccion: $("#direccion_sign").val()
        },
        error: function () { //si existe un error en la respuesta del ajax   
@@ -81,8 +80,8 @@ function registro(){
             if (tipoRespuesta === "E~") {
                 mostrarModal("myModal", "Se genero un error", respuestaTxt);
             }else{
-                mostrarModal("myModal","Registro de Usuarios",$("#nombre_sign").val() +" agregado con exito");
                 $('#myModalRegistro').modal("hide");
+                mostrarModal("myModal","Registro de Usuarios",$("#nombre_sign").val() +" agregado con exito");
                 limpiarForm();
            }
         },
@@ -103,7 +102,7 @@ function validar() {
     $("#groupprimerApellido").removeClass("has-error");
     $("#groupsegundoApellido").removeClass("has-error");
     $("#groupnombre").removeClass("has-error");
-    $("#groupnacionalidad").removeClass("has-error");
+    $("#groupTelefono").removeClass("has-error");
     $("#groupfechaNacimiento").removeClass("has-error");
     $("#groupdireccion").removeClass("has-error");
     if ($("#usuarioid_sign").val() === "") {
@@ -134,16 +133,20 @@ function validar() {
         $("#groupnombre").addClass("has-error");
         validacion = false;
     }
-    if ($("#nacionalidad_sign").val() === "") {
-        $("#groupnacionalidad").addClass("has-error");
-        validacion = false;
-    }
     if ($("#dpFechaNacimiento").data('date') === "") {
         $("#groupfechaNacimiento").addClass("has-error");
         validacion = false;
     }
     if ($("#direccion_sign").val() === "") {
         $("#groupdireccion").addClass("has-error");
+        validacion = false;
+    }
+    if ($("#telefono").val() === "") {
+        $("#groupTelefono").addClass("has-error");
+        validacion = false;
+    }
+    if ($("#correo_sign").val() === "") {
+        $("#groupcorreo").addClass("has-error");
         validacion = false;
     }
     return validacion;
@@ -176,4 +179,3 @@ function limpiarForm() {
     $('#formRegistro').trigger("reset");
     $('#formLogin').trigger("reset");
 }
-

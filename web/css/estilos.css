@@ -29,9 +29,9 @@ and open the template in the editor.
 }
 
 #encabezado h3{
-    position:absolute; right: 5%; top: 20%;
+    position:absolute; right: 5%; top: 20%; bottom: 20%;
     color: yellow;
-    font-size: 50px;
+    font-size: 3em;
     font-family: 'Satisfy', cursive;
 }
 
@@ -80,14 +80,6 @@ and open the template in the editor.
     width: 35%;
     height: 35%;
     padding-bottom: 10%;
-}
-
-#inputAux label{
-    margin-right: 5%;
-}
-
-#inputAux input{
-    width: 120%;
 }
 
 .buttonOpt{
@@ -225,8 +217,9 @@ and open the template in the editor.
 
 /**************************************************/
 .panel-id{
-    background: #08c;
+    background: #00394d;
     height: 55px;
+    color: yellow;
 }
 
 .panel{
@@ -301,6 +294,17 @@ and open the template in the editor.
 }
 .fondoForm{
     background: #00394d;
+    color: yellow;
+    font-family: 'Satisfy', cursive;
+    text-align: center;
+}
+#myModalRegistro{
+    text-align: center;
+    color: yellow;
+}
+
+.modal-body{
+    color: #00394d;
 }
 .colorVerde{
     color: yellow;
