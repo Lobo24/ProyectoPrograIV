@@ -55,7 +55,7 @@
         <!-- MENU -->
         <!-- ********************************************************** -->
 
-        <div id="navBar">
+        <div id="navBar" class="font-nav">
             <nav class="navbar navbar-inverse" role="navigation">
                 <div class="navbar-header">
                     <button type="button" class="navbar-toggle" data-toggle="collapse"
@@ -68,17 +68,10 @@
                 </div>
                 <div class="collapse navbar-collapse navbar-ex1-collapse">
                     <ul class="nav navbar-nav">
-                        <li class="active"><a href="InicioJSP.jsp">Inicio</a></li>
-                        <li><a href="#">Vuelos</a></li>
+                        <li class="active"><a href="InicioJSP.jsp" class="glyphicon glyphicon-home">  Inicio</a></li>
                         <li><a href="QuienesSomosJSP.jsp">Quiénes Somos</a></li>
                         <li><a href="ContactenosJSP.jsp">Contacto</a></li>
                     </ul>
-                    <form class="navbar-form navbar-left">
-                        <div class="form-group">
-                            <input type="text" class="form-control" placeholder="Buscar">
-                        </div>
-                        <button type="submit" class="btn btn-default">Buscar</button>
-                    </form>
                     <div class="nav navbar-nav navbar-right" id="menuLogSign">
                         <button type="button" class="btn btn-info glyphicon glyphicon-user" data-toggle="modal" data-target="#myModalRegistro"> Registrarse</button>
                         <button type="button" class="btn btn-success glyphicon glyphicon-log-in" data-toggle="modal" data-target="#myModalIngreso"> Entrar</button>
@@ -239,19 +232,27 @@
                                     <img src="imagenes/inicio/user-login-man-person-512.png" alt="" class="userIngreso"/>
                                 </div>
                             </div>
-                            <div class="fondoForm">
-                                <div class="input-group form-group col-sm-6">
-                                    <span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
-                                    <input type="text" id="usuario_login" class="form-control" placeholder="nombre de Usuario">
+                            <div>
+                                <div class="row">   
+                                    <div class="col-sm-2"></div>
+                                    <div class="input-group form-group col-sm-8">
+                                        <span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
+                                        <input type="text" id="usuario_login" class="form-control" placeholder="nombre de Usuario">
+                                    </div>
+                                    <div class="col-sm-4"></div>
                                 </div>
-                                <div class="input-group form-group col-sm-6">
-                                    <span class="input-group-addon"><i class="glyphicon glyphicon-lock"></i></span>
-                                    <input id="password" type="password" id="password_login" class="form-control" name="password" placeholder="Contraseña">
+                                <div class="row">
+                                    <div class="col-sm-2"></div>
+                                    <div class="input-group form-group col-sm-8">
+                                        <span class="input-group-addon"><i class="glyphicon glyphicon-lock"></i></span>
+                                        <input id="password" type="password" id="password_login" class="form-control" name="password" placeholder="Contraseña">
+                                    </div>
+                                    <div class="col-sm-4"></div>
                                 </div>
                             </div>
-                            <div class="modal-footer buttonOpt" >
-                                <button type="button" class="text-center col-lg-2 btn btn-danger" data-dismiss="modal" onclick="limpiarForm()">Cancelar</button>
+                            <div class="form-group login" >
                                 <button type="button" class="btn btn-primary" onclick="logueo()" data-dismiss="modal">Ingresar</button>
+                                <button type="button" class="btn btn-danger" data-dismiss="modal" onclick="limpiarForm()">Cancelar</button>
                             </div>
                             <div class="form-group" >
                                 <div class="alert alert-success " id="mesajeLogin">
@@ -309,6 +310,5 @@
         <!-- ********************************************************** -->
         <!-- FOOTER - PIE DE PAGINA -->
         <!-- ********************************************************** -->
-
     </body>
 </html>

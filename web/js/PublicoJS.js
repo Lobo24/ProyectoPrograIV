@@ -179,3 +179,8 @@ function limpiarForm() {
     $('#formRegistro').trigger("reset");
     $('#formLogin').trigger("reset");
 }
+
+
+
+
+ 

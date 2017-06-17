@@ -76,10 +76,9 @@ and open the template in the editor.
 }
 
 .userIngreso{
-    position: relative; left: 30%;
-    width: 35%;
-    height: 35%;
-    padding-bottom: 10%;
+    position: relative;
+    width: 30%;
+    height: 30%;
 }
 
 .buttonOpt{
@@ -297,6 +296,7 @@ and open the template in the editor.
     color: yellow;
     font-family: 'Satisfy', cursive;
     text-align: center;
+    border-radius: 5px 5px 0px 0px;
 }
 #myModalRegistro{
     text-align: center;
@@ -310,5 +310,37 @@ and open the template in the editor.
     color: yellow;
 }
 .colorAzul{
-    color: yellow;
+    background: #1ACCEB;
+    color: white;
+}
+#myModalIngreso{
+    text-align: center;
+}
+
+.center{
+    margin-top: 0.5em;
+    margin-bottom: 1em;
+}
+
+.font-nav{
+    font-family: 'Open Sans' 
+}
+
+.navbar{
+    background: #000000
+}
+
+.navbar-right{
+    background: #000000;
+    color: white;
+}
+
+.active-user-blue{
+    background: #1ACCEB;
+    color: white;
+}
+
+.active-user-green{
+    background: #17fb3d;
+    color: white;
 }

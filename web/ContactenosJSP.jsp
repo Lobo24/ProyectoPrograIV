@@ -52,7 +52,7 @@
         <!-- MENU -->
         <!-- ********************************************************** -->
 
-        <div id="navBar">
+        <div id="navBar" class="font-nav">
             <nav class="navbar navbar-inverse" role="navigation">
                 <div class="navbar-header">
                     <button type="button" class="navbar-toggle" data-toggle="collapse"
@@ -65,10 +65,8 @@
                 </div>
                 <div class="collapse navbar-collapse navbar-ex1-collapse">
                     <ul class="nav navbar-nav">
-                        <li><a href="InicioJSP.jsp">Inicio</a></li>
-                        <li><a href="#">Vuelos</a></li>
+                        <li class="active"><a href="InicioJSP.jsp" class="glyphicon glyphicon-home">  Inicio</a></li>
                         <li><a href="QuienesSomosJSP.jsp">Quiénes Somos</a></li>
-                        <li><a href="#">Referencias</a></li>
                         <li  class="active"><a href="ContactenosJSP.jsp">Contacto</a></li>
                     </ul>
                     <form class="navbar-form navbar-left">
@@ -88,96 +86,82 @@
         <!-- ********************************************************** -->
         <!-- MODAL FORMULARIO REGISTRO -->
         <!-- ********************************************************** -->
-
         <div class="container">
-            <!-- Modal -->
             <div class="modal fade" id="myModalRegistro" role="dialog">
-                <div class="modal-dialog">
-                    <!-- Modal content-->
-                    <div class="modal-content fondoForm">
-                        <div class="modal-header">
-                            <button type="button" class="close btn-danger" data-dismiss="modal" onclick="limpiarForm()">&times;</button>
-                            <h2 class="text-center colorVerde modal-title">Registro de Usuario</h2>
+                <div class="modal-dialog modal-lg">
+                    <div class="modal-content">
+                        <div class="modal-header fondoForm">
+                            <h1 class="modal-title" id="myModalTitle">Registro de Usuario</h1>
                         </div>
-                        <div class=" colorAzul modal-body" id="modalForm">
-                            <form class="form-horizontal" role="form" id="formRegistro">
-                                <div class="form-group" id="groupidUsuario">
-                                    <label for="usuario" class="col-lg-2 control-label">Identificación</label>
-                                    <div class="col-lg-2">
-                                        <input type="text" class="form-control" id="usuarioid_sign"
-                                               placeholder="Identificación">
+                        <div class="modal-body" id="myModalMessage">
+                            <form role="form" onsubmit="return false;" id="formaddRutas">
+                                <div class="row">
+                                    <div class="form-group col-sm-6" id="groupidUsuario">
+                                        <label for="usuario">ID de Usuario:</label>
+                                        <input type="text" class="form-control" id="usuarioid_sign" autofocus="true" placeholder="ID de Usuario">
+                                    </div>
+                                    <div class="form-group col-sm-6" id="groupusuario">
+                                        <label for="usuario">Nombre de Usuario:</label>
+                                        <input type="text" class="form-control" id="usuario_sign" autofocus="true" placeholder="Nombre de Usuario">
                                     </div>
                                 </div>
-                                <div class="form-group" id="groupusuario">
-                                    <label for="usuario" class="col-lg-2 control-label">Usuario</label>
-                                    <div class="col-lg-2">
-                                        <input type="text" class="form-control" id="usuario_sign"
-                                               placeholder="Usuario">
+                                <div class="row">
+                                    <div class="form-group col-sm-6" id="grouppassword">
+                                        <label for="password">Contraseña:</label>
+                                        <input type="password" class="form-control" id="password_sign" autofocus="true" placeholder="Contrasena">
+                                    </div>
+                                    <div class="form-group col-sm-6" id="grouppasswordConfirm">
+                                        <label for="password">Confirmar Contraseña:</label>
+                                        <input type="password" class="form-control" id="password_confirm_sign" autofocus="true" placeholder="Contrasena">
                                     </div>
                                 </div>
-                                <div class="form-group" id="groupcorreo">
-                                    <label for="correo" class="col-lg-2 control-label">Correo</label>
-                                    <div class="col-lg-2">
-                                        <input type="email" class="form-control" id="correo_sign"
-                                               placeholder="Email">
+                                <div class="row">
+                                    <div class="form-group col-sm-3" id="groupnombre">
+                                        <label for="usuario">Nombre:</label>
+                                        <input type="text" class="form-control" id="nombre_sign" placeholder="Nombre" >
+                                    </div>
+                                    <div class="form-group col-sm-3" id="groupprimerApellido">
+                                        <label for="usuario">Apellido1:</label>
+                                        <input type="text" class="form-control" id="primer_ap_sign" placeholder="Apellido1">
+                                    </div>
+                                    <div class="form-group col-sm-3" id="groupsegundoApellido">
+                                        <label for="apellido2">Apellido2:</label>
+                                        <input type="text" class="form-control" id="segundo_ap_sign" placeholder="Apellido2">
+                                    </div>
+                                    <div class="form-group col-sm-3" id="groupfechaNacimiento">
+                                        <label for="nac">Fecha Nac:</label>
+                                        <div id="dpFechaNacimiento" class="input-group date form_date" data-date="" data-date-format="dd/mm/yyyy" data-link-field="dtp_input2" data-link-format="dd/mm/yyyy">
+                                            <input class="form-control" type="text" value="" readonly placeholder="dd/mm/aaaa" id="fechaNac">
+                                            <span class="input-group-addon">
+                                                <span class="glyphicon glyphicon-calendar"></span>
+                                            </span>
+                                        </div>
                                     </div>
                                 </div>
-                                <div class="form-group" id="grouppassword">
-                                    <label for="password" class="col-lg-2 control-label">Contraseña</label>
-                                    <div class="col-lg-2">
-                                        <input type="password" class="form-control" id="password_sign"
-                                               placeholder="Contraseña">
+                                <div class="row">
+                                    <div class="form-group col-sm-6" id="grouptelefono">
+                                        <label for="password">Teléfono:</label>
+                                        <input type="text" class="form-control" id="telefono" autofocus="true" placeholder="Teléfono">
                                     </div>
-                                </div>
-                                <div class="form-group" id="grouppasswordConfirm">
-                                    <label for="password_confirm" class="col-lg-2 control-label">Confirmar contraseña</label>
-                                    <div class="col-lg-2">
-                                        <input type="password" id="password_confirm_sign" 
-                                               class="form-control" placeholder="Contraseña">
-                                    </div>
-                                </div>
-                                <div class="form-group" id="inputAux">
-                                    <label for="nombre_apellidos" class="col-xs-1 control-label">Nombre</label>
-                                    <div class="col-xs-3" id="groupprimerApellido">
-                                        <input type="text" id="primer_ap_sign" class="form-control" placeholder="Primer Apellido">
-                                    </div>
-                                    <div class="col-xs-3" id="groupsegundoApellido">
-                                        <input type="text" id="segundo_ap_sign" class="form-control" placeholder="Segundo Apellido">
-                                    </div>
-                                    <div class="col-xs-3" id="groupnombre">
-                                        <input type="text" id="nombre_sign" class="form-control" placeholder="Nombre">
-                                    </div>
-                                </div>
-                                <div class="form-group" id="grouptelefono">
-                                    <label for="telefono_confirm" class="col-lg-2 control-label">Telefono</label>
-                                    <div class="col-lg-2">
-                                        <input type="telefono" id="telefono_confirm_sign" 
-                                               class="form-control" placeholder="Telefono">
-                                    </div>
-                                </div>
-                                <div class="form-group " id="groupfechaNacimiento">
-                                    <label for="dpFechaNacimiento" class="col-xs-4">Fecha Nacimiento:</label>
-                                    <div id="dpFechaNacimiento" class="input-group date form_date sizeLabel" data-date="" data-date-format="dd/mm/yyyy" data-link-field="dtp_input2" data-link-format="dd/mm/yyyy">
-                                        <input class="form-control sizeLabel" type="text" value="" readonly placeholder="dd/mm/aaaa" id="dpFechaNacimientoText">
-                                        <span class="input-group-addon buttonDate">
-                                            <span class="glyphicon glyphicon-calendar"></span>
-                                        </span>
+                                    <div class="form-group col-sm-6" id="groupcorreo">
+                                        <label for="password">Email</label>
+                                        <input type="email" class="form-control" id="correo_sign" autofocus="true" placeholder="Email">
                                     </div>
                                 </div>
                                 <div class="form-group" id="groupdireccion">
-                                    <label for="direccion" class="col-xs-2 control-label">Dirección</label>
-                                    <div class="col-xs-3" >
-                                        <input type="text" id="direccion_sign" class="form-control" placeholder="Ciudad">
-                                    </div>
+                                    <label for="password">Direccion</label>
+                                    <input type="text" class="form-control" id="direccion_sign" autofocus="true" placeholder="Dirección">
                                 </div>
-                                <div class="modal-footer container buttonOpt" >
-                                    <button type="button" class=" text-center col-lg-2 btn btn-danger" data-dismiss="modal" onclick="limpiarForm()">Cancelar</button>
-                                    <button type="button" class="btn btn-primary"  onclick="registro()">Registrarse</button>
+                                <div class="form-group">
+                                    <input type="hidden" value="registroAdmin" id="personasAction"/>                       
+                                    <button type="submit" class="btn btn-primary" id="enviar" onclick="registro()">Guardar</button>
+                                    <button type="reset" class="btn btn-danger" id="cancelar" data-dismiss="modal">Cancelar</button>
                                 </div>
-                                <div class="form-group" >
-                                    <div class="alert alert-success" id="mesageRegistro">
-                                        <strong class="mesajeResultNeg">Info!</strong> 
-                                        <span class="mesajeResultText">This alert box could indicate a neutral informative change or action.</span>
+
+                                <div class="form-group height25" >
+                                    <div class="alert alert-success hiddenDiv" id="mesajeResult">
+                                        <strong id="mesajeResultNeg">Info!</strong> 
+                                        <span id="mesajeResultText">This alert box could indicate a neutral informative change or action.</span>
                                     </div>
                                 </div>
                             </form>
@@ -185,7 +169,8 @@
                     </div>
                 </div>
             </div>
-        </div>  <!--Registro-->
+        </div>
+
         <!-- ********************************************************** -->
         <!-- MODAL INGRESO LOGIN -->
         <!-- ********************************************************** -->
@@ -196,45 +181,49 @@
             <div class="modal fade" id="myModalIngreso" role="dialog">
                 <div class="modal-dialog">
                     <!-- Modal content-->
-                    <div class="modal-content fondoForm">
-                        <div class="modal-header">
-                            <button type="button" class="btn-danger close" data-dismiss="modal" onclick="limpiarForm()">&times;</button>
-                            <h2 class="text-center colorVerde modal-title">Ingreso Usuario</h2>
-                        </div>
-                        <div class=" colorAzul modal-body" id="modalForm">
-                            <form class="form-horizontal" role="form" id="formLogin">
-                                <div class="form-group">
-                                    <div>
-                                        <img src="imagenes/inicio/user-login-man-person-512.png" alt="" class="userIngreso"/>
-                                    </div>
-                                    <label for="usuario" class="col-lg-2 control-label">Usuario</label>
-                                    <div class="col-lg-2">
-                                        <input type="text" class="form-control " id="usuario_login" placeholder="Usuario">
-                                        <div class="glyphicon glyphicon-user glyphiconIngreso" ></div>
-                                    </div>
+                    <div class="modal-content">
+                        <form class="form-horizontal" role="form" id="formLogin">
+                            <div class="modal-header fondoForm">
+                                <h2 class="text-center colorVerde modal-title">Ingreso Usuario</h2>
+                            </div>
+                            <div class="form-group">
+                                <div>
+                                    <img src="imagenes/inicio/user-login-man-person-512.png" alt="" class="userIngreso"/>
                                 </div>
-                                <div class="form-group">
-                                    <label for="password" class="col-lg-2 control-label">Contraseña</label>
-                                    <div class="col-lg-2">
-                                        <input type="password" class="form-control glyphicon glyphicon-lock" id="password_login" placeholder="Contraseña">    
-                                        <div class="glyphicon glyphicon-lock glyphiconIngreso" ></div>
+                            </div>
+                            <div>
+                                <div class="row">   
+                                    <div class="col-sm-2"></div>
+                                    <div class="input-group form-group col-sm-8">
+                                        <span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
+                                        <input type="text" id="usuario_login" class="form-control" placeholder="nombre de Usuario">
                                     </div>
-                                </div><div class="modal-footer buttonOpt" >
-                                    <button type="button" class="text-center col-lg-2 btn btn-danger" data-dismiss="modal" onclick="limpiarForm()">Cancelar</button>
-                                    <button type="button" class="btn btn-primary" onclick="logueo()" data-dismiss="modal">Ingresar</button>
+                                    <div class="col-sm-4"></div>
                                 </div>
-                                <div class="form-group" >
-                                    <div class="alert alert-success " id="mesajeLogin">
-                                        <strong class="mesajeResultNeg">Info!</strong> 
-                                        <span class="mesajeResultText">This alert box could indicate a neutral informative change or action.</span>
+                                <div class="row">
+                                    <div class="col-sm-2"></div>
+                                    <div class="input-group form-group col-sm-8">
+                                        <span class="input-group-addon"><i class="glyphicon glyphicon-lock"></i></span>
+                                        <input id="password" type="password" id="password_login" class="form-control" name="password" placeholder="Contraseña">
                                     </div>
+                                    <div class="col-sm-4"></div>
                                 </div>
-                            </form>
-                        </div>
+                            </div>
+                            <div class="form-group login" >
+                                <button type="button" class="btn btn-primary" onclick="logueo()" data-dismiss="modal">Ingresar</button>
+                                <button type="button" class="btn btn-danger" data-dismiss="modal" onclick="limpiarForm()">Cancelar</button>
+                            </div>
+                            <div class="form-group" >
+                                <div class="alert alert-success " id="mesajeLogin">
+                                    <strong class="mesajeResultNeg">Info!</strong> 
+                                    <span class="mesajeResultText">This alert box could indicate a neutral informative change or action.</span>
+                                </div>
+                            </div>
+                        </form> 
                     </div>
                 </div>
             </div>
-        </div>  
+        </div>
 
 
         <!-- ********************************************************** -->
