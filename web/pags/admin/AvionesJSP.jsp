@@ -184,7 +184,7 @@
                                 </div>
                                 <div class="form-group col-sm-6" id="groupLlegada">
                                     <label for="llegada">Llegada</label>
-                                    <input type="text" class="form-control" readonly id="llegada" placeholder="llegada" >
+                                    <input type="text" class="form-control" id="llegada" placeholder="llegada"  readonly>
                                 </div>
                             </div>
                             <div class="form-group  col-sm-6" id="groupRuta" style="margin-left: 200px;">
