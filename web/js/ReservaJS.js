@@ -6,10 +6,17 @@
 
 
 $(document).ready(function () {
+    consultarAviones();
 });
 
 function guardaCampo(idSilla){
     $("#" + idSilla).val("ckecked");
+    $("#" + idSilla).attr("onclick","quitaCampo('"+idSilla+"')");
+}
+
+function quitaCampo(idSilla){
+    $("#" + idSilla).val(" ");
+    $("#" + idSilla).attr("onclick","guardaCampo('"+idSilla+"')");
 }
 
 function creaCkecking(cantF,cantC){
@@ -22,8 +29,8 @@ function creaCkecking(cantF,cantC){
         for(var c=1;c<=cantC;c++){
             $("#colum"+f).append(
                     "<li class='seat'>\n\
-                    <input type='checkbox' id='"+f+""+column+"'/>\n\
-                    <label onclick='guardaCampo("+'"'+f+""+column+'"'+")' for='"+f+""+column+"'>"+f+""+column+"</label>\n\
+                    <input onclick='guardaCampo("+'"'+f+""+column+'"'+")' type='checkbox' id='"+f+""+column+"' value=' '/>\n\
+                    <label  for='"+f+""+column+"'>"+f+""+column+"</label>\n\
                     </li>");
             column = String.fromCharCode(column.charCodeAt(0) + 1);
         }
@@ -53,7 +60,8 @@ function registroAsiento(idAsiento,idAvion){
             data: {
                 accion: "registraAsiento",
                 idAsiento: idAsiento,
-                idAvion: idAvion
+                idAvion: idAvion,
+                idUsuario: $("#usuario") 
             },
             error: function () { //si existe un error en la respuesta del ajax
                 mostrarMensaje("alert alert-danger", "Se genero un error, contacte al administrador (Error del ajax)", "Error!");

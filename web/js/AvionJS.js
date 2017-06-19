@@ -19,12 +19,6 @@ $(function () {
     $("#mostrarForm").click(function () {
         limpiarForm();
     });
-    $('#myModalRegistroAvion').click(function(){
-       fechaLlegada();
-    });
-    $('#ruta').click(function(){
-      fechaLlegada();
-    });
     $('#ruta').blur(function(){
       fechaLlegada();
     });
@@ -294,8 +288,8 @@ function fechaLlegada(){
         var minutos=date.substring(14,date.length);
         date=año+"-"+mes+"-"+dia+"T"+hora+":"+minutos+":00";
         date = new Date(date);
-        minutos=avRutas[parseInt($("#ruta").val()-1)].minutos;
-        date.setMinutes(date.getMinutes()+minutos);
+        minutos = parseInt(minutos) + hora * 60;
+        date.setMinutes(date.getMinutes() + minutos);
         var newDate=zero(date.getDate())+"-"+zero(parseInt(date.getMonth()+1))+"-"+zero(date.getFullYear())
                 +" "+zero(parseInt(date.getHours()))+":"+zero(date.getMinutes());
         $("#llegada").val(newDate);

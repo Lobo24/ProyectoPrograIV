@@ -256,16 +256,14 @@ and open the template in the editor.
     margin-top: -68px;
 }
 #formComprar{
-    margin-left: 10%;
+    margin-left: 2%;
 }
 #formEligeAviones{
     margin-top: 5%;
     width: 50%;
 }
 #userInfo{
-    float: right;
-    position: relative; left: -150px; top: -250px;
-    
+    position: relative; left: 2%;
     border: 5px solid #00394d;
     width: 40%;
 }
@@ -310,8 +308,8 @@ and open the template in the editor.
     color: yellow;
 }
 .colorAzul{
-    background: #1ACCEB;
-    color: white;
+    background: white;
+    color: black;
 }
 #myModalIngreso{
     text-align: center;
@@ -343,4 +341,31 @@ and open the template in the editor.
 .active-user-green{
     background: #17fb3d;
     color: white;
+}
+
+#checkin{
+    width: 45%;
+    height: 417px;
+    background:whitesmoke;
+    margin-left: 50%;
+    margin-top: -438px;
+    border-radius: 5px 5px 0px 0px;
+    border: 2px solid black;
+    text-align: center;
+    
+}
+
+#checkin h3{
+    height: 50px;
+    background:#00394d;
+    color: yellow;
+    font-family: 'Satisfy', cursive; 
+    size: 20px;
+    margin-top: 0px;
+}
+
+#crearAsientos{
+    width: 30%;
+    margin-left: auto;
+    margin-right: auto;
 }
