@@ -42,6 +42,18 @@
         <script src="https://www.paypalobjects.com/api/checkout.js"></script>
     </head>
     <body>
+        
+        <div class="container">
+            <div id="sesionCont">
+            <p><b>Identificación :</b> <% out.print(usuario.getIdUsuario()); %></p>
+            <p><b>Nombre :</b> <% out.print(usuario.getNombre() + " " + usuario.getApellido1() + " " + usuario.getApellido2()); %></p>
+            <p><b>Teléfono :</b> <% out.print(usuario.getNumTel()); %></p>
+            <p><b>Email :</b> <% out.print(usuario.getEmail()); %></p>
+            <p><b>Fecha Nacimiento :</b> <% out.print(usuario.getFechaNacimiento());%></p>
+            <button type="button" class="btn" ><a href="../../InicioJSP.jsp"> Cerrar sesión</a></button>
+            </div>
+        </div>
+        
         <!-- ********************************************************** -->
         <!-- ENCABEZADO -->
         <!-- ********************************************************** -->
@@ -75,7 +87,7 @@
                         <li><a href="#">Descuentos disponibles</a></li>
                     </ul>             
                     <div class="nav navbar-nav navbar-right" id="menuLogSign">
-                        <button type="button" class="btn btn-danger glyphicon glyphicon-log-in cerrar"><a href="../../InicioJSP.jsp"> Cerrar sesión</a></button>
+                        <button id="sesion" type="button" class="btn btn-danger glyphicon glyphicon-log-in" data-toggle="popoverSesion" title="Sesion" data-placement="bottom"><a href="../../InicioJSP.jsp"></a></button>
                     </div>
                 </div>
             </nav> <!--Navbar-->

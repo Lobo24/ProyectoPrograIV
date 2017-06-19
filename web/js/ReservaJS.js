@@ -7,6 +7,14 @@
 
 $(document).ready(function () {
     consultarAviones();
+    $('#sesionCont').hide();
+    $('[title="Sesion"]').popover({
+        html: true,
+        content: $('#sesionCont')
+    }).click(function() {
+        $('#sesionCont').show();
+        $(this).popover('show');
+    });
 });
 
 function guardaCampo(idSilla){
