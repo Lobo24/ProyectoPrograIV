@@ -81,8 +81,7 @@
                                 Aerolineas <b class="caret"></b>
                             </a>
                             <ul class="navbar-nav navbar-inverse dropdown-menu">
-                                <li><a href="AvionesJSP.jsp">Aviones</a></li>
-                                <li><a href="#">Boletos</a></li>
+                                <li><a href="AvionesJSP.jsp">Vuelos</a></li>
                                 <li><a href="RutasJSP.jsp">Rutas</a></li>
                                 <li><a href="TipoAvionesJSP.jsp">Tipos de avión</a></li>                                
                                 <li><a href="UsuariosJSP.jsp">Usuarios</a></li>
@@ -103,15 +102,12 @@
                 <div class="panel-heading panel-id">
                 <div class="col-sm-12">
                         <form role="form" onsubmit="return false;" id="formAerolineas" class="form-horizontal centered">
-                            <div class="form-group" id="groupNombreAero">
-                                <div class="col-sm-4" style="text-align: right; vertical-align: middle;">
-                                    <p><b>Buscar por nombre de la Aerolinea:</b></p>
-                                </div>
+                            <div class="form-group row" id="groupNombreAero">
                                 <div class="col-sm-4">
                                     <input type="text" class="form-control" id="buscarAero" placeholder="Digite el nombre de la aerolinea">
                                 </div>
                                 <div class="col-sm-4">
-                                    <button type="button" class="btn btn-info centered">
+                                    <button type="button" class="btn btn-success centered">
                                         Buscar <span class="glyphicon glyphicon-search"></span>
                                     </button>
                                     <button type="button" id="mostrarForm" class="btn btn-info centered" data-toggle="modal" data-target="#myModalFormulario">

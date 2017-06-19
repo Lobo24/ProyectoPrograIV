@@ -60,22 +60,22 @@ public class UsuariosServlet extends HttpServlet {
                         out.print("El usuario fue eliminado correctamente");
                     break;
                 case "registroAdmin": case "modificarUsuario" :
-                    usuario.setIdUsuario(Integer.parseInt(request.getParameter("idUsuario")));
-                    usuario.setNombreUsuario(request.getParameter("nombreUsuario"));
                     usuario.setContrasena(request.getParameter("contrasena"));
-                    usuario.setEmail(request.getParameter("correo"));           
+                    usuario.setNombreUsuario(request.getParameter("nombreUsuario"));
+                    usuario.setIdUsuario(Integer.parseInt(request.getParameter("idUsuario")));
+                    usuario.setDireccion(request.getParameter("direccion"));
+                    usuario.setNombre(request.getParameter("nombre"));
                     usuario.setApellido1(request.getParameter("apellido1"));
                     usuario.setApellido2(request.getParameter("apellido2"));
-                    usuario.setNombre(request.getParameter("nombre"));     
+                    
                     String fechatxt = request.getParameter("fechaNacimiento");
                     DateFormat format = new SimpleDateFormat("dd/MM/yyyy", Locale.ENGLISH);
-                    Date date = format.parse(fechatxt);         
-                    usuario.setFechaNacimiento(date);    
+                    Date date = format.parse(fechatxt);
+                    
+                    usuario.setFechaNacimiento(date);
+                    usuario.setEmail(request.getParameter("correo"));
                     usuario.setAdmin(true);
                     usuario.setNumTel(request.getParameter("telefono"));
-                    usuario.setUltimaFecha(new Date());
-                    usuario.setUltimoUsuario("admin");
-                    usuario.setDireccion("Costa Rica");
                     if(accion.equals("registroAdmin")){
                         uBL.save(usuario);
                         out.print("El Administrador fue agregado correctamente");

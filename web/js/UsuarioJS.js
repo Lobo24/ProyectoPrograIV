@@ -51,20 +51,21 @@ function consultarUsuarios(numpag) {
 
 
 function registroAdmin(){
+     if(validar()){
     $.ajax({
        url: '../../UsuariosServlet',
        data: {
-           accion: $("#personasAction").val(),
-           idUsuario: $("#idUsuario").val(),
-           nombreUsuario: $("#nombreUsuario").val(),
-           contrasena: $("#contrasena").val(),
-           correo: $("#email").val(),
-           telefono:$("#telefono").val(),
-           apellido1: $("#apell1").val(),
-           apellido2: $("#apellido2").val(),
-           nombre: $("#nombre").val(),
+           accion: "registroAdmin",
+           idUsuario: $("#usuarioid_sign").val(),
+           nombreUsuario: $("#usuario_sign").val(),
+           telefono: $("#telefono").val(),
+           correo: $("#correo_sign").val(),
+           contrasena: $("#password_sign").val(),
+           apellido1: $("#primer_ap_sign").val(),
+           apellido2: $("#segundo_ap_sign").val(),
+           nombre: $("#nombre_sign").val(),
            fechaNacimiento: $("#dpFechaNacimiento").data('date'),
-           telefono: $("#telefono").val()
+           direccion: $("#direccion_sign").val()
        },
        error: function () { //si existe un error en la respuesta del ajax   
           mostrarModal("myModal", "Se genero un error", "Contacte al administrador");
@@ -84,8 +85,9 @@ function registroAdmin(){
         },
         type: 'POST',
         dataType: "text"
-    });
-    $("#personasAction").val("registroAdmin");
+    });}else{
+        mostrarMensaje("mesageRegistro","alert alert-danger", "Debe digitar los campos del formulario", "Error!");
+    }
 }
 
 
@@ -274,4 +276,64 @@ function cargaUsuario(usuario){
            //$("#dpFechaNacimiento").data('date');
            $("#telefono").val(usuario.numTel);
            $("#myModalFormulario").modal();
+}
+
+function validar() {
+    var validacion = true;
+    $("#groupidUsuario").removeClass("has-error");
+    $("#groupusuario").removeClass("has-error");
+    $("#groupcorreo").removeClass("has-error");
+    $("#grouppassword").removeClass("has-error");
+    $("#grouppasswordConfirm").removeClass("has-error");
+    $("#groupprimerApellido").removeClass("has-error");
+    $("#groupsegundoApellido").removeClass("has-error");
+    $("#groupnombre").removeClass("has-error");
+    $("#groupTelefono").removeClass("has-error");
+    $("#groupfechaNacimiento").removeClass("has-error");
+    $("#groupdireccion").removeClass("has-error");
+    if ($("#usuarioid_sign").val() === "") {
+        $("#groupidUsuario").addClass("has-error");
+        validacion = false;
+    }
+    if ($("#usuario_sign").val() === "") {
+        $("#groupusuario").addClass("has-error");
+        validacion = false;
+    }
+    if ($("#password_sign").val() === "") {
+        $("grouppassword").addClass("has-error");
+        validacion = false;
+    }
+    if ($("#password_confirm_sign").val() === "" ) {
+        $("#grouppasswordConfirm").addClass("has-error");
+        validacion = false;
+    }
+    if ($("#primer_ap_sign").val() === "") {
+        $("#groupprimerApellido").addClass("has-error");
+        validacion = false;
+    }
+    if ($("#segundo_ap_sign").val() === "") {
+        $("#groupsegundoApellido").addClass("has-error");
+        validacion = false;
+    }
+    if ($("#nombre_sign").val() === "") {
+        $("#groupnombre").addClass("has-error");
+        validacion = false;
+    }
+    if ($("#dpFechaNacimiento").data('date') === "") {
+        $("#groupfechaNacimiento").addClass("has-error");
+        validacion = false;
+    }
+    if ($("#direccion_sign").val() === "") {
+        $("#groupdireccion").addClass("has-error");
+        validacion = false;
+    }
+    if ($("#telefono").val() === "") {
+        $("#groupTelefono").addClass("has-error");
+        validacion = false;
+    }
+    if ($("#correo_sign").val() === "") {
+        $("#groupcorreo").addClass("has-error");
+        validacion = false;
+    }
+    return validacion;
 }

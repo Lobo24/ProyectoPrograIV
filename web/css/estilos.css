@@ -53,6 +53,13 @@ and open the template in the editor.
 #tabla{
      width: 100%;
 }
+
+@media screen and (max-width: 929px) {
+     table {
+       display: block;
+       overflow-x: auto;
+     }
+}
 /**************************************************/
 
 .row{

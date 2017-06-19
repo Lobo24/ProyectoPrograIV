@@ -86,9 +86,9 @@
                                 Usuarios <b class="caret"></b>
                             </a>
                             <ul class="navbar-nav navbar-inverse dropdown-menu">
-                                <li><a href="AvionesJSP.jsp">Aviones</a></li>
                                 <li><a href="AerolineasJSP.jsp">Aerolineas</a></li>
-                                <li><a href="BoletosJSP.jsp">Boletos</a></li>
+                                <li><a href="AvionesJSP.jsp">Vuelos</a></li>
+                                <li><a href="TipoAvionessJSP.jsp">Tipos de avión</a></li>
                                 <li><a href="RutasJSP.jsp">Rutas</a></li>
                             </ul>
                         </li>
@@ -104,35 +104,32 @@
         <!-- ********************************************************** -->
         <!-- Tabla Usuario -->
 
-        <div align="center" id="panelUsuarios">
+        <div align="center" id="container">
             <div class="panel">
                 <div class="panel-heading panel-id">
-                    <div class="col-sm-12">
+                    <div class="encabezado">
                         <form role="form" onsubmit="return false;" id="formPersonas" class="form-horizontal centered">
-                            <div class="form-group" id="groupCedula">
-                                <div class="col-sm-4" style="text-align: right; vertical-align: middle;">
-                                    <p><b>Buscar por nombre de la persona:</b></p>
-                                </div>
-                                <div class="col-sm-4">
+                            <div class="row" id="groupCedula">
+                                <div class="col-sm-4 form-group">
                                     <input type="text" class="form-control" id="buscar" placeholder="Digite el nombre de la persona">
                                 </div>
                                 <div class="col-sm-4">
-                                    <button type="button" onclick="busquedaPersonas()" class="btn btn-info centered"  id="btMostarForm">
-                                        Buscar <span class="glyphicon glyphicon-search"></span>
+                                    <button type="button" onclick="busquedaPersonas()" class="btn btn-success centered"  id="btMostarForm">
+                                        Buscar 
+                                        <span class="glyphicon glyphicon-search"></span>
                                     </button>
                                     <button type="button" class="btn btn-info centered" data-toggle="modal" data-target="#myModalFormulario" >
-                                        Agregar Admi <span class="glyphicon glyphicon-plus"  ></span>
+                                        Agregar Admin
+                                        <span class="glyphicon glyphicon-plus"  ></span>
                                     </button>
                                 </div>
                             </div>
                         </form>
                     </div>
                 </div>
-                <div class="panel-body">
                     <table class="table table-hover table-condensed" id="tablaPersonas">
 
                     </table>
-                </div>
                 <div class="panel-footer">
                     <ul class="pagination justify-content-center" id="paginacionOpc"></ul>
                     <br>
@@ -145,77 +142,86 @@
         <!-- formulario -->
         <!-- ********************************************************** -->
 
-        <div class="modal fade" id="myModalFormulario" role="dialog">
-            <div class="modal-dialog modal-lg">
-                <div class="modal-content">
-                    <div class="modal-header">
-                        <button type="button" class="close" data-dismiss="modal">&times;</button>
-                        <h4 class="modal-title" id="myModalTitle">Insertar Rutas
-                    </div>
-                    <div class="modal-body" id="myModalMessage">
-                        <form role="form" onsubmit="return false;" id="formaddRutas">
-                            <div class="form-group" id="groupidUsuario">
-                                <label for="usuario">ID_Usuario:</label>
-                                <input type="text" class="form-control" id="idUsuario" autofocus="true" placeholder="ID_Usuario">
-                            </div>
-                            <div class="form-group" id="groupUsuario">
-                                <label for="usuario">Nombre_Usuario:</label>
-                                <input type="text" class="form-control" id="nombreUsuario" autofocus="true" placeholder="Nombre_Usuario">
-                            </div>
-                            <div class="form-group" id="groupContrasena">
-                                <label for="usuario">Contraseña:</label>
-                                <input type="text" class="form-control" id="contrasena" autofocus="true" placeholder="contrasena">
-                            </div>
-
-                            <div class="form-group" id="groupNombre">
-                                <label for="usuario">Nombre:</label>
-                                <input type="text" class="form-control" id="nombre" placeholder="Nombre" >
-                            </div>
-
-                            <div class="form-group" id="groupapellido1">
-                                <label for="usuario">Apellido1:</label>
-                                <input type="text" class="form-control" id="apell1" placeholder="Apellido1">
-                            </div>
-
-                            <div class="form-group" id="groupapellido2">
-                                <label for="usuario">Apellido2:</label>
-                                <input type="text" class="form-control" id="apellido2" placeholder="Apellido2">
-                            </div>
-
-
-                            <div class="form-group" id="groupTelefono">
-                                <input type="text" class="form-control" id="telefono" placeholder="Telefono">
-                            </div>
-
-                            <div class="form-group" id="groupfechaNacimiento">
-                                <label for="usuario">Fecha Nac:</label>
-                                <div id="dpFechaNacimiento" class="input-group date form_date" data-date="" data-date-format="dd/mm/yyyy" data-link-field="dtp_input2" data-link-format="dd/mm/yyyy">
-                                    <input class="form-control" type="text" value="" readonly placeholder="dd/mm/aaaa" id="fechaNac">
-                                    <span class="input-group-addon">
-                                        <span class="glyphicon glyphicon-calendar"></span>
-                                    </span>
+        <div class="container">
+            <div class="modal fade" id="myModalFormulario" role="dialog">
+                <div class="modal-dialog modal-lg">
+                    <div class="modal-content">
+                        <div class="modal-header fondoForm">
+                            <h1 class="modal-title" id="myModalTitle">Registro de Usuario</h1>
+                        </div>
+                        <div class="modal-body" id="myModalMessage">
+                            <form role="form" onsubmit="return false;" id="formaddRutas">
+                                <div class="row">
+                                    <div class="form-group col-sm-6" id="groupidUsuario">
+                                        <label for="usuario">ID de Usuario:</label>
+                                        <input type="text" class="form-control" id="usuarioid_sign" autofocus="true" placeholder="ID de Usuario">
+                                    </div>
+                                    <div class="form-group col-sm-6" id="groupusuario">
+                                        <label for="usuario">Nombre de Usuario:</label>
+                                        <input type="text" class="form-control" id="usuario_sign" autofocus="true" placeholder="Nombre de Usuario">
+                                    </div>
                                 </div>
-                            </div>
-
-                            <div class="form-group" id="groupemail">
-                                <label for="usuario">Email:</label>
-                                <input type="text" class="form-control" id="email" placeholder="Email">
-                            </div>
-
-                            <div class="form-group">
-                                <input type="hidden" value="registroAdmin" id="personasAction"/>                       
-                                <button type="submit" class="btn btn-primary" id="enviar" onclick="registroAdmin()">Guardar</button>
-                                <button type="reset" class="btn btn-danger" id="cancelar" data-dismiss="modal">Cancelar</button>
-                            </div>
-
-                            <div class="form-group height25" >
-                                <div class="alert alert-success hiddenDiv" id="mesajeResult">
-                                    <strong id="mesajeResultNeg">Info!</strong> 
-                                    <span id="mesajeResultText">This alert box could indicate a neutral informative change or action.</span>
+                                <div class="row">
+                                    <div class="form-group col-sm-6" id="grouppassword">
+                                        <label for="password">Contraseña:</label>
+                                        <input type="password" class="form-control" id="password_sign" autofocus="true" placeholder="Contrasena">
+                                    </div>
+                                    <div class="form-group col-sm-6" id="grouppasswordConfirm">
+                                        <label for="password">Confirmar Contraseña:</label>
+                                        <input type="password" class="form-control" id="password_confirm_sign" autofocus="true" placeholder="Contrasena">
+                                    </div>
                                 </div>
-                            </div>
+                                <div class="row">
+                                    <div class="form-group col-sm-3" id="groupnombre">
+                                        <label for="usuario">Nombre:</label>
+                                        <input type="text" class="form-control" id="nombre_sign" placeholder="Nombre" >
+                                    </div>
+                                    <div class="form-group col-sm-3" id="groupprimerApellido">
+                                        <label for="usuario">Apellido1:</label>
+                                        <input type="text" class="form-control" id="primer_ap_sign" placeholder="Apellido1">
+                                    </div>
+                                    <div class="form-group col-sm-3" id="groupsegundoApellido">
+                                        <label for="apellido2">Apellido2:</label>
+                                        <input type="text" class="form-control" id="segundo_ap_sign" placeholder="Apellido2">
+                                    </div>
+                                    <div class="form-group col-sm-3" id="groupfechaNacimiento">
+                                        <label for="nac">Fecha Nac:</label>
+                                        <div id="dpFechaNacimiento" class="input-group date form_date" data-date="" data-date-format="dd/mm/yyyy" data-link-field="dtp_input2" data-link-format="dd/mm/yyyy">
+                                            <input class="form-control" type="text" value="" readonly placeholder="dd/mm/aaaa" id="fechaNac">
+                                            <span class="input-group-addon">
+                                                <span class="glyphicon glyphicon-calendar"></span>
+                                            </span>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="form-group col-sm-6" id="grouptelefono">
+                                        <label for="password">Teléfono:</label>
+                                        <input type="text" class="form-control" id="telefono" autofocus="true" placeholder="Teléfono">
+                                    </div>
+                                    <div class="form-group col-sm-6" id="groupcorreo">
+                                        <label for="password">Email</label>
+                                        <input type="email" class="form-control" id="correo_sign" autofocus="true" placeholder="Email">
+                                    </div>
+                                </div>
+                                <div class="form-group" id="groupdireccion">
+                                    <label for="password">Direccion</label>
+                                    <input type="text" class="form-control" id="direccion_sign" autofocus="true" placeholder="Dirección">
+                                </div>
+                                <div class="form-group">
+                                    <input type="hidden" value="registroAdmin" id="personasAction"/>                       
+                                    <button type="submit" class="btn btn-primary" id="enviar" onclick="registroAdmin()">Guardar</button>
+                                    <button type="reset" class="btn btn-danger" id="cancelar" data-dismiss="modal">Cancelar</button>
+                                </div>
 
-                        </form>
+                                <div class="form-group height25" >
+                                    <div class="alert alert-success hiddenDiv" id="mesajeResult">
+                                        <strong id="mesajeResultNeg">Info!</strong> 
+                                        <span id="mesajeResultText">This alert box could indicate a neutral informative change or action.</span>
+                                    </div>
+                                </div>
+                            </form>
+                        </div>
                     </div>
                 </div>
             </div>

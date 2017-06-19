@@ -87,7 +87,7 @@
                             </a>
                             <ul class="navbar-nav navbar-inverse dropdown-menu">
                                 <li><a href="AerolineasJSP.jsp">Aerolineas</a></li>
-                                <li><a href="AvionesJSP.jsp">Aviones</a></li>
+                                <li><a href="AvionesJSP.jsp">Vuelos</a></li>
                                 <li><a href="TipoAvionesJSP.jsp">Tipos de avión</a></li>
                                 <li><a href="UsuariosJSP.jsp">Usuarios</a></li>
                             </ul>
@@ -110,11 +110,11 @@
                     <div class="col-sm-12">
                         <form role="form" onsubmit="return false;" id="formRutas" class="form-horizontal centered">
                             <div class="form-group" id="groupRuta">
-                                <div class="col-sm-4" style="text-align: right; vertical-align: middle;">
-                                    <p><b>Buscar ruta por id:</b></p>
+                                <div class="col-sm-4">
+                                    <input type="text" class="form-control" id="buscarRuta" placeholder="Origen">
                                 </div>
                                 <div class="col-sm-4">
-                                    <input type="text" class="form-control" id="buscarRuta" placeholder="Digite el id de la ruta">
+                                    <input type="text" class="form-control" id="buscarRuta" placeholder="Destino">
                                 </div>
                                 <div class="col-sm-4">
                                     <button type="button" onclick="busquedaPersonas()" class="btn btn-info centered">

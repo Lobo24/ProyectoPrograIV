@@ -23,7 +23,7 @@
 <!DOCTYPE html>
 <html>
     <head>
-        <title>ReservacionesCR</title>
+        <title>ReservacionesCR-Vuelos</title>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">  
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
@@ -88,7 +88,6 @@
                             </a>
                             <ul class="navbar-nav navbar-inverse dropdown-menu">
                                 <li><a href="AerolineasJSP.jsp">Aerolineas</a></li>
-                                <li><a href="BoletosJSP.jsp">Boletos</a></li>
                                 <li><a href="RutasJSP.jsp">Rutas</a></li>
                                 <li><a href="TipoAvionJSP.jsp">Tipos de avión</a></li>
                                 <li><a href="UsuariosJSP.jsp">Usuarios</a></li>
@@ -111,15 +110,23 @@
                 <div class="panel-heading panel-id">
                     <div class="col-sm-12">
                         <form role="form" onsubmit="return false;" id="formAviones" class="form-horizontal centered">
-                            <div class="form-group" id="groupNombreAvi">
-                                <div class="col-sm-4" style="text-align: right; vertical-align: middle;">
-                                    <p><b>Buscar por fecha de salida:</b></p>
+                            <div class="form-group row" id="groupNombreAvi">
+                                <div class="col-sm-2">
+                                    <input type="text" class="form-control" id="buscarRuta" placeholder="Origen">
+                                </div>
+                                <div class="col-sm-2">
+                                    <input type="text" class="form-control" id="buscarRuta" placeholder="Destino">
+                                </div>
+                                <div class="form-group col-sm-2">
+                                    <div class="input-group date" id="groupSalidaSearch">
+                                        <input type="text" id="salidaSearch" class="form-control"  readonly placeholder="Salida"/>
+                                        <span class="input-group-addon">
+                                            <i class="glyphicon glyphicon-calendar"></i>
+                                        </span>
+                                    </div>
                                 </div>
                                 <div class="col-sm-4">
-                                    <input type="text" class="form-control" id="buscarAvi" placeholder="Digite el nombre de la aerolinea">
-                                </div>
-                                <div class="col-sm-4">
-                                    <button type="button" onclick="busquedaPersonas()" class="btn btn-info centered">
+                                    <button type="button" onclick="busquedaPersonas()" class="btn btn-success centered">
                                         Buscar <span class="glyphicon glyphicon-search"></span>
                                     </button>
                                     <button type="button" class="btn btn-info glyphicon glyphicon-plane centered" data-toggle="modal" data-target="#myModalRegistroAvion"> 
@@ -144,13 +151,13 @@
         <!-- Modal -->
         <div class="modal fade" id="myModalRegistroAvion" role="dialog">
             <div class="modal-dialog modal-lg">
-                <div class="modal-content fondoForm">      
-                    <div class="modal-header">
+                <div class="modal-content">      
+                    <div class="modal-header fondoForm">
                         <button type="button" class="close" data-dismiss="modal" onclick="limpiarForm()">&times;</button>
-                        <h2 class="modal-title text-center colorVerde" id="myModalTitle">Insertar Vuelos</h2>
+                        <h2 class="modal-title text-center" id="myModalTitle">Insertar Vuelos</h2>
                     </div>
                     <form role="form" onsubmit="return false;" id="formAviones">
-                        <div class="colorAzul" id="formCamposAviones">
+                        <div id="formCamposAviones">
                             <div class="row">
                                 <div class="form-group col-sm-6" id="groupAerolinea">
                                     <label for="aerolinea">Avión</label>
