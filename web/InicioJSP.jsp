@@ -245,7 +245,7 @@
                                     <div class="col-sm-2"></div>
                                     <div class="input-group form-group col-sm-8">
                                         <span class="input-group-addon"><i class="glyphicon glyphicon-lock"></i></span>
-                                        <input id="password" type="password" id="password_login" class="form-control" name="password" placeholder="Contraseña">
+                                        <input id="password_login" type="password" id="password_login" class="form-control" name="password" placeholder="Contraseña">
                                     </div>
                                     <div class="col-sm-4"></div>
                                 </div>

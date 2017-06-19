@@ -17,6 +17,7 @@ public class UsuarioBL extends BaseBL implements IBaseBL<Usuario, Integer>{
     public UsuarioBL() {
         super();
     }
+    
     @Override
     public void save(Usuario o) {
         if(findByNombreUsuario(o.getNombreUsuario())==null){
