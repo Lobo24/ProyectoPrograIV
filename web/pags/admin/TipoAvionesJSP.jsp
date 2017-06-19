@@ -81,10 +81,10 @@
                                 TipoAviones <b class="caret"></b>
                             </a>
                             <ul class="navbar-nav navbar-inverse dropdown-menu">
-                                <li><a href="UsuariosJSP.jsp">Usuarios</a></li>
-                                <li><a href="AvionesJSP.jsp">Aviones</a></li>
-                                <li><a href="BoletosJSP.jsp">Boletos</a></li>
+                                <li><a href="AvionesJSP.jsp">Vuelos</a></li>
                                 <li><a href="RutasJSP.jsp">Rutas</a></li>
+                                <li><a href="AerolineasJSP.jsp">Aerolineas</a></li>
+                                <li><a href="UsuariosJSP.jsp">Usuarios</a></li>
                             </ul>
                         </li>
                     </ul>             

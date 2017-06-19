@@ -34,6 +34,9 @@ $(document).ready(function () {
      $("#groupSalida").datetimepicker({
           format: 'dd-mm-yyyy hh:ii'       
       });
+     $("#groupSalidaSearch").datetimepicker({
+          format: 'dd-mm-yyyy hh:ii'       
+      });
     recargarTodoAviones();
 });
 

@@ -24,7 +24,7 @@ public class PruebaUsuarios {
     }
     
     public static void testSave(){
-       Usuario u2 = new Usuario(116810872,"0000","bperez2210","Heredia","Oscar","Carmona","Mora",new Date(),"10-07-1997","84835609",false);
+       Usuario u2 = new Usuario(000000000,"admin","admin","unknown","unknown","unknown","unknown",new Date(),"10-07-1997","84835609",true);
 //      Usuario u2 = new Usuario(115860285,"admin","admin","Heredia","Oscar","Carmona","Mora",new Date(),"10-07-1997","84835609",true);
 //        UsuarioDAO pDao = new UsuarioDAO();
         UsuarioBL pDao = new UsuarioBL();
