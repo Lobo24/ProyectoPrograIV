@@ -95,7 +95,7 @@
                             <h1 class="modal-title" id="myModalTitle">Registro de Usuario</h1>
                         </div>
                         <div class="modal-body" id="myModalMessage">
-                            <form role="form" onsubmit="return false;" id="formaddRutas">
+                            <form role="form" onsubmit="return false;" id="formRegistro">
                                 <div class="row">
                                     <div class="form-group col-sm-6" id="groupidUsuario">
                                         <label for="usuario">ID de Usuario:</label>
@@ -156,13 +156,13 @@
                                 <div class="form-group">
                                     <input type="hidden" value="registroAdmin" id="personasAction"/>                       
                                     <button type="submit" class="btn btn-primary" id="enviar" onclick="registro()">Guardar</button>
-                                    <button type="reset" class="btn btn-danger" id="cancelar" data-dismiss="modal">Cancelar</button>
+                                    <button type="reset" class="btn btn-danger" id="cancelar" onclick="limpiarForm()" data-dismiss="modal">Cancelar</button>
                                 </div>
 
-                                <div class="form-group height25" >
+                                <div class="form-group" >
                                     <div class="alert alert-success hiddenDiv" id="mesajeResult">
-                                        <strong id="mesajeResultNeg">Info!</strong> 
-                                        <span id="mesajeResultText">This alert box could indicate a neutral informative change or action.</span>
+                                        <strong class="mesajeResultNeg">Info!</strong> 
+                                        <span class="mesajeResultText">This alert box could indicate a neutral informative change or action.</span>
                                     </div>
                                 </div>
                             </form>
@@ -205,7 +205,7 @@
                                     <div class="col-sm-2"></div>
                                     <div class="input-group form-group col-sm-8">
                                         <span class="input-group-addon"><i class="glyphicon glyphicon-lock"></i></span>
-                                        <input id="password" type="password" id="password_login" class="form-control" name="password" placeholder="Contraseña">
+                                        <input id="password_login" type="password" id="password_login" class="form-control" name="password" placeholder="Contraseña">
                                     </div>
                                     <div class="col-sm-4"></div>
                                 </div>

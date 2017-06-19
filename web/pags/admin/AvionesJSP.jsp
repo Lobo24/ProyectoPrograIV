@@ -37,6 +37,16 @@
         <script src="../../js/AvionJS.js" type="text/javascript"></script>
     </head>
     <body class="bg-success">
+        <div class="container">
+            <div id="sesionCont">
+            <p><b>Identificación :</b> <% out.print(usuario.getIdUsuario()); %></p>
+            <p><b>Nombre :</b> <% out.print(usuario.getNombre() + " " + usuario.getApellido1() + " " + usuario.getApellido2()); %></p>
+            <p><b>Teléfono :</b> <% out.print(usuario.getNumTel()); %></p>
+            <p><b>Email :</b> <% out.print(usuario.getEmail()); %></p>
+            <p><b>Fecha Nacimiento :</b> <% out.print(usuario.getFechaNacimiento());%></p>
+            <a href="../../InicioJSP.jsp"><button type="button" class="btn btn-danger"> Cerrar sesión</button></a>
+            </div>
+        </div>
         <!-- ********************************************************** -->
         <!-- MODAL PARA MOSTRAR MENSAJES  -->
         <!-- ********************************************************** -->
@@ -84,18 +94,18 @@
                     <ul class="nav navbar-nav">
                         <li class="dropdown">
                             <a href="#" class="dropdown-toggle" data-toggle="dropdown" >
-                                Aviones <b class="caret"></b>
+                                Vuelos <b class="caret"></b>
                             </a>
                             <ul class="navbar-nav navbar-inverse dropdown-menu">
                                 <li><a href="AerolineasJSP.jsp">Aerolineas</a></li>
                                 <li><a href="RutasJSP.jsp">Rutas</a></li>
-                                <li><a href="TipoAvionJSP.jsp">Tipos de avión</a></li>
+                                <li><a href="TipoAvionesJSP.jsp">Tipos de avión</a></li>
                                 <li><a href="UsuariosJSP.jsp">Usuarios</a></li>
                             </ul>
                         </li>
                     </ul>             
                     <div class="nav navbar-nav navbar-right" id="menuLogSign">
-                        <button type="button" class="btn btn-danger glyphicon glyphicon-log-in cerrar"><a href="../../InicioJSP.jsp"> Cerrar sesión</a></button>
+                        <button id="sesion" type="button" class="btn btn-success glyphicon glyphicon-user" data-toggle="popoverSesion" title="Sesion" data-placement="bottom" style="margin-top: 7%"> Usuario</button>
                     </div>
                 </div>
             </nav> <!--Navbar-->

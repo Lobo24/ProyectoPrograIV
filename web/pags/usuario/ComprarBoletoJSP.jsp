@@ -50,7 +50,7 @@
             <p><b>Teléfono :</b> <% out.print(usuario.getNumTel()); %></p>
             <p><b>Email :</b> <% out.print(usuario.getEmail()); %></p>
             <p><b>Fecha Nacimiento :</b> <% out.print(usuario.getFechaNacimiento());%></p>
-            <button type="button" class="btn" ><a href="../../InicioJSP.jsp"> Cerrar sesión</a></button>
+            <a href="../../InicioJSP.jsp"><button type="button" class="btn btn-danger"> Cerrar sesión</button></a>
             </div>
         </div>
         
@@ -87,7 +87,7 @@
                         <li><a href="#">Descuentos disponibles</a></li>
                     </ul>             
                     <div class="nav navbar-nav navbar-right" id="menuLogSign">
-                        <button id="sesion" type="button" class="btn btn-danger glyphicon glyphicon-log-in" data-toggle="popoverSesion" title="Sesion" data-placement="bottom"><a href="../../InicioJSP.jsp"></a></button>
+                        <button id="sesion" type="button" class="btn btn-success glyphicon glyphicon-user" data-toggle="popoverSesion" title="Sesion" data-placement="bottom" style="margin-top: 7%"> Usuario</button>
                     </div>
                 </div>
             </nav> <!--Navbar-->
