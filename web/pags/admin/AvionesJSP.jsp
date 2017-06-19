@@ -105,7 +105,7 @@
                         </li>
                     </ul>             
                     <div class="nav navbar-nav navbar-right" id="menuLogSign">
-                        <button id="sesion" type="button" class="btn btn-success glyphicon glyphicon-user" data-toggle="popoverSesion" title="Sesion" data-placement="bottom" style="margin-top: 7%"> Usuario</button>
+                        <button id="sesion" type="button" class="btn btn-success glyphicon glyphicon-user" data-toggle="popoverSesion" title="Sesion" data-placement="bottom" style="margin-top: 7%"><span id="usuario"> <%out.println(usuario.getNombreUsuario());%></span></button>
                     </div>
                 </div>
             </nav> <!--Navbar-->

@@ -69,7 +69,7 @@ function registroAsiento(idAsiento,idAvion){
                 accion: "registraAsiento",
                 idAsiento: idAsiento,
                 idAvion: idAvion,
-                idUsuario: $("#usuario") 
+                idUsuario: $("#usuario").text() 
             },
             error: function () { //si existe un error en la respuesta del ajax
                 mostrarMensaje("alert alert-danger", "Se genero un error, contacte al administrador (Error del ajax)", "Error!");

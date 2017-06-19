@@ -7,6 +7,10 @@
  * en la pagina que se va a mostrar
  */
 $(document).ready(function () {
+    $("#mesajeLogin").removeClass();
+    $("#mesajeLogin").hide();
+    $("#mesajeResult").removeClass();
+    $("#mesajeResult").hide();
     $('#sesionCont').hide();
     $('[title="Sesion"]').popover({
         html: true,
