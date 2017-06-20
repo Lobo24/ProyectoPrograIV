@@ -93,5 +93,19 @@ public class AvionDAO extends HibernateUtil implements IBaseDAO<Avion,Integer>{ 
     public List createQueryHQL(LinkedHashMap<String, Object> parametros) {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
+    
+    public List<Avion> find(String fecha, String origen, String destino) {
+        List<Avion> listaAvion;
+        try{
+        iniciarOperacion();
+        listaAvion = getSesion().createQuery("from Avion a, Ruta r, Pais p"
+                + "where a.id_ruta=r.id_ruta and r.id_pais=p.id_pais"
+                + "and p.nombre like '" + origen + "%' and p.nombre like "
+                        + "'" + destino + "%' and fecha like '" + fecha + "%'").list();
+        }finally{
+            getSesion().close();
+        }
+        return listaAvion;
+    }
 }
 

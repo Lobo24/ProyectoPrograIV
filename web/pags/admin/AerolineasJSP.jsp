@@ -10,13 +10,13 @@
     HttpSession sesion = request.getSession(true);
     String tipoUsuario = "";
     Usuario usuario = null;
-    if(sesion!=null){
-        if (sesion.getAttribute("usuario")  == null) {
-        }else{
-            tipoUsuario = (String)sesion.getAttribute("tipoUsuario");
-            usuario = (Usuario)sesion.getAttribute("usuario");
+    if (sesion != null) {
+        if (sesion.getAttribute("usuario") == null) {
+        } else {
+            tipoUsuario = (String) sesion.getAttribute("tipoUsuario");
+            usuario = (Usuario) sesion.getAttribute("usuario");
         }
-    }else{
+    } else {
         response.sendRedirect("../InicioJSP.jsp");
     }
 %>
@@ -100,7 +100,7 @@
         <div align="center" id="panelAerolineas">
             <div class="panel">
                 <div class="panel-heading panel-id">
-                <div class="col-sm-12">
+                    <div class="col-sm-12">
                         <form role="form" onsubmit="return false;" id="formAerolineas" class="form-horizontal centered">
                             <div class="form-group row" id="groupNombreAero">
                                 <div class="col-sm-4">
@@ -130,38 +130,38 @@
                 </div>
             </div>
         </div>
-        
-         <!-- ********************************************************** -->
+
+        <!-- ********************************************************** -->
         <!-- FORMULARIO -->
         <!-- ********************************************************** -->
-        <div class="modal fade" id="myModalFormulario" role="dialog">
+        <div class="modal fade container" id="myModalFormulario" role="dialog">
             <div class="modal-dialog modal-lg">
                 <div class="modal-content">
-                    <div class="modal-header">
+                    <div class="modal-header fondoForm">
                         <button type="button" class="close" data-dismiss="modal" onclick="limpiarForm()">&times;</button>
-                        <h4 class="modal-title" id="myModalTitle">Insertar Aerolineas
+                        <h1 class="modal-title" id="myModalTitle">Insertar Aerolineas</h1>
                     </div>
-                    <div class="modal-body" id="myModalMessage">
+                    <div class="modal-body panel-body" id="myModalMessage">
                         <form role="form" onsubmit="return false;" id="formaddAerolineas">
-                            <div class="form-group" id="groupidAerolinea">
-                                <label for="nombre">Nombre:</label>
-                                <input type="text" class="form-control" id="nombre" placeholder="Nombre" >
+                            <div class="row">
+                                <div class="col-sm-4"></div>
+                                <div class="form-group col-sm-4" id="groupidAerolinea">
+                                    <label for="nombre">Nombre:</label>
+                                    <input type="text" class="form-control" id="nombre" placeholder="Nombre" >
+                                </div>
+                                <div class="col-sm-4"></div>
                             </div>
-                            <div class="form-group" id="groupidAerolinea">
-                                <label for="nombre">Pais</label>
-                                <select class="form-control" id="pais">
-                                            <option>Seleccione un país</option>
-                                </select>
+                            <div class="row">
+                                <div class="col-sm-4"></div>
+                                <div class="form-group col-sm-4" id="groupidAerolinea">
+                                    <label for="nombre">Pais</label>
+                                    <select class="form-control" id="pais">
+                                        <option>Seleccione un país</option>
+                                    </select>
+                                    <div class="col-sm-4"></div>
+                                </div>
                             </div>
-                            <div class="form-group" id="groupEmail">
-                                <label for="email">Email:</label>
-                                <input type="email" class="form-control" id="email" placeholder="Email" >
-                            </div>
-                            <div class="form-group" id="groupTelefono">
-                                <label for="telefono">Telefono:</label>
-                                <input type="text" class="form-control" id="telefono" placeholder="Telefono">
-                            </div>
-                            <div class="modal-footer buttonOpt" >
+                            <div class="form-group" >
                                 <input type="hidden" value="registroAerolinea" id="aerolineasAction"/> 
                                 <input type="hidden"  id="aerolineaAux"/> 
                                 <button type="submit" id="enviar" class="btn btn-primary">Enviar</button>
@@ -182,28 +182,28 @@
             <div class="modal-dialog">
                 <div class="modal-content">
                     <div class="modal-header">
-                        
-                        <h4><b>Confirmación de borrado</b><h4>
-                    </div>
-                    <div class="modal-body">
-                        <p>
-                            Desea eliminar la aerolínea de la base de datos?, si confirma la acción la información no
-                            <br>
-                            podrá ser recuperada de esta.
-                            <br><br>
-                            Desea confirmar la eliminación de la aerolínea?
-                            <span id="nombreEliminar">
 
-                            </span>
-                            ?
-                        </p>
-                    </div>
-                    <div class="modal-footer">
-                        <button type="button" class="btn btn-default" data-dismiss="modal">Cancelar</button>
-                        <button class="btn btn-danger btn-ok" id="eliminar" value="" data-dismiss="modal">Eliminar</button>
-                    </div>
-                    </div>
-                </div>
-            </div>
-    </body>
-</html>
+                        <h4><b>Confirmación de borrado</b><h4>
+                                </div>
+                                <div class="modal-body">
+                                    <p>
+                                        Desea eliminar la aerolínea de la base de datos?, si confirma la acción la información no
+                                        <br>
+                                        podrá ser recuperada de esta.
+                                        <br><br>
+                                        Desea confirmar la eliminación de la aerolínea?
+                                        <span id="nombreEliminar">
+
+                                        </span>
+                                        ?
+                                    </p>
+                                </div>
+                                <div class="modal-footer">
+                                    <button type="button" class="btn btn-default" data-dismiss="modal">Cancelar</button>
+                                    <button class="btn btn-danger btn-ok" id="eliminar" value="" data-dismiss="modal">Eliminar</button>
+                                </div>
+                                </div>
+                                </div>
+                                </div>
+                                </body>
+                                </html>

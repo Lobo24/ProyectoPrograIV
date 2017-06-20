@@ -89,7 +89,7 @@
                             <ul class="navbar-nav navbar-inverse dropdown-menu">
                                 <li><a href="AerolineasJSP.jsp">Aerolineas</a></li>
                                 <li><a href="RutasJSP.jsp">Rutas</a></li>
-                                <li><a href="TipoAvionJSP.jsp">Tipos de avión</a></li>
+                                <li><a href="TipoAvionesJSP.jsp">Tipos de avión</a></li>
                                 <li><a href="UsuariosJSP.jsp">Usuarios</a></li>
                             </ul>
                         </li>
@@ -149,20 +149,20 @@
             </div>
         </div>
         <!-- Modal -->
-        <div class="modal fade" id="myModalRegistroAvion" role="dialog">
+        <div class="modal fade container" id="myModalRegistroAvion" role="dialog">
             <div class="modal-dialog modal-lg">
                 <div class="modal-content">      
                     <div class="modal-header fondoForm">
                         <button type="button" class="close" data-dismiss="modal" onclick="limpiarForm()">&times;</button>
-                        <h2 class="modal-title text-center" id="myModalTitle">Insertar Vuelos</h2>
+                        <h1 class="modal-title text-center" id="myModalTitle">Insertar Vuelos</h1>
                     </div>
-                    <form role="form" onsubmit="return false;" id="formAviones">
-                        <div id="formCamposAviones">
+                    <div class="modal-body panel-body">
+                    <form role="form" onsubmit="return false; id="formAviones">
                             <div class="row">
                                 <div class="form-group col-sm-6" id="groupAerolinea">
-                                    <label for="aerolinea">Avión</label>
+                                    <label for="aerolinea">Aerolinea</label>
                                     <select class="form-control" id="aerolinea">
-                                        <option val="0">Seleccione un Avión</option>
+                                        <option val="0">Seleccione una aerolinea</option>
                                     </select>
                                 </div>
                                 <div class="form-group col-sm-6" id="groupTipo">
@@ -187,13 +187,13 @@
                                     <input type="text" class="form-control" id="llegada" placeholder="llegada"  readonly>
                                 </div>
                             </div>
-                            <div class="form-group  col-sm-6" id="groupRuta" style="margin-left: 200px;">
+                            <div class="form-group" id="groupRuta">
                                 <label for="ruta">Ruta</label>
                                 <select class="form-control" id="ruta">
                                     <option val="0">Seleccione una ruta</option>
                                 </select>
                             </div>
-                            <div class="buttonOpt" style="margin-left: 10px;">
+                            <div class="form-group">
                                 <button type="submit" id="enviar" class="btn btn-primary">Enviar</button>
                                 <button type="button" id="cancelar" class="btn btn-danger" data-dismiss="modal">Cerrar</button>
                             </div>
@@ -203,8 +203,8 @@
                                     <span id="mesajeResultText">This alert box could indicate a neutral informative change or action.</span>
                                 </div>
                             </div>-->
-                        </div>
                     </form>
+                    </div>
                 </div>
             </div>
         </div>

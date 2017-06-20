@@ -10,13 +10,13 @@
     HttpSession sesion = request.getSession(true);
     String tipoUsuario = "";
     Usuario usuario = null;
-    if(sesion!=null){
-        if (sesion.getAttribute("usuario")  == null) {
-        }else{
-            tipoUsuario = (String)sesion.getAttribute("tipoUsuario");
-            usuario = (Usuario)sesion.getAttribute("usuario");
+    if (sesion != null) {
+        if (sesion.getAttribute("usuario") == null) {
+        } else {
+            tipoUsuario = (String) sesion.getAttribute("tipoUsuario");
+            usuario = (Usuario) sesion.getAttribute("usuario");
         }
-    }else{
+    } else {
         response.sendRedirect("../InicioJSP.jsp");
     }
 %>
@@ -100,7 +100,7 @@
         <div align="center" id="panelTipoAviones">
             <div class="panel">
                 <div class="panel-heading panel-id">
-                <div class="col-sm-12">
+                    <div class="col-sm-12">
                         <form role="form" onsubmit="return false;" id="formTipoAviones" class="form-horizontal centered">
                             <div class="form-group" id="groupNombreAero">
                                 <div class="col-sm-4" style="text-align: right; vertical-align: middle;">
@@ -110,7 +110,7 @@
                                     <input type="text" class="form-control" id="buscarTipo" placeholder="Digite el modelo del tipo de avión">
                                 </div>
                                 <div class="col-sm-4">
-                                    <button type="button" onclick="busquedaTipoAviones()" class="btn btn-info centered">
+                                    <button type="button" onclick="busquedaTipoAviones()" class="btn btn-success centered">
                                         Buscar <span class="glyphicon glyphicon-search"></span>
                                     </button>
                                     <button type="button" class="btn btn-info centered" data-toggle="modal" data-target="#myModalFormulario">
@@ -133,49 +133,53 @@
                 </div>
             </div>
         </div>
-        
-         <!-- ********************************************************** -->
+
+        <!-- ********************************************************** -->
         <!-- FORMULARIO -->
         <!-- ********************************************************** -->
         <div class="modal fade" id="myModalFormulario" role="dialog">
             <div class="modal-dialog modal-lg">
                 <div class="modal-content">
-                    <div class="modal-header">
+                    <div class="modal-header fondoForm">
                         <button type="button" class="close" data-dismiss="modal" onclick="limpiarForm()">&times;</button>
-                        <h4 class="modal-title" id="myModalTitle">Insertar tipo de avion</h4>
+                        <h1 class="modal-title" id="myModalTitle">Insertar tipo de avion</h1>
                     </div>
-                    <div class="modal-body" id="myModalMessage">
+                    <div class="modal-body panel-body" id="myModalMessage">
                         <form role="form" onsubmit="return false;" id="formAerolineas">
-                            <div class="form-group" id="groupModelo">
-                                <label for="idAvion">Modelo:</label>
-                                <input type="text" class="form-control" id="modelo" placeholder="Modelo" >
+                            <div class="row">
+                                <div class="form-group col-sm-4" id="groupModelo">
+                                    <label for="idAvion">Modelo:</label>
+                                    <input type="text" class="form-control" id="modelo" placeholder="Modelo" >
+                                </div>
+                                <div class="form-group col-sm-4" id="groupMarca">
+                                    <label for="marca">Marca:</label>
+                                    <input type="text" class="form-control" id="marca" placeholder="Marca" >
+                                </div>
+                                <div class="form-group col-sm-4" id="groupAño">
+                                    <label for="año">Año:</label>
+                                    <input type="number" class="form-control" id="año" placeholder="Año">
+                                </div>
                             </div>
-                            <div class="form-group" id="groupMarca">
-                                <label for="marca">Marca:</label>
-                                <input type="text" class="form-control" id="marca" placeholder="Marca" >
-                            </div>
-                            <div class="form-group" id="groupAño">
-                                <label for="año">Año:</label>
-                                <input type="number" class="form-control" id="año" placeholder="Año">
-                            </div>
-                            <div class="form-group" id="groupCantFilas">
-                                <label for="cantFilas">Cantidad de filas</label>
-                                <input type="number" class="form-control" id="cantFilas" placeholder="Cantidad de filas">
-                            </div>
-                            <div class="form-group" id="groupCantAsientosPorFila">
-                                <label for="asientosFila">Asientos por fila</label>
-                                <select class="form-control" id="asientosFila">
-                                            <option value="4">4</option>
-                                            <option value="6">6</option>
-                                            <option value="7">7</option>
-                                            <option value="8">8</option>
-                                </select>
-                            </div>
-                            <div class="form-group" id="groupCantPasajeros">
-                                <label for="cantPasajeros">Cantidad de pasajeros</label>
-                                <input type="text" class="form-control" id="cantPasajeros" placeholder="cantPasajeros" readonly="readonly" action="calcPasajeros()">
-                            </div>
-                            <div class="modal-footer buttonOpt" >
+                            <div class="row">
+                                <div class="form-group col-sm-4" id="groupCantFilas">
+                                    <label for="cantFilas">Cantidad de filas</label>
+                                    <input type="number" class="form-control" id="cantFilas" placeholder="Cantidad de filas">
+                                </div>
+                                <div class="form-group col-sm-4" id="groupCantAsientosPorFila">
+                                    <label for="asientosFila">Asientos por fila</label>
+                                    <select class="form-control" id="asientosFila">
+                                        <option value="4">4</option>
+                                        <option value="6">6</option>
+                                        <option value="7">7</option>
+                                        <option value="8">8</option>
+                                    </select>
+                                </div>
+                                <div class="form-group col-sm-4" id="groupCantPasajeros">
+                                    <label for="cantPasajeros">Cantidad de pasajeros</label>
+                                    <input type="text" class="form-control" id="cantPasajeros" placeholder="cantPasajeros" readonly="readonly" action="calcPasajeros()">
+                                </div>
+                            </div>                                
+                            <div class="form-group" >
                                 <input type="hidden" value="registroTipoAvion" id="tipoAvionAction"/> 
                                 <input type="hidden"  id="tipoAvionAux"/>
                                 <button type="submit" id="enviar" class="btn btn-primary">Registrarse</button>
@@ -213,11 +217,11 @@
                                     <p>
                                 </div>
                                 <div class="modal-footer">
-                                <button type="button" class="btn btn-default" data-dismiss="modal">Cancelar</button>
-                                <button class="btn btn-danger btn-ok" id="eliminar" value="" data-dismiss="modal">Eliminar</button>
+                                    <button type="button" class="btn btn-default" data-dismiss="modal">Cancelar</button>
+                                    <button class="btn btn-danger btn-ok" id="eliminar" value="" data-dismiss="modal">Eliminar</button>
                                 </div>
-                    </div>
-                </div>
-            </div>
-    </body>
-</html>
+                                </div>
+                                </div>
+                                </div>
+                                </body>
+                                </html>

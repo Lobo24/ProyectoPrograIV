@@ -117,7 +117,7 @@
                                     <input type="text" class="form-control" id="buscarRuta" placeholder="Destino">
                                 </div>
                                 <div class="col-sm-4">
-                                    <button type="button" onclick="busquedaPersonas()" class="btn btn-info centered">
+                                    <button type="button" onclick="busquedaPersonas()" class="btn btn-success centered">
                                         Buscar <span class="glyphicon glyphicon-search"></span>
                                     </button>
                                     <button type="button" id="agregar" class="btn btn-info centered" data-toggle="modal" data-target="#myModalFormulario">
@@ -148,11 +148,11 @@
         <div class="modal fade" id="myModalFormulario" role="dialog" >
             <div class="modal-dialog modal-md">
                 <div class="modal-content">
-                    <div class="modal-header">
+                    <div class="modal-header fondoForm">
                         <button type="button" class="close" data-dismiss="modal">&times;</button>
-                        <h4 class="modal-title" id="myModalTitle">Insertar Rutas</h4>
+                        <h1 class="modal-title" id="myModalTitle">Insertar Rutas</h1>
                     </div>
-                    <div class="modal-body" id="myModalMessage" align="center">
+                    <div class="modal-body panel-body" id="myModalMessage" align="center">
                         <form role="form" onsubmit="return false;" id="formaddRutas">
                             <div id="formCamposRutas">
                                 <div class="row">

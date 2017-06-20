@@ -12,8 +12,6 @@ public class Aerolinea  implements java.io.Serializable {
      private Integer pkIdAerolinea;
      private String nombre;
      private int idPais;
-     private String email;
-     private String telefono;
      private String ultimoUsuario;
      private Date ultimaFecha;
      private Pais pais;
@@ -22,18 +20,14 @@ public class Aerolinea  implements java.io.Serializable {
     }
 
 	
-    public Aerolinea(String nombre, int idPais, String email, String telefono) {
+    public Aerolinea(String nombre, int idPais) {
         this.nombre = nombre;
         this.idPais=idPais;
-        this.email = email;
-        this.telefono = telefono;
         this.pais=null;
     }
-    public Aerolinea(String nombre, String email, int idPais, String telefono, String ultimoUsuario, Date ultimaFecha) {
+    public Aerolinea(String nombre, int idPais,String ultimoUsuario, Date ultimaFecha) {
        this.nombre = nombre;
        this.idPais=idPais;
-       this.email = email;
-       this.telefono = telefono;
        this.ultimoUsuario = ultimoUsuario;
        this.ultimaFecha = ultimaFecha;
        this.pais=null;
@@ -68,20 +62,6 @@ public class Aerolinea  implements java.io.Serializable {
     
     public void setNombre(String nombre) {
         this.nombre = nombre;
-    }
-    public String getEmail() {
-        return this.email;
-    }
-    
-    public void setEmail(String email) {
-        this.email = email;
-    }
-    public String getTelefono() {
-        return this.telefono;
-    }
-    
-    public void setTelefono(String telefono) {
-        this.telefono = telefono;
     }
     public String getUltimoUsuario() {
         return this.ultimoUsuario;

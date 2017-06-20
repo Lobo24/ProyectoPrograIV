@@ -14,12 +14,6 @@
         <property name="idPais" type="int">
             <column name="pais" not-null="true" />
         </property>
-        <property name="email" type="string">
-            <column name="email" length="45" not-null="true" />
-        </property>
-        <property name="telefono" type="string">
-            <column name="telefono" length="45" not-null="true" />
-        </property>
         <property name="ultimoUsuario" type="string">
             <column name="ultimoUsuario" length="45" />
         </property>

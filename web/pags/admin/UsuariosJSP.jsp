@@ -88,7 +88,7 @@
                             <ul class="navbar-nav navbar-inverse dropdown-menu">
                                 <li><a href="AerolineasJSP.jsp">Aerolineas</a></li>
                                 <li><a href="AvionesJSP.jsp">Vuelos</a></li>
-                                <li><a href="TipoAvionessJSP.jsp">Tipos de avión</a></li>
+                                <li><a href="TipoAvionesJSP.jsp">Tipos de avión</a></li>
                                 <li><a href="RutasJSP.jsp">Rutas</a></li>
                             </ul>
                         </li>
@@ -149,7 +149,7 @@
                         <div class="modal-header fondoForm">
                             <h1 class="modal-title" id="myModalTitle">Registro de Usuario</h1>
                         </div>
-                        <div class="modal-body" id="myModalMessage">
+                        <div class="modal-body panel-body" id="myModalMessage">
                             <form role="form" onsubmit="return false;" id="formaddRutas">
                                 <div class="row">
                                     <div class="form-group col-sm-6" id="groupidUsuario">

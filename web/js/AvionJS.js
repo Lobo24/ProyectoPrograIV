@@ -19,18 +19,25 @@ $(function () {
     $("#mostrarForm").click(function () {
         limpiarForm();
     });
-    $('#ruta').blur(function(){
-      fechaLlegada();
+    $('#ruta').blur(function () {
+        fechaLlegada();
+    });
+    $('#ruta').click(function () {
+        if($('#ruta').val() !== '0')
+            fechaLlegada();
+    });
+    $('#llegada').click(function () {
+        fechaLlegada();
     });
 });
 
 $(document).ready(function () {
-     $("#groupSalida").datetimepicker({
-          format: 'dd-mm-yyyy hh:ii'       
-      });
-     $("#groupSalidaSearch").datetimepicker({
-          format: 'dd-mm-yyyy hh:ii'       
-      });
+    $("#groupSalida").datetimepicker({
+        format: 'dd-mm-yyyy hh:ii'
+    });
+    $("#groupSalidaSearch").datetimepicker({
+        format: 'dd-mm-yyyy hh:ii'
+    });
     recargarTodoAviones();
 });
 
@@ -236,8 +243,8 @@ function dibujarFilaAvi(rowData) {
     row.append($("<td>" + rowData.idAvion + "</td>"));
     row.append($("<td>" + rowData.aerolineao.nombre + "</td>"));
     row.append($("<td>" + rowData.tipoAviono.marca + "-" +
-    rowData.tipoAviono.modelo + "</td>"));
-    row.append($("<td>" + rowData.rutao.paisOrigen.nombre +"-"+ rowData.rutao.paisDestino.nombre + "</td>"));
+            rowData.tipoAviono.modelo + "</td>"));
+    row.append($("<td>" + rowData.rutao.paisOrigen.nombre + "-" + rowData.rutao.paisDestino.nombre + "</td>"));
     row.append($("<td>" + rowData.horarioSalida + "</td>"));
     row.append($("<td>" + rowData.horarioLlegada + "</td>"));
     row.append($("<td>" + rowData.ultimaFecha + "</td>"));
@@ -282,24 +289,28 @@ function limpiarForm() {
     $('#formLogin').trigger("reset");
 }
 
-function fechaLlegada(){
-     var date=$("#salida").val();
-        var dia=date.substring(0,2);
-        var mes=date.substring(3,5);
-        var año=date.substring(6,10);
-        var hora=date.substring(11,13);
-        var minutos=date.substring(14,date.length);
-        date=año+"-"+mes+"-"+dia+"T"+hora+":"+minutos+":00";
+function fechaLlegada() {
+    var s=$('#salida').val().length;
+    var r=$('#ruta').val();
+    if ($('#salida').val().length !== 0 && $('#ruta').val() !== '0') {
+        var date = $("#salida").val();
+        var dia = date.substring(0, 2);
+        var mes = date.substring(3, 5);
+        var año = date.substring(6, 10);
+        var hora = date.substring(11, 13);
+        var minutos = date.substring(14, date.length);
+        date = año + "-" + mes + "-" + dia + "T" + hora + ":" + minutos + ":00";
         date = new Date(date);
-        minutos = parseInt(minutos) + hora * 60;
+        minutos = avRutas[parseInt($('#ruta').val())-1].minutos;
         date.setMinutes(date.getMinutes() + minutos);
-        var newDate=zero(date.getDate())+"-"+zero(parseInt(date.getMonth()+1))+"-"+zero(date.getFullYear())
-                +" "+zero(parseInt(date.getHours()))+":"+zero(date.getMinutes());
+        var newDate = zero(date.getDate()) + "-" + zero(parseInt(date.getMonth() + 1)) + "-" + zero(date.getFullYear())
+                + " " + zero(parseInt(date.getHours())) + ":" + zero(date.getMinutes());
         $("#llegada").val(newDate);
+    }
 }
 
-function zero(data){
-    if(parseInt(data)<10)
-        return "0"+data;
+function zero(data) {
+    if (parseInt(data) < 10)
+        return "0" + data;
     return data;
 }

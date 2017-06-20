@@ -55,8 +55,6 @@ function dibujarTabla(numpag,dataJson) {
     row.append($("<th>ID</td>"));
     row.append($("<th>Nombre</td>"));
     row.append($("<th>Pais</td>"));
-    row.append($("<th>Email</td>"));
-    row.append($("<th>Teléfono</td>"));
     row.append($("<th>Último usuario</td>"));
     row.append($("<th>Última fecha</td>"));
     row.append($("<th>Acción</td>"));
@@ -77,8 +75,6 @@ function dibujarFila(rowData) {
     row.append($("<td>" + rowData.pkIdAerolinea + "</td>"));
     row.append($("<td>" + rowData.nombre + "</td>"));
     row.append($("<td>" + rowData.pais.nombre + "</td>"));
-    row.append($("<td>" + rowData.email + "</td>"));
-    row.append($("<td>" + rowData.telefono + "</td>"));
     row.append($("<td>" + rowData.ultimoUsuario + "</td>"));
     row.append($("<td>" + rowData.ultmaFecha + "</td>"));    
     row.append($('<td><button type="button" class="btn btn-default btn-xs" aria-label="Left Align" onclick="modificarAerolinea(' +rowData.pkIdAerolinea + ')">'+
@@ -127,9 +123,7 @@ function enviar() {
                 accion: $("#aerolineasAction").val(),
                 idAerolinea: $("#aerolineaAux").val(),
                 nombre: $("#nombre").val(),
-                pais: $("#pais").val(),
-                email: $("#email").val(),
-                telefono: $("#telefono").val()
+                pais: $("#pais").val()
             },
             error: function () { //si existe un error en la respuesta del ajax
                 mostrarMensaje("alert alert-danger", "Se genero un error, contacte al administrador (Error del ajax)", "Error!");
@@ -163,21 +157,11 @@ function validar() {
     //Elimina estilo de error en los css
     //notese que es sobre el grupo que contienen el input
     $("#groupNombre").removeClass("has-error");
-    $("#groupEmail").removeClass("has-error");
-    $("#groupTelefono").removeClass("has-error");
     
     //valida cada uno de los campos del formulario
     //Nota: Solo si fueron digitadoslse;
     if ($("#nombre").val() === "") {
         $("#groupNombre").addClass("has-error");
-        validacion = false;
-    }
-    if ($("#email").val() === "") {
-        $("#groupEmail").addClass("has-error");
-        validacion = false;
-    }
-    if ($("#Telefono").val() === "") {
-        $("#groupTelefono").addClass("has-error");
         validacion = false;
     }
     return validacion;

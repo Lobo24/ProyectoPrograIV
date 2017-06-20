@@ -61,8 +61,6 @@ public class AerolineaServlet extends HttpServlet {
                 case "registroAerolinea": case "modificarAerolinea":
                     aerolinea.setNombre(request.getParameter("nombre"));
                     aerolinea.setIdPais(Integer.parseInt(request.getParameter("pais")));
-                    aerolinea.setEmail(request.getParameter("email"));
-                    aerolinea.setTelefono(request.getParameter("telefono"));
                     if(accion.equals("registroAerolinea")){
                     uBL.save(aerolinea);
                     out.print("C~La aerolinea se guardo correctamente");
