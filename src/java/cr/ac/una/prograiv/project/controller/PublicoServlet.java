@@ -56,6 +56,7 @@ public class PublicoServlet extends HttpServlet {
                         }else{
                             HttpSession session = request.getSession(true); 
                             session.setAttribute("usuario", usuario); 
+                            session.setAttribute("nombreUsuario", usuario.getNombreUsuario());
                             session.setAttribute("loginStatus", "login");
                             if(usuario.isAdmin()){
                                 session.setAttribute("tipoUsuario", "admin");

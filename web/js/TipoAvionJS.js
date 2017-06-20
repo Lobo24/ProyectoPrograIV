@@ -99,7 +99,7 @@ function dibujarFila(rowData) {
     row.append($("<td>" + rowData.cantAsientosPorFila + "</td>"));
     row.append($("<td>" + rowData.cantPasajeros + "</td>"));
     row.append($("<td>" + rowData.ultimoUsuario + "</td>"));
-    row.append($("<td>" + rowData.ultmaFecha + "</td>"));    
+    row.append($("<td>" + rowData.ultimaFecha + "</td>"));    
        
     row.append($('<td><button type="button" class="btn btn-default btn-xs" aria-label="Left Align" onclick="modificarTipoAvion(' +rowData.idTipo + ')">'+
                         '<span class="glyphicon glyphicon-pencil" aria-hidden="true"></span>'+

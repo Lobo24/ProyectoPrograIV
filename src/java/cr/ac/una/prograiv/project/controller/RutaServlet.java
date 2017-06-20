@@ -11,6 +11,7 @@ import cr.ac.una.prograiv.project.bl.RutaBL;
 import cr.ac.una.prograiv.project.domain.Ruta;
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.util.Date;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.servlet.ServletException;
@@ -63,6 +64,8 @@ public class RutaServlet extends HttpServlet {
                     ruta.setMinutos(Integer.valueOf(request.getParameter("minutos")));
                     ruta.setDescuento(Float.valueOf(request.getParameter("descuento")));
                     ruta.setTarifa(Float.valueOf(request.getParameter("tarifa")));
+                    ruta.setUltimoUsuario((String)session.getAttribute("nombreUsuario"));
+                    ruta.setUltimaFecha(new Date());
                     if(accion.equals("registroRutas")){
                         rBL.save(ruta);
                         out.print("C~La ruta se ingreso correctamente ");

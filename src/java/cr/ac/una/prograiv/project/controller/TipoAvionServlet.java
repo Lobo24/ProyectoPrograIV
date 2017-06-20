@@ -10,6 +10,7 @@ import cr.ac.una.prograiv.project.bl.TipoAvionBL;
 import cr.ac.una.prograiv.project.domain.TipoAvion;
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.util.Date;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
@@ -65,6 +66,8 @@ public class TipoAvionServlet extends HttpServlet {
                     tipo.setCantAsientosPorFila(Integer.valueOf(request.getParameter("asientosPorFila")));
                     tipo.setCantPasajeros(Integer.valueOf(request.getParameter("pasajeros")));
                     tipo.setCantFila(Integer.valueOf(request.getParameter("filas")));
+                    tipo.setUltimoUsuario((String)session.getAttribute("nombreUsuario"));
+                    tipo.setUltimaFecha(new Date());
                     if(accion.equals("registroTipoAvion")){
                     uBL.save(tipo);
                     out.print("C~El tipo de avión se guardó correctamente");
