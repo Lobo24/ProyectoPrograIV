@@ -9,16 +9,28 @@ import cr.ac.una.prograiv.project.bl.UsuarioBL;
 import cr.ac.una.prograiv.project.domain.Usuario;
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.io.StringReader;
+import java.io.StringWriter;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.Locale;
 import javax.servlet.ServletException;
-import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
+import javax.xml.namespace.QName;
+import javax.xml.transform.OutputKeys;
+import javax.xml.transform.Source;
+import javax.xml.transform.Transformer;
+import javax.xml.transform.TransformerFactory;
+import javax.xml.transform.stream.StreamResult;
+import javax.xml.transform.stream.StreamSource;
+import javax.xml.ws.Dispatch;
+import javax.xml.ws.Service;
+import javax.xml.ws.WebServiceRef;
+import una.ac.prograiv.project.sao.WsIndicadoresEconomicos;
 
 /**
  *
@@ -26,6 +38,9 @@ import javax.servlet.http.HttpSession;
  */
 
 public class PublicoServlet extends HttpServlet {
+    
+    @WebServiceRef(wsdlLocation = "WEB-INF/wsdl/wsIndicadoresEconomicos.asmx.wsdl")
+    private WsIndicadoresEconomicos service;
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -47,7 +62,6 @@ public class PublicoServlet extends HttpServlet {
             
             switch(accion){
                 case "loginUsuario":
-                     
                     usuario = uBL.findByNombreUsuario(request.getParameter("nombreUsuario"));
                     if(usuario==null){ out.print("E~Usuario no registrado en el sistema");}
                     if(usuario != null){
@@ -86,6 +100,35 @@ public class PublicoServlet extends HttpServlet {
                     usuario.setAdmin(false);
                     usuario.setNumTel(request.getParameter("telefono"));
                     uBL.save(usuario);
+                    break;
+                case "consultarTipoCambio":
+                    QName portQName = new QName("http://ws.sdde.bccr.fi.cr" , "wsIndicadoresEconomicosSoap12");
+                    String req = "<ObtenerIndicadoresEconomicosXML  xmlns=\"http://ws.sdde.bccr.fi.cr\"><tcIndicador>317</tcIndicador><tcFechaInicio>20/06/2017</tcFechaInicio><tcFechaFinal>20/06/2017</tcFechaFinal><tcNombre>Compra</tcNombre><tnSubNiveles>N</tnSubNiveles></ObtenerIndicadoresEconomicosXML>";
+                    
+                    try { // Call Web Service Operation
+                        
+                        //******************************************************
+                        //Consulta del servicio Web
+                        //******************************************************
+                        Dispatch<Source> sourceDispatch = null;
+                        sourceDispatch = service.createDispatch(portQName, Source.class, Service.Mode.PAYLOAD);
+                        Source result = sourceDispatch.invoke(new StreamSource(new StringReader(req)));
+                        //******************************************************
+                        //Convertir la consulta a XML
+                        //******************************************************
+                        StreamResult xmlOutput=new StreamResult(new StringWriter());
+                        Transformer transformer=TransformerFactory.newInstance().newTransformer();
+                        transformer.setOutputProperty("{http://xml.apache.org/xslt}indent-amount","2");
+                        transformer.setOutputProperty(OutputKeys.INDENT,"yes");
+                        transformer.transform(result,xmlOutput);
+                        
+                        String XMLResult = xmlOutput.getWriter().toString();
+                        out.print(XMLResult);
+                        
+                                
+                    } catch (Exception ex) {
+                        out.print("E~Error a la hora de consultar el SOA");
+                    }
                     break;
                 default:
                     out.print("E~No se indico la acción que se desea realizare");

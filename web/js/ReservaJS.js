@@ -15,6 +15,7 @@ $(document).ready(function () {
         $('#sesionCont').show();
         $(this).popover('show');
     });
+    consultarTipoCambio();
 });
 
 function guardaCampo(idSilla){
@@ -142,4 +143,30 @@ function dibujarFilaAvi(rowData) {
 
 function selectAvion(filas,colum){
     creaCkecking(filas,colum);
+}
+
+
+function consultarTipoCambio() {
+    $.ajax({
+        url: '../../PublicoServlet',
+        data: {
+            accion: "consultarTipoCambio"
+        },
+        error: function () { //si existe un error en la respuesta del ajax
+            alert("Error al consultar tipo de cambio");
+        },
+        success: function (data) { //si todo esta correcto en la respuesta del ajax, la respuesta queda en el data
+            //find("ParentNode").attr("Symbol");
+            var xmlResponseServer = $(data).find("obtenerindicadoreseconomicosxmlresponse");
+            var xmlResponseSW = xmlResponseServer.prevObject.context.childNodes["0"].firstElementChild;
+            var xmlResponseSWText = xmlResponseSW.childNodes["0"].data;
+            
+            var xmlDoc = jQuery.parseXML(xmlResponseSWText);
+            var tipoCambioChild = $(xmlDoc).find('NUM_VALOR');
+            var tipoCambio = tipoCambioChild.context.lastChild.lastElementChild.lastElementChild.innerHTML;
+            alert(tipoCambio);
+        },
+        type: 'POST',
+        dataType: "xml"
+    });
 }

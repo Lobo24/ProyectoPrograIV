@@ -103,12 +103,27 @@
             <p><b>Email :</b> <% out.print(usuario.getEmail()); %></p>
             <p><b>Fecha Nacimiento :</b> <% out.print(usuario.getFechaNacimiento());%></p>
         </div>-->
-
+        <!-- ********************************************************** -->
+        <!-- Checking -->
+        <!-- ********************************************************** -->
+        <input type="hidden"  id="filaAux" value="0"/> 
+        <input type="hidden"  id="columAux" value="0"/> 
+        <div id="checkin">
+            <div>
+                <h3><b>Selección de asientos</b></h3>
+                <br>
+            </div>
+            <div>
+                <form id="formElige" >
+                    <div id="crearAsientos"></div>
+                </form>
+            </div>
+        </div>
 
         <!-- ********************************************************** -->
         <!-- FORMULARIO -->
         <!-- ********************************************************** -->
-        <div style="width: 50%;">
+        <div>
             <div align="center" id="formComprar">
                 <div class="panel">
                     <div class="panel-heading panel-id">
@@ -145,22 +160,7 @@
         </div>
 
 
-        <!-- ********************************************************** -->
-        <!-- Checking -->
-        <!-- ********************************************************** -->
-        <input type="hidden"  id="filaAux" value="0"/> 
-        <input type="hidden"  id="columAux" value="0"/> 
-        <div id="checkin">
-            <div>
-                <h3><b>Selección de asientos</b></h3>
-                <br>
-            </div>
-            <div>
-                <form id="formElige" >
-                    <div id="crearAsientos"></div>
-                </form>
-            </div>
-        </div>
+        
 
 
 
@@ -178,7 +178,7 @@
             <img   alt="" border="0" src="https://www.paypalobjects.com/es_XC/i/scr/pixel.gif" width="1" height="1">
         </form>-->
 
-        <form action="https://www.paypal.com/cgi-bin/webscr" method="post">
+        <!--<form action="https://www.paypal.com/cgi-bin/webscr" method="post">
             <input type="hidden" name="cmd" value="_xclick">
             <input type="hidden" name="hosted_button_id" value="HCPHDM6GBJ9G6">
             <input type="hidden" name="business" value="oscarcm0797@gmail.com">
@@ -188,6 +188,6 @@
             <input type="hidden" name="return">
             <input type="hidden" name="cancel_return">
             <input type="image" border="0" name="submit" src="http://images.paypal.com/images/x-click-but5.gif" alt="Compre doodads con PayPal">
-        </form>
+        </form>-->
     </body>
 </html>

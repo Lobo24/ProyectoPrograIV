@@ -89,8 +89,12 @@ public class BoletoDAO extends HibernateUtil implements IBaseDAO< Boleto,Integer
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
-    @Override
     public List createQueryHQL(LinkedHashMap<String, Object> parametros) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    @Override
+    public List createQueryHQL(String query) {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
     
