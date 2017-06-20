@@ -76,6 +76,8 @@ public class UsuariosServlet extends HttpServlet {
                     usuario.setEmail(request.getParameter("correo"));
                     usuario.setAdmin(true);
                     usuario.setNumTel(request.getParameter("telefono"));
+                    usuario.setUltimoUsuario((String)session.getAttribute("nombreUsuario"));
+                    usuario.setUltimaFecha(new Date());
                     if(accion.equals("registroAdmin")){
                         uBL.save(usuario);
                         out.print("El Administrador fue agregado correctamente");

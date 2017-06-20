@@ -228,7 +228,8 @@ function dibujarTablaAvi(dataJson) {
     row.append($("<th><b>Ruta</b></th>"));
     row.append($("<th><b>Salida</b></th>"));
     row.append($("<th><b>Llegada</b></th>"));
-    row.append($("<th><b>FECHA_INGRESO</b></th>"));
+    row.append($("<th><b>Agregada por</b></th>"));
+    row.append($("<th><b>Fecha modificación</b></th>"));
     row.append($("<th><b>ACCIÓN</th>"));
 
     //carga la tabla con el json devuelto
@@ -247,8 +248,9 @@ function dibujarFilaAvi(rowData) {
     row.append($("<td>" + rowData.rutao.paisOrigen.nombre + "-" + rowData.rutao.paisDestino.nombre + "</td>"));
     row.append($("<td>" + rowData.horarioSalida + "</td>"));
     row.append($("<td>" + rowData.horarioLlegada + "</td>"));
-    row.append($("<td>" + rowData.ultimaFecha + "</td>"));
     row.append($("<td>" + rowData.ultimoUsuario + "</td>"));
+    row.append($("<td>" + rowData.ultimaFecha + "</td>"));
+    
 
     row.append($('<td><button type="button" class="btn btn-default btn-xs" aria-label="Left Align" onclick="alert(\'modificar\');">' +
             '<span class="glyphicon glyphicon-pencil" aria-hidden="true"></span>' +

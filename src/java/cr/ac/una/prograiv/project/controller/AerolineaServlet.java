@@ -10,6 +10,7 @@ import cr.ac.una.prograiv.project.bl.AerolineaBL;
 import cr.ac.una.prograiv.project.domain.Aerolinea;
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.util.Date;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
@@ -40,9 +41,7 @@ public class AerolineaServlet extends HttpServlet {
             Aerolinea aerolinea = new Aerolinea();
             AerolineaBL uBL = new AerolineaBL();
             HttpSession session = request.getSession();
-            
             Thread.sleep(1000);
-            
             String accion = request.getParameter("accion");
             switch(accion){
                 case "consultarAerolineas":
@@ -61,6 +60,8 @@ public class AerolineaServlet extends HttpServlet {
                 case "registroAerolinea": case "modificarAerolinea":
                     aerolinea.setNombre(request.getParameter("nombre"));
                     aerolinea.setIdPais(Integer.parseInt(request.getParameter("pais")));
+                    aerolinea.setUltimoUsuario((String)session.getAttribute("nombreUsuario"));
+                    aerolinea.setUltimaFecha(new Date());
                     if(accion.equals("registroAerolinea")){
                     uBL.save(aerolinea);
                     out.print("C~La aerolinea se guardo correctamente");

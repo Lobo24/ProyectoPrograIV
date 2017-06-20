@@ -55,7 +55,7 @@ function registroAdmin(){
     $.ajax({
        url: '../../UsuariosServlet',
        data: {
-           accion: "registroAdmin",
+           accion: $("#personasAction").val(),
            idUsuario: $("#usuarioid_sign").val(),
            nombreUsuario: $("#usuario_sign").val(),
            telefono: $("#telefono").val(),
@@ -79,8 +79,8 @@ function registroAdmin(){
                 mostrarModal("myModal", "Se genero un error", respuestaTxt);
             }else{
                 consultarUsuarios(1);
-                mostrarModal("myModal","Registro Admin",$("#nombre").val() +" agregado con exito");
-                //limpiarForm();
+                mostrarModal("myModal","Registro Admin",$("#nombre_sign").val() +" agregado con exito");
+                limpiarForm();
            }
         },
         type: 'POST',
@@ -109,7 +109,7 @@ function dibujarTabla(numpag,dataJson) {
     row.append($("<th><b>Telefono</b></th>"));
     row.append($("<th><b>Fec. Nac.</b></th>"));
     row.append($("<th><b>Email</b></th>"));
-    row.append($("<th><b>Ultimo acceso</b></th>"));
+    row.append($("<th><b>Fecha modificación</b></th>"));
     row.append($("<th><b>Tipo</th>"));
     row.append($("<th><b>Acción</th>"));
     
@@ -266,15 +266,17 @@ function paginador(pagAct){
 //******************************************************************************
 
 function cargaUsuario(usuario){
-           $("#idUsuario").val(usuario.idUsuario);
-           $("#nombreUsuario").val(usuario.nombreUsuario);
-           $("#contrasena").val(usuario.contrasena);
-           $("#email").val(usuario.email);
-           $("#apell1").val(usuario.apellido1);
-           $("#apellido2").val(usuario.apellido2);
-           $("#nombre").val(usuario.nombre);
-           //$("#dpFechaNacimiento").data('date');
+           $("#usuarioid_sign").val(usuario.idUsuario);
+           $("#usuario_sign").val(usuario.nombreUsuario);
+           $("#password_sign").val(usuario.contrasena);
+           $("#email_sign").val(usuario.email);
+           $("#primer_ap_sign").val(usuario.apellido1);
+           $("#segundo_ap_sign").val(usuario.apellido2);
+           $("#nombre_sign").val(usuario.nombre);
+           $("#fechaNac").val(usuario.fechaNacimiento);
            $("#telefono").val(usuario.numTel);
+           $("#correo_sign").val(usuario.email);
+           $("#direccion_sign").val(usuario.direccion);
            $("#myModalFormulario").modal();
 }
 

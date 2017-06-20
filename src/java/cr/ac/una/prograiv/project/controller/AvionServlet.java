@@ -64,6 +64,8 @@ public class AvionServlet extends HttpServlet {
                     date = format.parse(fechatxt);
                     avion.setHorarioLlegada(date);
                     uBL.save(avion);
+                    avion.setUltimoUsuario((String)session.getAttribute("nombreUsuario"));
+                    avion.setUltimaFecha(new Date());
                     out.print("C~Se registro correctamente");
 
                     break;

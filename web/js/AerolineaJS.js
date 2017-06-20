@@ -56,7 +56,7 @@ function dibujarTabla(numpag,dataJson) {
     row.append($("<th>Nombre</td>"));
     row.append($("<th>Pais</td>"));
     row.append($("<th>Último usuario</td>"));
-    row.append($("<th>Última fecha</td>"));
+    row.append($("<th>Última modificación</td>"));
     row.append($("<th>Acción</td>"));
 
     //carga la tabla con el json devuelto
@@ -76,7 +76,7 @@ function dibujarFila(rowData) {
     row.append($("<td>" + rowData.nombre + "</td>"));
     row.append($("<td>" + rowData.pais.nombre + "</td>"));
     row.append($("<td>" + rowData.ultimoUsuario + "</td>"));
-    row.append($("<td>" + rowData.ultmaFecha + "</td>"));    
+    row.append($("<td>" + rowData.ultimaFecha + "</td>"));    
     row.append($('<td><button type="button" class="btn btn-default btn-xs" aria-label="Left Align" onclick="modificarAerolinea(' +rowData.pkIdAerolinea + ')">'+
                         '<span class="glyphicon glyphicon-pencil" aria-hidden="true"></span>'+
                     '</button>'+
