@@ -39,7 +39,7 @@ import una.ac.prograiv.project.sao.WsIndicadoresEconomicos;
 
 public class PublicoServlet extends HttpServlet {
     
-    @WebServiceRef(wsdlLocation = "WEB-INF/wsdl/wsIndicadoresEconomicos.asmx.wsdl")
+    @WebServiceRef(wsdlLocation = "WEB-INF/wsdl/indicadoreseconomicos.bccr.fi.cr/indicadoreseconomicos/WebServices/wsIndicadoresEconomicos.asmx.wsdl")
     private WsIndicadoresEconomicos service;
 
     /**
