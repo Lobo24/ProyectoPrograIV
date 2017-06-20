@@ -69,7 +69,7 @@ public class UsuariosServlet extends HttpServlet {
                     usuario.setApellido2(request.getParameter("apellido2"));
                     
                     String fechatxt = request.getParameter("fechaNacimiento");
-                    DateFormat format = new SimpleDateFormat("dd/MM/yyyy", Locale.ENGLISH);
+                    DateFormat format = new SimpleDateFormat("dd-MM-yyyy", Locale.ENGLISH);
                     Date date = format.parse(fechatxt);
                     
                     usuario.setFechaNacimiento(date);

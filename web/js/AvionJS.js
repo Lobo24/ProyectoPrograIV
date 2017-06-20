@@ -33,10 +33,18 @@ $(function () {
 
 $(document).ready(function () {
     $("#groupSalida").datetimepicker({
-        format: 'dd-mm-yyyy hh:ii'
+        format: 'dd-mm-yyyy hh:ii',
+        autoclose: 1
     });
-    $("#groupSalidaSearch").datetimepicker({
-        format: 'dd-mm-yyyy hh:ii'
+    $('#dpFechaNacimiento').datetimepicker({
+        format: 'dd-mm-yyyy',
+        weekStart: 1,
+        todayBtn: 1,
+        autoclose: 1,
+        todayHighlight: 1,
+        startView: 2,
+        minView: 2,
+        forceParse: 0
     });
     recargarTodoAviones();
 });
@@ -57,6 +65,7 @@ function recargarTodoAviones() {
             avAerolineas = [];
             avPaises = [];
             avPaises = data;
+            dibujarOpcionesPaisesAv();
             consultarRutasAv();
             consultarAerolineasAv();
             consultarTipoAvionAv();
@@ -137,6 +146,31 @@ function consultarRutasAv() {
         type: 'POST',
         dataType: "json"
     });
+}
+
+function consultarPaises() {
+    $.ajax({
+        url: "../../PaisServlet",
+        data: {
+            accion: "consultarPaises"
+        },
+        error: function () { //si existe un error en la respuesta del ajax
+            alert("Se presento un error a la hora de cargar la información del pais en la base de datos");
+        },
+        success: function (data) {
+            avPaises = data;
+            dibujarOpcionesAv();
+        },
+        type: 'POST',
+        dataType: "json"
+    });
+}
+
+function dibujarOpcionesPaisesAv() {
+    for (var i = 0; i < avPaises.length; i++) {
+        $("#origenSearch").append("<option value='" + avPaises[i].idPais + "'>" + avPaises[i].nombre + "</option>");
+        $("#destinoSearch").append("<option value='" + avPaises[i].idPais + "'>" + avPaises[i].nombre + "</option>");
+    }
 }
 
 function enviar() {
@@ -258,6 +292,62 @@ function dibujarFilaAvi(rowData) {
             '</button></td>'));
 
 }
+
+function dibujarTablaAviPublico(dataJson) {
+    //limpia la información que tiene la tabla
+    $("#tablaAviones").html("");
+
+    //muestra el enzabezado de la tabla
+    var head = $("<thead />");
+    var row = $("<tr />");
+    head.append(row);
+    $("#tablaAviones").append(head);
+    row.append($("<th><b>ID_Avion</b></th>"));
+    row.append($("<th><b>Aerolínea</b></th>"));
+    row.append($("<th><b>Tipo de Avion</b></th>"));
+    row.append($("<th><b>Ruta</b></th>"));
+    row.append($("<th><b>Salida</b></th>"));
+    row.append($("<th><b>Llegada</b></th>"));
+
+    //carga la tabla con el json devuelto
+    var i = 0;
+    for (; i < dataJson.length; i++) {
+        dibujarFilaAviPublico(dataJson[i]);
+    }
+}
+function dibujarFilaAviPublico(rowData) {
+    var row = $('<tr />');
+    $("#tablaAviones").append(row);
+    row.append($("<td>" + rowData.idAvion + "</td>"));
+    row.append($("<td>" + rowData.aerolineao.nombre + "</td>"));
+    row.append($("<td>" + rowData.tipoAviono.marca + "-" +
+            rowData.tipoAviono.modelo + "</td>"));
+    row.append($("<td>" + rowData.rutao.paisOrigen.nombre + "-" + rowData.rutao.paisDestino.nombre + "</td>"));
+    row.append($("<td>" + rowData.horarioSalida + "</td>"));
+    row.append($("<td>" + rowData.horarioLlegada + "</td>"));
+}
+
+function buscarVuelos(){
+     //Se envia la información por ajax
+    $.ajax({
+        url: '../../AvionServlet',
+        data: {
+            accion: "buscarVuelos",
+            origenSearch: $("#origenSearch").val(),
+            destinoSearch: $("#destinoSearch").val(),
+            salidaSearch: $("#salidaSearch").val()            
+        },
+        error: function () { //si existe un error en la respuesta del ajax
+            alert("Se presento un error a la hora de cargar la información de las rutas en la base de datos");
+        },
+        success: function (data) { //si todo esta correcto en la respuesta del ajax, la respuesta queda en el data
+            dibujarTablaAvi(data);
+        },
+        type: 'POST',
+        dataType: "json"
+    });
+}
+
 function extraePaisesRuta(data) {
     var r = "";
     r = avPaises[parseInt(data.origen - 1)].nombre + "-" +

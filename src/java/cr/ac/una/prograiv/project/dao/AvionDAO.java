@@ -10,6 +10,7 @@ import cr.ac.una.prograiv.project.utils.HibernateUtil;
 import java.util.LinkedHashMap;
 import java.util.List;
 import org.hibernate.HibernateException;
+import org.hibernate.Query;
 
 /**
  *
@@ -90,22 +91,14 @@ public class AvionDAO extends HibernateUtil implements IBaseDAO<Avion,Integer>{ 
     }
 
     @Override
-    public List createQueryHQL(LinkedHashMap<String, Object> parametros) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
-    
-    public List<Avion> find(String fecha, String origen, String destino) {
-        List<Avion> listaAvion;
+    public List createQueryHQL(String query) {
+    List<Avion> listaAvion;
         try{
-        iniciarOperacion();
-        listaAvion = getSesion().createQuery("from Avion a, Ruta r, Pais p"
-                + "where a.id_ruta=r.id_ruta and r.id_pais=p.id_pais"
-                + "and p.nombre like '" + origen + "%' and p.nombre like "
-                        + "'" + destino + "%' and fecha like '" + fecha + "%'").list();
+        iniciarOperacion(); 
+        listaAvion = getSesion().createSQLQuery(query).addEntity(Avion.class).list();
         }finally{
             getSesion().close();
         }
-        return listaAvion;
-    }
+        return listaAvion;}
 }
 

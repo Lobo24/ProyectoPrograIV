@@ -90,8 +90,7 @@ public class AsientoDAO extends HibernateUtil implements IBaseDAO<Asiento,Intege
     }
 
     @Override
-    public List createQueryHQL(LinkedHashMap<String, Object> parametros) {
+    public List createQueryHQL(String query) {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
-    
 }

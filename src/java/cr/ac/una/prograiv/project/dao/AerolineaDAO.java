@@ -90,7 +90,7 @@ public class AerolineaDAO extends HibernateUtil implements IBaseDAO<Aerolinea,In
     }
 
     @Override
-    public List createQueryHQL(LinkedHashMap<String, Object> parametros) {
+    public List createQueryHQL(String query) {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
     

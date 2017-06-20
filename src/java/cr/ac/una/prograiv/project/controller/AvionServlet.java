@@ -65,7 +65,19 @@ public class AvionServlet extends HttpServlet {
                     avion.setHorarioLlegada(date);
                     uBL.save(avion);
                     out.print("C~Se registro correctamente");
-
+                    break;
+                case "buscarVuelos":
+                    String fecha,ori,des;
+                    ori=request.getParameter("origenSearch");
+                    des=request.getParameter("destinoSearch");
+                    fecha = request.getParameter("salidaSearch");
+                    DateFormat df = new SimpleDateFormat("dd-MM-yyyy", Locale.ENGLISH);
+                    Date d = df.parse(fecha);
+                    df=new SimpleDateFormat("yyyy-MM-dd");
+                    fecha=df.format(d);
+                    json = new Gson().toJson( uBL.createQueryHQL(
+                            Avion.class.getName(),uBL.query(fecha, ori, des)));
+                    out.print(json);
                     break;
                 default:
                     out.print("E~No se indico la acción que se desea realizar");

@@ -21,5 +21,5 @@ public interface IBaseDAO <T,K>{ // K = key ,  T = objeto T generico
     public abstract T findById(K key);
     public abstract T findByWord(String key);
     public abstract List<T> findAll();
-    public abstract List createQueryHQL(LinkedHashMap<String, Object> parametros);
+    public abstract List createQueryHQL(String query);
 }

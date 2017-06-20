@@ -9,8 +9,6 @@ import cr.ac.una.prograiv.project.domain.Avion;
 import cr.ac.una.prograiv.project.domain.Pais;
 import cr.ac.una.prograiv.project.domain.Ruta;
 import cr.ac.una.prograiv.project.domain.TipoAvion;
-import java.util.Date;
-import java.util.LinkedHashMap;
 import java.util.List;
 
 /**
@@ -69,7 +67,24 @@ public class AvionBL extends BaseBL implements IBaseBL<Avion, Integer>{
     }
 
     @Override
-    public List createQueryHQL(String className, LinkedHashMap<String, Object> parametros) {
-        return this.getDao(className).createQueryHQL(parametros);
+    public List createQueryHQL(String className, String query) {
+         List<Avion> aviones = this.getDao(Avion.class.getName()).createQueryHQL(query);
+        aviones.forEach((aux) -> {
+            Ruta r= (Ruta)this.getDao(Ruta.class.getName()).findById(aux.getRuta());
+            r.setPaisOrigen((Pais)getDao(Pais.class.getName()).findById(r.getOrigen()));
+            r.setPaisDestino((Pais)getDao(Pais.class.getName()).findById(r.getDestino()));
+            aux.setRutao(r);
+            aux.setTipoAviono((TipoAvion)this.getDao(TipoAvion.class.getName()).findById(aux.getTipoAvion()));
+            aux.setAerolineao((Aerolinea)this.getDao(Aerolinea.class.getName()).findById(aux.getAerolinea()));
+        });
+        return aviones;
+    }
+      
+    public String query(String fecha,String origen,String destino){
+        String query = "select a.* from avion a,(select id_ruta from ruta "
+                + "where origen like '"+origen+"%' "
+                + "and destino like '"+destino+"%')t1 where "
+                + "a.id_ruta=t1.id_ruta and horario_salida like '" + fecha + "%'";
+        return query;
     }
 }

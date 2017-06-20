@@ -54,7 +54,7 @@ public class PaisBL extends BaseBL implements IBaseBL<Pais, Integer> {
     }
 
     @Override
-    public List createQueryHQL(String className, LinkedHashMap<String, Object> parametros) {
+    public List createQueryHQL(String className, String query) {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 

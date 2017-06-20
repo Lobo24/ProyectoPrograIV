@@ -19,5 +19,5 @@ public interface IBaseBL <T,K> {
     public abstract T findById (K o);
     public abstract T findByWord(String o); 
     public abstract  List<T> findAll(String o);
-    public abstract List createQueryHQL(String className, LinkedHashMap<String, Object> parametros);
+    public abstract List createQueryHQL(String className, String query);
 }

@@ -121,26 +121,30 @@
                     <div class="col-sm-12">
                         <form role="form" onsubmit="return false;" id="formAviones" class="form-horizontal centered">
                             <div class="form-group row" id="groupNombreAvi">
-                                <div class="col-sm-2">
-                                    <input type="text" class="form-control" id="buscarRuta" placeholder="Origen">
+                                <div class="col-sm-3">
+                                        <select class="form-control" id="origenSearch">
+                                            <option value="%">Seleccione un origen</option>
+                                        </select>
                                 </div>
-                                <div class="col-sm-2">
-                                    <input type="text" class="form-control" id="buscarRuta" placeholder="Destino">
+                                <div class="col-sm-3">
+                                    <select class="form-control" id="destinoSearch">
+                                            <option value="%">Seleccione un destino</option>
+                                    </select>
                                 </div>
-                                <div class="form-group col-sm-2">
-                                    <div class="input-group date" id="groupSalidaSearch">
-                                        <input type="text" id="salidaSearch" class="form-control"  readonly placeholder="Salida"/>
-                                        <span class="input-group-addon">
-                                            <i class="glyphicon glyphicon-calendar"></i>
-                                        </span>
+                                  <div class="col-sm-2">
+                                        <div id="dpFechaNacimiento" class="input-group date form_date" data-date="" data-date-format="dd/mm/yyyy" data-link-field="dtp_input2" data-link-format="dd/mm/yyyy">
+                                            <input class="form-control" type="text" id="salidaSearch" readonly placeholder="Salida">
+                                            <span class="input-group-addon">
+                                                <span class="glyphicon glyphicon-calendar"></span>
+                                            </span>
+                                        </div>
                                     </div>
-                                </div>
                                 <div class="col-sm-4">
-                                    <button type="button" onclick="busquedaPersonas()" class="btn btn-success centered">
+                                    <button type="button" onclick="buscarVuelos()" class="btn btn-success centered">
                                         Buscar <span class="glyphicon glyphicon-search"></span>
                                     </button>
                                     <button type="button" class="btn btn-info glyphicon glyphicon-plane centered" data-toggle="modal" data-target="#myModalRegistroAvion"> 
-                                        Ingresar avión</button>
+                                        Ingresar vuelo</button>
                                 </div>
                             </div>
                         </form>
