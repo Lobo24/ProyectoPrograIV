@@ -36,6 +36,16 @@
         <script src="../../js/jquery-ui-timepicker-addon.js" type="text/javascript"></script>
     </head>
     <body>
+        <div class="container">
+            <div id="sesionCont">
+            <p><b>Identificación :</b> <% out.print(usuario.getIdUsuario()); %></p>
+            <p><b>Nombre :</b> <% out.print(usuario.getNombre() + " " + usuario.getApellido1() + " " + usuario.getApellido2()); %></p>
+            <p><b>Teléfono :</b> <% out.print(usuario.getNumTel()); %></p>
+            <p><b>Email :</b> <% out.print(usuario.getEmail()); %></p>
+            <p><b>Fecha Nacimiento :</b> <% out.print(usuario.getFechaNacimiento());%></p>
+            <a href="../../InicioJSP.jsp"><button type="button" class="btn btn-danger"> Cerrar sesión</button></a>
+            </div>
+        </div>
         <!-- ********************************************************** -->
         <!-- MODAL PARA MOSTRAR MENSAJES  -->
         <!-- ********************************************************** -->
@@ -94,7 +104,7 @@
                         </li>
                     </ul>             
                     <div class="nav navbar-nav navbar-right" id="menuLogSign">
-                        <button type="button" class="btn btn-danger glyphicon glyphicon-log-in cerrar"><a href="../../InicioJSP.jsp"> Cerrar sesión</a></button>
+                        <button id="sesion" type="button" class="btn btn-success glyphicon glyphicon-user" data-toggle="popoverSesion" title="Sesion" data-placement="bottom" style="margin-top: 7%"><span id="usuario"> <%out.println(usuario.getNombreUsuario());%></span></button>
                     </div>
                 </div>
             </nav> <!--Navbar-->

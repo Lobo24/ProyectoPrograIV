@@ -20,8 +20,8 @@ $(function () {
 $(document).ready(function () {
     $("#mesajeLogin").removeClass();
     $("#mesajeLogin").hide();
-    $("#mesageRegistro").removeClass();
-    $("#mesageRegistro").hide();
+    $("#mesajeResult").removeClass();
+    $("#mesajeResult").hide();
 });
 
 function logueo(){
@@ -88,7 +88,7 @@ function registro(){
         type: 'POST'
     });
     }else{
-        mostrarMensaje("mesageRegistro","alert alert-danger", "Debe digitar los campos del formulario", "Error!");
+        mostrarMensaje("mesajeResult","alert alert-danger", "Debe digitar los campos del formulario", "Error!");
     }
 }
 
@@ -173,7 +173,7 @@ function mostrarMensaje(name,classCss, msg, neg) {
 
 function limpiarForm() {
     //esconde el div del mensaje
-    mostrarMensaje("mesageRegistro","hiddenDiv", "", "");
+    mostrarMensaje("mesajeResult","hiddenDiv", "", "");
     mostrarMensaje("mesajeLogin","hiddenDiv", "", "");
     //Resetear el formulario
     $('#formRegistro').trigger("reset");

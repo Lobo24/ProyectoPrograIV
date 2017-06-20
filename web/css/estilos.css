@@ -103,9 +103,15 @@ and open the template in the editor.
     top: -0.3px;
 }
 
-#mesajeLogin, #mesageRegistro{
+#mesageRegistro{
     margin-left: -18px;
     width: 100%;
+}
+
+#mesajeLogin{
+    width: 90%;
+    margin-left: auto;
+    margin-right: auto;
 }
 
 /**************************************************/
@@ -376,4 +382,8 @@ and open the template in the editor.
     width: 30%;
     margin-left: auto;
     margin-right: auto;
+}
+
+#sesionCont{
+    color: black;
 }
