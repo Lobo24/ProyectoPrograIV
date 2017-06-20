@@ -166,19 +166,19 @@
 
 
 
-        <!--<form action="https://www.paypal.com/cgi-bin/webscr" method="post" target="_top">
+       <!--<form action="https://www.paypal.com/cgi-bin/webscr" method="post" target="_top">
             <input type="hidden" name="cmd" value="_s-xclick">
             <input type="hidden" name="hosted_button_id" value="HCPHDM6GBJ9G6">
             <input type="hidden" name="business" value="Aero-tickets">
             <input type="hidden" name="item_name" value="Tiquetes Aereos">
             <input type="hidden" name="undefined_quantity" value="1">
-            <input type="hidden" name="item_name" value="Tiquetes Aereos">
+            <input type="hidden" name="item_name" value="TiquetesAereos">
             <input type="hidden" name="amount" value="799.99">
             <input type="image" src="https://www.paypalobjects.com/es_XC/i/btn/btn_buynowCC_LG.gif" style="margin-left: 42%; margin-top: 20px;" name="submit" alt="PayPal - The safer, easier way to pay online!">
             <img   alt="" border="0" src="https://www.paypalobjects.com/es_XC/i/scr/pixel.gif" width="1" height="1">
         </form>-->
 
-        <!--<form action="https://www.paypal.com/cgi-bin/webscr" method="post">
+        <form action="https://www.paypal.com/cgi-bin/webscr" method="post">
             <input type="hidden" name="cmd" value="_xclick">
             <input type="hidden" name="hosted_button_id" value="HCPHDM6GBJ9G6">
             <input type="hidden" name="business" value="oscarcm0797@gmail.com">
@@ -188,6 +188,6 @@
             <input type="hidden" name="return">
             <input type="hidden" name="cancel_return">
             <input type="image" border="0" name="submit" src="http://images.paypal.com/images/x-click-but5.gif" alt="Compre doodads con PayPal">
-        </form>-->
+        </form>
     </body>
 </html>
